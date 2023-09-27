@@ -12,8 +12,8 @@ class ApiController extends Controller
     public function find_user($data)
     {
         $result = DB::table('users')
-            ->join('base_api', 'users.id', '=', 'base_api.id_user')
-            ->where('base_api.id_user', $data)
+            ->join('base_api', 'users.id', '=', 'base_api.id')
+            ->where('base_api.id', $data)
             ->get();
 
         if ($result->isEmpty()) {

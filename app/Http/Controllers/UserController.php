@@ -7,7 +7,7 @@ class UserController extends Controller
 {
     public function index()
     {
-        $users = ModelController::paginate(15); // Isso paginará os resultados para mostrar 15 usuários por página
+        $users = ModelController::paginate(5); // Isso paginará os resultados para mostrar 15 usuários por página
 
         return view('users.index', compact('users'));
     }

@@ -19,13 +19,12 @@ Route::get('/', function () {
 
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Auth::routes();
 
 Route::get('/home', 'App\Http\Controllers\HomeController@index')->name('home');
 
-Route::get('/api/user/{id_user}', [App\Http\Controllers\ApiController::class, 'find_user']);
 
 Route::group(['middleware' => 'auth'], function () {
+	Route::get('/api/user/{id_user}', [App\Http\Controllers\ApiController::class, 'find_user']);
 	Route::resource('user', 'App\Http\Controllers\UserController', ['except' => ['show']]);
 	Route::get('profile', ['as' => 'profile.edit', 'uses' => 'App\Http\Controllers\ProfileController@edit']);
 	Route::put('profile', ['as' => 'profile.update', 'uses' => 'App\Http\Controllers\ProfileController@update']);
