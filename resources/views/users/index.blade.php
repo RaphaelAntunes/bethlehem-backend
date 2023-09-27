@@ -25,7 +25,7 @@ The above copyright notice and this permission notice shall be included in all c
     <link rel="icon" type="image/png" href="{{ asset('paper') }}/img/favicon.png">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-  
+
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no'
         name='viewport' />
     <!--     Fonts and icons     -->
@@ -40,28 +40,21 @@ The above copyright notice and this permission notice shall be included in all c
 
     <!-- End Google Tag Manager -->
 
-    
+
 </head>
 
 
 <body>
-    <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NKDMSK6" height="0" width="0"
-            style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
 
     <div class="wrapper">
-
         <div class="sidebar" data-color="white" data-active-color="danger">
             <div class="logo">
-                <a href="http://www.creative-tim.com" class="simple-text logo-mini">
-                    <div class="logo-image-small">
-                        <img src="{{ asset('paper') }}/img/logo-small.png">
-                    </div>
-                </a>
-                <a href="http://www.creative-tim.com" class="simple-text logo-normal">
-                    {{ __('Creative Tim') }}
-                </a>
+
+                <div class="mb-2">
+                    <img src="{{ asset('paper') }}/img/logo-ib.png">
+                </div>
+
+                <p class="txt-logo">Igreja<br>Batista<br>Bethleem</p>
             </div>
             <div class="sidebar-wrapper">
                 <ul class="nav">
@@ -73,29 +66,34 @@ The above copyright notice and this permission notice shall be included in all c
                     </li>
                     <li>
                         <a data-toggle="collapse" aria-expanded="true" href="#laravelExamples">
-                            <i class="nc-icon"><img src="{{ asset('paper/img/laravel.svg') }}"></i>
+                            <i class="nc-icon nc-settings"></i>
+
                             <p>
-                                {{ __('Laravel examples') }}
+                                {{ __('FERRAMENTAS') }}
                                 <b class="caret"></b>
                             </p>
                         </a>
                         <div class="collapse show" id="laravelExamples">
-                            <ul class="nav">
+                            <ul class="nav ml-3">
                                 <li>
-                                    <a href="{{ route('profile.edit') }}">
-                                        <span class="sidebar-mini-icon">{{ __('UP') }}</span>
-                                        <span class="sidebar-normal">{{ __(' User Profile ') }}</span>
+                                    <a href="{{ route('page.index', 'user') }}">
+                                        <i class="nc-icon nc-single-02"></i>
+                                        <p>{{ __('GERENCIAR MEMBROS') }}</p>
                                     </a>
                                 </li>
-                                <li class="active">
-                                    <a href="{{ route('page.index', 'user') }}">
-                                        <span class="sidebar-mini-icon">{{ __('U') }}</span>
-                                        <span class="sidebar-normal">{{ __(' User Management ') }}</span>
+                                <li>
+                                    <a href="{{ route('page.index', 'evento') }}">
+                                        <i class="nc-icon nc-istanbul"></i>
+                                        <p>{{ __('GERENCIAR EVENTOS') }}</p>
                                     </a>
                                 </li>
                             </ul>
                         </div>
                     </li>
+
+                    </li>
+
+                    <hr>
                     <li>
                         <a href="{{ route('page.index', 'icons') }}">
                             <i class="nc-icon nc-diamond"></i>
@@ -108,146 +106,108 @@ The above copyright notice and this permission notice shall be included in all c
                             <p>{{ __('Maps') }}</p>
                         </a>
                     </li>
-                    <li>
-                        <a href="{{ route('page.index', 'notifications') }}">
-                            <i class="nc-icon nc-bell-55"></i>
-                            <p>{{ __('Notifications') }}</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ route('page.index', 'tables') }}">
-                            <i class="nc-icon nc-tile-56"></i>
-                            <p>{{ __('Table List') }}</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ route('page.index', 'typography') }}">
-                            <i class="nc-icon nc-caps-small"></i>
-                            <p>{{ __('Typography') }}</p>
-                        </a>
-                    </li>
-                    {{-- <li class="active-pro {{ $elementActive == 'upgrade' ? 'active' : '' }}">
-                                <a href="{{ route('page.index', 'upgrade') }}" class="bg-danger">
-                                    <i class="nc-icon nc-spaceship text-white"></i>
-                                    <p class="text-white">{{ __('Upgrade to PRO') }}</p>
-                                </a>
-                            </li> --}}
+
+
+
                 </ul>
             </div>
         </div>
-        <div class="main-panel">
-            <nav class="navbar navbar-expand-lg navbar-absolute fixed-top navbar-transparent">
-                <div class="container-fluid">
-                    <div class="navbar-wrapper">
-                        <div class="navbar-toggle">
-                            <button type="button" class="navbar-toggler">
-                                <span class="navbar-toggler-bar bar1"></span>
-                                <span class="navbar-toggler-bar bar2"></span>
-                                <span class="navbar-toggler-bar bar3"></span>
-                            </button>
-                        </div>
-                        <a class="navbar-brand" href="#pablo">{{ __('Paper Dashboard') }}</a>
+
+    </div>
+    <div class="main-panel">
+        <nav class="navbar navbar-expand-lg navbar-absolute fixed-top navbar-transparent">
+            <div class="container-fluid">
+                <div class="navbar-wrapper">
+                    <div class="navbar-toggle">
+                        <button type="button" class="navbar-toggler">
+                            <span class="navbar-toggler-bar bar1"></span>
+                            <span class="navbar-toggler-bar bar2"></span>
+                            <span class="navbar-toggler-bar bar3"></span>
+                        </button>
                     </div>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation"
-                        aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-bar navbar-kebab"></span>
-                        <span class="navbar-toggler-bar navbar-kebab"></span>
-                        <span class="navbar-toggler-bar navbar-kebab"></span>
-                    </button>
-                    <div class="collapse navbar-collapse justify-content-end" id="navigation">
-                        <form>
-                            <div class="input-group no-border">
-                                <input type="text" value="" class="form-control" placeholder="Search...">
-                                <div class="input-group-append">
-                                    <div class="input-group-text">
-                                        <i class="nc-icon nc-zoom-split"></i>
+                </div>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation"
+                    aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-bar navbar-kebab"></span>
+                    <span class="navbar-toggler-bar navbar-kebab"></span>
+                    <span class="navbar-toggler-bar navbar-kebab"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="navigation">
+               
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link btn-magnify" href="{{ route('profile.edit') }}">
+                                <i class="nc-icon nc-single-02"></i>
+                                <p>
+                                    <span class="d-lg-none d-md-block">{{ __('Stats') }}</span>
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item btn-rotate dropdown">
+                            <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="nc-icon nc-bell-55"></i>
+                                <p>
+                                    <span class="d-lg-none d-md-block">{{ __('Some Actions') }}</span>
+                                </p>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                                <a class="dropdown-item" href="#">{{ __('Action') }}</a>
+                                <a class="dropdown-item" href="#">{{ __('Another action') }}</a>
+                                <a class="dropdown-item" href="#">{{ __('Something else here') }}</a>
+                            </div>
+                        </li>
+                        <li class="nav-item btn-rotate dropdown">
+                            <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink2"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="nc-icon nc-settings-gear-65"></i>
+                                <p>
+                                    <span class="d-lg-none d-md-block">{{ __('Account') }}</span>
+                                </p>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink2">
+                                <form class="dropdown-item" action="{{ route('logout') }}" id="formLogOut" method="POST" style="display: none;">
+                                    @csrf
+                                </form>
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                                    <a class="dropdown-item" onclick="document.getElementById('formLogOut').submit();">{{ __('Log out') }}</a>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="content">
+            <div class="container-fluid mt--7">
+                <div class="row">
+                    <div class="col">
+                        <div class="card shadow">
+                            <div class="card-header border-0">
+                                <div class="row align-items-center">
+                                    <div class="col-8">
+                                        <h3 class="mb-0">Membros</h3>
+                                    </div>
+                                    <div class="col-4 text-right">
+                                        <a href="#" class="btn btn-sm btn-primary">Adicionar</a>
                                     </div>
                                 </div>
                             </div>
-                        </form>
-                        <ul class="navbar-nav">
-                            <li class="nav-item">
-                                <a class="nav-link btn-magnify" href="#pablo">
-                                    <i class="nc-icon nc-layout-11"></i>
-                                    <p>
-                                        <span class="d-lg-none d-md-block">{{ __('Stats') }}</span>
-                                    </p>
-                                </a>
-                            </li>
-                            <li class="nav-item btn-rotate dropdown">
-                                <a class="nav-link dropdown-toggle" href="http://example.com"
-                                    id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
-                                    aria-expanded="false">
-                                    <i class="nc-icon nc-bell-55"></i>
-                                    <p>
-                                        <span class="d-lg-none d-md-block">{{ __('Some Actions') }}</span>
-                                    </p>
-                                </a>
-                                <div class="dropdown-menu dropdown-menu-right"
-                                    aria-labelledby="navbarDropdownMenuLink">
-                                    <a class="dropdown-item" href="#">{{ __('Action') }}</a>
-                                    <a class="dropdown-item" href="#">{{ __('Another action') }}</a>
-                                    <a class="dropdown-item" href="#">{{ __('Something else here') }}</a>
-                                </div>
-                            </li>
-                            <li class="nav-item btn-rotate dropdown">
-                                <a class="nav-link dropdown-toggle" href="http://example.com"
-                                    id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true"
-                                    aria-expanded="false">
-                                    <i class="nc-icon nc-settings-gear-65"></i>
-                                    <p>
-                                        <span class="d-lg-none d-md-block">{{ __('Account') }}</span>
-                                    </p>
-                                </a>
-                                <div class="dropdown-menu dropdown-menu-right"
-                                    aria-labelledby="navbarDropdownMenuLink2">
-                                    <form class="dropdown-item" action="{{ route('logout') }}" id="formLogOut"
-                                        method="POST" style="display: none;">
-                                        @csrf
-                                    </form>
-                                    <div class="dropdown-menu dropdown-menu-right"
-                                        aria-labelledby="navbarDropdownMenuLink">
-                                        <a class="dropdown-item"
-                                            onclick="document.getElementById('formLogOut').submit();">{{ __('Log out') }}</a>
-                                        <a class="dropdown-item"
-                                            href="{{ route('profile.edit') }}">{{ __('My profile') }}</a>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-            <div class="content">
-                <div class="container-fluid mt--7">
-                    <div class="row">
-                        <div class="col">
-                            <div class="card shadow">
-                                <div class="card-header border-0">
-                                    <div class="row align-items-center">
-                                        <div class="col-8">
-                                            <h3 class="mb-0">Membros</h3>
-                                        </div>
-                                        <div class="col-4 text-right">
-                                            <a href="#" class="btn btn-sm btn-primary">Adicionar</a>
-                                        </div>
-                                    </div>
-                                </div>
 
-                                <div class="col-12">
-                                </div>
-                                <div class="table-responsive">
-                                    <table class="table align-items-center table-flush">
-                                        <thead class="thead-light">
-                                            <tr>
-                                                <th scope="col">Nome</th>
-                                                <th scope="col">Email</th>
-                                                <th scope="col">Contato</th>
-                                                <th scope="col">Ações</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @foreach ($users as $user)
+                            <div class="col-12">
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table align-items-center table-flush">
+                                    <thead class="thead-light">
+                                        <tr>
+                                            <th scope="col">Nome</th>
+                                            <th scope="col">Email</th>
+                                            <th scope="col">Contato</th>
+                                            <th scope="col">Ações</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($users as $user)
                                             <tr>
                                                 <td>{{ $user->nome_completo }}</td>
                                                 <td>
@@ -259,118 +219,57 @@ The above copyright notice and this permission notice shall be included in all c
                                                     <button class="btn btn-primary">Editar</button>
                                                 </td>
                                             </tr>
-                                            @endforeach
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <div class="card-footer py-4">
-                                    <nav class="d-flex justify-content-end" aria-label="...">
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="card-footer py-4">
+                                <nav class="d-flex justify-content-end" aria-label="...">
 
-                                    </nav>
-                                </div>
+                                </nav>
                             </div>
                         </div>
                     </div>
-
                 </div>
+
             </div>
-            <footer class="footer footer-black  footer-white ">
-                <div class="container-fluid">
-                    <div class="row">
-                        <nav class="footer-nav">
-                            <ul>
-                                <li>
-                                    <a href="https://www.creative-tim.com" target="_blank">Creative Tim</a>
-                                </li>
-                                <li>
-                                    <a href="https://updivision.com" target="_blank">UpDivision</a>
-                                </li>
-                                <li>
-                                    <a href="http://blog.creative-tim.com/" target="_blank">Blog</a>
-                                </li>
-                                <li>
-                                    <a href="https://www.creative-tim.com/license" target="_blank">Licenses</a>
-                                </li>
-                            </ul>
-                        </nav>
-                        <div class="credits ml-auto">
-                            <span class="copyright">
-                                ©
-                                <script>
-                                    document.write(new Date().getFullYear())
-                                </script>2020, made with <i class="fa fa-heart heart"></i> by <a
-                                    class="" href="https://www.creative-tim.com" target="_blank">Creative
-                                    Tim</a> and <a class="" target="_blank"
-                                    href="https://updivision.com">UPDIVISION</a>
-                            </span>
-                        </div>
+        </div>
+        <footer class="footer footer-black  footer-white ">
+            <div class="container-fluid">
+                <div class="row">
+                    <nav class="footer-nav">
+                        <ul>
+                            <li>
+                                <a href="https://www.creative-tim.com" target="_blank">Creative Tim</a>
+                            </li>
+                            <li>
+                                <a href="https://updivision.com" target="_blank">UpDivision</a>
+                            </li>
+                            <li>
+                                <a href="http://blog.creative-tim.com/" target="_blank">Blog</a>
+                            </li>
+                            <li>
+                                <a href="https://www.creative-tim.com/license" target="_blank">Licenses</a>
+                            </li>
+                        </ul>
+                    </nav>
+                    <div class="credits ml-auto">
+                        <span class="copyright">
+                            ©
+                            <script>
+                                document.write(new Date().getFullYear())
+                            </script>2020, made with <i class="fa fa-heart heart"></i> by <a
+                                class="" href="https://www.creative-tim.com" target="_blank">Creative
+                                Tim</a> and <a class="" target="_blank"
+                                href="https://updivision.com">UPDIVISION</a>
+                        </span>
                     </div>
                 </div>
-            </footer>
-        </div>
+            </div>
+        </footer>
     </div>
-    <div class="fixed-plugin">
-        <div class="dropdown show-dropdown">
-            <a href="#" data-toggle="dropdown">
-                <i class="fa fa-cog fa-2x"> </i>
-            </a>
-            <ul class="dropdown-menu">
-                <li class="header-title"> Sidebar Background</li>
-                <li class="adjustments-line">
-                    <a href="javascript:void(0)" class="switch-trigger background-color">
-                        <div class="badge-colors text-center">
-                            <span class="badge filter badge-light active" data-color="white"></span>
-                            <span class="badge filter badge-dark" data-color="black"></span>
-                        </div>
-                        <div class="clearfix"></div>
-                    </a>
-                </li>
-                <li class="header-title"> Sidebar Active Color</li>
-                <li class="adjustments-line text-center">
-                    <a href="javascript:void(0)" class="switch-trigger active-color">
-                        <span class="badge filter badge-primary" data-color="primary"></span>
-                        <span class="badge filter badge-info" data-color="info"></span>
-                        <span class="badge filter badge-success" data-color="success"></span>
-                        <span class="badge filter badge-warning" data-color="warning"></span>
-                        <span class="badge filter badge-danger active" data-color="danger"></span>
-                    </a>
-                </li>
-                <li class="button-container">
-                    <a href="https://www.creative-tim.com/product/paper-dashboard-laravel" target="_blank"
-                        class="btn btn-primary btn-block btn-round">Download Now</a>
-                </li>
-                <li class="button-container">
-                    <a href="https://paper-dashboard-laravel.creative-tim.com/docs/getting-started/laravel-setup.html"
-                        target="_blank" class="btn btn-outline-default btn-block btn-round">
-                        <i class="nc-icon nc-paper"></i> Documentation
-                    </a>
-                </li>
-                <li class="header-title">
-                    Want more components?
-                </li>
-                <li class="button-container">
-                    <a href="https://www.creative-tim.com/product/paper-dashboard-pro-laravel" target="_blank"
-                        class="btn btn-danger btn-block btn-round">
-                        Get Pro Version
-                    </a>
-                </li>
-                <li class="header-title">Thank you for 95 shares!</li>
-                <li class="button-container text-center">
-                    <button id="twitter" class="btn btn-outline-default btn-round btn-sm sharrre"><i
-                            class="fa fa-twitter"></i>
-                        · 45</button>
-                    <button id="facebook" class="btn btn-outline-default btn-round btn-sm sharrre"><i
-                            class="fa fa-facebook-f"></i>
-                        · 50</button>
-                    <br>
-                    <br>
-                    <a class="github-button" href="https://github.com/creativetimofficial/paper-dashboard"
-                        data-icon="octicon-star" data-size="large" data-show-count="true"
-                        aria-label="Star ntkme/github-buttons on GitHub">Star</a>
-                </li>
-            </ul>
-        </div>
     </div>
+
     <!--   Core JS Files   -->
     <script src="{{ asset('paper') }}/js/core/jquery.min.js"></script>
     <script src="{{ asset('paper') }}/js/core/popper.min.js"></script>
