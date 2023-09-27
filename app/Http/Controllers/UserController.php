@@ -1,21 +1,14 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use App\Models\User;
-use App\Http\Requests\UserRequest;
-use Illuminate\Support\Facades\Hash;
+use App\Models\ModelController; // Substitua 'Usuario' pelo nome real do seu modelo de usuário
 
 class UserController extends Controller
 {
-    /**
-     * Display a listing of the users
-     *
-     * @param  \App\Models\User  $model
-     * @return \Illuminate\View\View
-     */
-    public function index(User $model)
+    public function index()
     {
-        return view('users.index', ['users' => $model->paginate(15)]);
+        $users = ModelController::paginate(15); // Isso paginará os resultados para mostrar 15 usuários por página
+
+        return view('users.index', compact('users'));
     }
 }

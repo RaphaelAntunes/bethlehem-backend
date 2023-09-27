@@ -29,7 +29,7 @@
                                 <h5 class="title">{{ __(auth()->user()->name)}}</h5>
                             </a>
                             <p class="description">
-                            @ {{ __(auth()->user()->name)}}
+                            @ {{ __(auth()->user()->email)}}
                             </p>
                         </div>
                         <p class="description text-center">

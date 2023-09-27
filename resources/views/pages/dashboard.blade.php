@@ -12,12 +12,12 @@
                         <div class="row">
                             <div class="col-5 col-md-4">
                                 <div class="icon-big text-center icon-warning">
-                                    <i class="nc-icon nc-globe text-warning"></i>
+                                    <i class="nc-icon nc-single-02 text-warning"></i>
                                 </div>
                             </div>
                             <div class="col-7 col-md-8">
                                 <div class="numbers">
-                                    <p class="card-category">Capacity</p>
+                                    <p class="card-category">Membros cadastrados</p>
                                     <p class="card-title">150GB
                                         <p>
                                 </div>
@@ -27,7 +27,6 @@
                     <div class="card-footer ">
                         <hr>
                         <div class="stats">
-                            <i class="fa fa-refresh"></i> Update Now
                         </div>
                     </div>
                 </div>
@@ -53,7 +52,6 @@
                     <div class="card-footer ">
                         <hr>
                         <div class="stats">
-                            <i class="fa fa-calendar-o"></i> Last day
                         </div>
                     </div>
                 </div>
@@ -79,7 +77,6 @@
                     <div class="card-footer ">
                         <hr>
                         <div class="stats">
-                            <i class="fa fa-clock-o"></i> In the last hour
                         </div>
                     </div>
                 </div>
@@ -105,7 +102,6 @@
                     <div class="card-footer ">
                         <hr>
                         <div class="stats">
-                            <i class="fa fa-refresh"></i> Update now
                         </div>
                     </div>
                 </div>
@@ -119,7 +115,7 @@
                         <p class="card-category">24 Hours performance</p>
                     </div>
                     <div class="card-body ">
-                        <canvas id=chartHours width="400" height="100"></canvas>
+                        <canvas id=chartHours width="600" height="100"></canvas>
                     </div>
                     <div class="card-footer ">
                         <hr>
