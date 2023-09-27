@@ -3,6 +3,10 @@
     'elementActive' => 'eventos'
 ])
 
+
+
+@include('pages.new-evento')
+
 @section('content')
 <div class="content">
     <div class="container-fluid mt--7">
@@ -15,7 +19,7 @@
                                 <h3 class="mb-0">Eventos</h3>
                             </div>
                             <div class="col-4 text-right">
-                                <a href="#" class="btn btn-sm btn-primary">Adicionar</a>
+                                <a href="#" class="btn btn-sm btn-primary" onclick="abrirModal()">Adicionar</a>
                             </div>
                         </div>
                     </div>
@@ -40,6 +44,8 @@
     </div>
 </div>
 @endsection
+
+
 
 @push('scripts')
     <script>

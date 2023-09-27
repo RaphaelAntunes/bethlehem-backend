@@ -43,6 +43,7 @@ The above copyright notice and this permission notice shall be included in all c
 
 </head>
 
+@include('pages.new-membro')
 
 <body>
 
@@ -216,7 +217,7 @@ The above copyright notice and this permission notice shall be included in all c
                                                 <td>{{ $user->telefone_principal }}</td>
                                                 <td>
                                                     <button class="btn btn-danger mr-3">Redefinir Acesso</button>
-                                                    <button class="btn btn-primary">Editar</button>
+                                                    <button class="btn btn-primary" onclick="abrirModal()">Editar</button>
                                                 </td>
                                             </tr>
                                         @endforeach
