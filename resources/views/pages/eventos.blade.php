@@ -15,34 +15,39 @@
                 <div class="card shadow">
                     <div class="card-header border-1">
                         <div class="row align-items-center">
-                            <div class="col-8">
+                            <div class="col-md-8">
                                 <h3 class="mb-0">Eventos</h3>
+                                <hr>
                             </div>
-                            <div class="col-4 text-right">
+                            <div class="col-md-4 text-right">
                                 <a href="#" class="btn btn-sm btn-primary" onclick="abrirModal()">Adicionar</a>
                             </div>
                         </div>
                     </div>
 
-                    <div class="d-flex">
-                    <div class="card-event card d-flex flex-row justify-content-center align-items-center">
-                        <span data-notify="icon" class="nc-icon nc-istanbul"></span>
-                        <div><h5>Culto da familia</h5>
-                            <h4>Por: Pastor Claudio</h4>
-                            <hr>
-
-<h4>o culto da familai é fovuann ouhels iqu iheuo pawun co qh o jdqhudo </h4>
-<button class="btn btn-sm btn-primary">marcar presença</button>
-<i class="nc-icon nc-single-02 ml-2">0</i></div>
+                    <div class="row">
+                        @foreach ($eventos as $evento)
+                        <div class="col-md-4 mb-4">
+                            <div class="card card-event">
+                                <div class="card-body">
+                                    <span data-notify="icon" class="nc-icon nc-istanbul"></span>
+                                    <h5 class="card-title">{{ $evento->titulo }}</h5>
+                                    <h6 class="card-subtitle mb-2 text-muted">Por: {{ $evento->mediador }}</h6>
+                                    <hr>
+                                    <p class="card-text">{{ $evento->descricao }}</p>
+                                    <button class="btn btn-sm btn-primary">Marcar presença</button>
+                                    <i class="nc-icon nc-single-02 ml-2">0</i>
+                                </div>
+                            </div>
+                        </div>
+                        @endforeach
                     </div>
-                    </div>
-                    
                 </div>
             </div>
         </div>
-
     </div>
 </div>
+
 @endsection
 
 

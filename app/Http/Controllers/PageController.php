@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\SaveEventModel;
 
 class PageController extends Controller
 {
@@ -24,10 +25,22 @@ class PageController extends Controller
      */
     public function index(string $page)
     {
+        $eventos = SaveEventModel::all(); // Recupere todos os eventos do banco de dados
+
         if (view()->exists("pages.{$page}")) {
-            return view("pages.{$page}");
+            return view("pages.{$page}",['eventos' => $eventos]);
         }
 
+        return abort(404);
+    }
+    public function eventos()
+    {
+        $eventos = SaveEventModel::all(); // Recupere todos os eventos do banco de dados
+    
+        if (view()->exists("pages.eventos")) {
+            return view("pages.eventos", ['eventos' => $eventos]);
+        }
+    
         return abort(404);
     }
 }

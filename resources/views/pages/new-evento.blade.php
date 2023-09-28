@@ -30,6 +30,8 @@
 
 <div id="meuModal" class="modal">
     <div class="modal-content">
+        <form id="eventoForm" action="{{ route('salvarEvento') }}" method="POST">
+            @csrf
         <section class="formulario-section" id="secao-pessoal">
            
             <div class="card" style="margin-bottom: 0px !important;">
@@ -51,7 +53,7 @@
                         <label class="col-md-3 col-form-label">Tipo</label>
                         <div class="col-md-9">
                             <div class="form-group">
-                                <select name="tipo_culto" class="form-control">
+                                <select name="tipo_evento" class="form-control">
                                     <option value="culto_manha"></option>
                                     <option value="culto_manha">Culto da Manhã</option>
                                     <option value="culto_noite">Culto da Noite</option>
@@ -67,7 +69,7 @@
                         <div class="col-md-9">
                             <div class="form-group">
                                 <select name="mediador" class="form-control">
-                                    <option value="por1"></option>
+                                    <option value="por1">1</option>
                                     
                                     <!-- Adicione mais opções conforme necessário -->
                                 </select>                            </div>
@@ -86,15 +88,15 @@
                         <label class="col-md-3 col-form-label">Data</label>
                         <div class="col-md-9">
                             <div class="form-group">
-                                <input type="datetime-local" name="data_hora" class="form-control" required>
+                                <input type="datetime-local" name="horario" class="form-control" required>
                             </div>
                                                             </div>
                     </div>
                     <div class="row">
-                        <label class="col-md-3 col-form-label">Local</label>
+                        <label class="col-md-3 col-form-label">local</label>
                         <div class="col-md-9">
                             <div class="form-group">
-                                <input type="text" name="local" class="form-control" placeholder="Matriz" value="" required="">
+                                <input type="text" name="local" class="form-control" placeholder="Um culto feito para a familía e irmãos" value="" required="">
                             </div>
                                                             </div>
                     </div>
@@ -108,6 +110,8 @@
                 </div>
             </div>
         </section>
+    </form>
+
     
         <section class="formulario-section2" id="secao-segunda-etapa">
             <input type="text" name="" id="" value="abcd">

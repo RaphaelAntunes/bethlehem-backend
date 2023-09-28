@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Route;
 |
 | Here is where you can register web routes for your application. These
 | routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
+| be assigned to the "web" middleware group. Make something great!\
 |
 */
 
@@ -20,11 +20,16 @@ Route::get('/', function () {
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/new-evento', 'EventoController@index');
-Route::get('/new-membro', 'EventoController@membro');
 
+
+
+Route::post('/salvar-evento', [App\Http\Controllers\EventoController::class, 'salvarEvento'])->name('salvarEvento');
+
+Route::get('/eventos', ['as' => 'eventos', 'uses' => 'App\Http\Controllers\PageController@eventos']);
 
 Route::group(['middleware' => 'auth'], function () {
+	Route::get('/new-evento', 'EventoController@index');
+	Route::get('/new-membro', 'EventoController@membro');
 	Route::get('/api/user/{id_user}', [App\Http\Controllers\ApiController::class, 'find_user']);
 	Route::resource('user', 'App\Http\Controllers\UserController', ['except' => ['show']]);
 	Route::get('profile', ['as' => 'profile.edit', 'uses' => 'App\Http\Controllers\ProfileController@edit']);
