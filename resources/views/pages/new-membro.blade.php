@@ -257,7 +257,7 @@
                 <div class="card-footer ">
                     <div class="row">
                         <div class="col-md-12 text-center">
-                            <button onclick="mostrarProximaSecao('secao-pessoal')" class="btn btn-success btn-round">Anterior</button>
+                            <button onclick="mostrarProximaSecao('secao-pessoal')" class="btn btn-info btn-round">Anterior</button>
                             <button onclick="mostrarProximaSecao('secao-etapa-endereco')" class="btn btn-info btn-round">Próximo</button>
             
                         </div>
@@ -329,7 +329,7 @@
                 <div class="card-footer ">
                     <div class="row">
                         <div class="col-md-12 text-center">
-                            <button onclick="mostrarProximaSecao('secao-etapa-endereco')" class="btn btn-success btn-round">Anterior</button>
+                            <button onclick="mostrarProximaSecao('secao-pessoal-2')" class="btn btn-info btn-round">Anterior</button>
                             <button onclick="mostrarProximaSecao('secao-etapa-profissao')" class="btn btn-info btn-round">Próximo</button>
             
                         </div>
@@ -449,9 +449,9 @@
                 <div class="card-footer ">
                     <div class="row">
                         <div class="col-md-12 text-center">
-                            <button type="submit" class="btn btn-success btn-round">Criar</button>
-                            <button onclick="mostrarProximaSecao('secao-pessoal-2')" class="btn btn-info btn-round">Adicionar
-                                mais informações</button>
+                            <button onclick="mostrarProximaSecao('secao-etapa-endereco')" class="btn btn-info btn-round">Anterior</button>
+                            <button onclick="mostrarProximaSecao('secao-etapa-profissao')" class="btn btn-success btn-round">Cadastrar Membro</button>
+            
             
                         </div>
                     </div>
