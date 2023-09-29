@@ -30,18 +30,42 @@
                         <div class="col-md-4 mb-4">
                             <div class="card card-event">
                                 <div class="card-body">
-                                    <span data-notify="icon" class="nc-icon nc-istanbul"></span>
-                                    <h5 class="card-title">{{ $evento->titulo }}</h5>
-                                    <h6 class="card-subtitle mb-2 text-muted">Por: {{ $evento->mediador }}</h6>
-                                    <hr>
-                                    <p class="card-text">{{ $evento->descricao }}</p>
-                                    <button class="btn btn-sm btn-primary">Marcar presença</button>
-                                    <i class="nc-icon nc-single-02 ml-2">0</i>
+                               
+                                    <form method="post" action="{{ $evento->estaParticipando($evento->id) ? route('remover-presenca') : route('marcar-presenca') }}">
+                                        @csrf
+                                        <input type="hidden" name="evento_id" value="{{ $evento->id }}">
+                                        
+                                        <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
+                                        <input type="hidden" name="marcado" value="{{ $evento->estaParticipando(auth()->user()->id) ? 0 : 1 }}">
+                                        <div style="justify-content:right;" class="d-flex aling-items-right">
+                                            <span data-notify="icon" style="margin-right: 0px; font-size: 20px;"
+                                                class="nc-icon nc-simple-remove"></span>
+                                        </div>
+                                        <span data-notify="icon" class="nc-icon nc-istanbul mb-1"></span>
+                                        <h5 class="card-title">{{ $evento->titulo }}</h5>
+                                        @php
+                                        // Consulta para obter o nome do mediador com base no ID
+                                        $mediador = App\Models\getMediadores::find($evento->mediador);
+                                        $mediador = json_decode($mediador);
+                                        @endphp
+                                        @if ($mediador)
+                                        <h6 class="card-subtitle mb-2 text-muted">Por: {{ $mediador->name }}</h6>
+                                        @endif
+                                        <hr>
+                                        <p class="card-text">{{ $evento->descricao }}</p>
+                                        <!-- Botão para marcar ou cancelar a presença -->
+                                        <button type="submit"
+                                            class="btn btn-sm {{ $evento->estaParticipando($evento->id) ? 'btn-danger' : 'btn-primary' }}">
+                                            {{ $evento->estaParticipando($evento->id) ? 'Cancelar Presença' : 'Marcar Presenças' }}
+                                        </button>
+                                        <i class="nc-icon nc-single-02 ml-2">{{$evento->numparticipantes($evento->id)}}</i>
+                                    </form>
                                 </div>
                             </div>
                         </div>
                         @endforeach
                     </div>
+                    
                 </div>
             </div>
         </div>

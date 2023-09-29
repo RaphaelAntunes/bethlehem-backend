@@ -68,13 +68,13 @@
                         <label class="col-md-3 col-form-label">Mediador</label>
                         <div class="col-md-9">
                             <div class="form-group">
-                                <select name="mediador" class="form-control">
-                                    <option value="por1">1</option>
-                                    
-                                    <!-- Adicione mais opções conforme necessário -->
-                                </select>                            </div>
-                                                            </div>
+                                <select name="mediador" class="form-control" id="mediador-select">
+                                    <option value="">Selecione um Mediador</option>
+                                </select>
+                            </div>
+                        </div>
                     </div>
+                    
                     
                     <div class="row">
                         <label class="col-md-3 col-form-label">Descrição</label>
@@ -133,6 +133,21 @@
             function fecharModal() {
                 document.getElementById('meuModal').style.display = 'none';
             }
+        </script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+        <script>
+            $(document).ready(function () {
+                // Quando a página carrega, faça uma solicitação Ajax para obter os mediadores
+                $.get('/get-mediadores', function (data) {
+                    var select = $('#mediador-select');
+                    console.log(data);
+                    // Preencha o select com as opções dos mediadores
+                    $.each(data, function (key, value) {
+                        select.append('<option value="' + value.id + '">' + value.name + '</option>');
+                    });
+                });
+            });
         </script>
            
     </div>
