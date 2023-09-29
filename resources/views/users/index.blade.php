@@ -40,79 +40,19 @@ The above copyright notice and this permission notice shall be included in all c
 
     <!-- End Google Tag Manager -->
 
+@extends('layouts.app', [
+    'class' => '',
+    'elementActive' => 'GerenEventos'
+])
 
-</head>
 
-@include('pages.new-membro')
+
+
 
 <body>
 
     <div class="wrapper">
-        <div class="sidebar" data-color="white" data-active-color="danger">
-            <div class="logo">
-
-                <div class="mb-2">
-                    <img src="{{ asset('paper') }}/img/logo-ib.png">
-                </div>
-
-                <p class="txt-logo">Igreja<br>Batista<br>Bethleem</p>
-            </div>
-            <div class="sidebar-wrapper">
-                <ul class="nav">
-                    <li>
-                        <a href="{{ route('page.index', 'dashboard') }}">
-                            <i class="nc-icon nc-bank"></i>
-                            <p>{{ __('Dashboard') }}</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a data-toggle="collapse" aria-expanded="true" href="#laravelExamples">
-                            <i class="nc-icon nc-settings"></i>
-
-                            <p>
-                                {{ __('FERRAMENTAS') }}
-                                <b class="caret"></b>
-                            </p>
-                        </a>
-                        <div class="collapse show" id="laravelExamples">
-                            <ul class="nav ml-3">
-                                <li>
-                                    <a href="{{ route('page.index', 'user') }}">
-                                        <i class="nc-icon nc-single-02"></i>
-                                        <p>{{ __('GERENCIAR MEMBROS') }}</p>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="{{ route('page.index', 'evento') }}">
-                                        <i class="nc-icon nc-istanbul"></i>
-                                        <p>{{ __('GERENCIAR EVENTOS') }}</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
-
-                    </li>
-
-                    <hr>
-                    <li>
-                        <a href="{{ route('page.index', 'icons') }}">
-                            <i class="nc-icon nc-diamond"></i>
-                            <p>{{ __('Icons') }}</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ route('page.index', 'map') }}">
-                            <i class="nc-icon nc-pin-3"></i>
-                            <p>{{ __('Maps') }}</p>
-                        </a>
-                    </li>
-
-
-
-                </ul>
-            </div>
-        </div>
+      
 
     </div>
     <div class="main-panel">
