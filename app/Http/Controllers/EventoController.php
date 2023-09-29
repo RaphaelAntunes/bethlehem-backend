@@ -97,5 +97,25 @@ public function marcarPresenca(Request $request)
         // Redirecione para a página desejada após a conclusão da operação
     }
 
+    public function removerEvento($evento_id)
+    {
+        // Encontre o evento com base no ID
+        $evento = SaveEventModel::find($evento_id);
+    
+        if ($evento) {
+            $evento->delete(); // Isso removerá o registro do evento
+            // Redirecione para a página desejada após a remoção
+            return redirect()->route('eventos')->with('success', 'Evento removido com sucesso!');
+        } else {
+            // O evento não foi encontrado, você pode tratar isso de acordo
+            // Redirecione para a página desejada com uma mensagem de erro
+            return redirect()->route('eventos')->with('error', 'Evento não encontrado.');
+        }
+    }
+    
+    
+
+
+
 
 }
