@@ -13,11 +13,7 @@ class EventoController extends Controller
     {
         return view('new-evento');
     }
-    public function membro()
-    {
-        return view('new-membro');
-    }
-
+   
     public function getMediadores()
 {
     $mediadores = getMediadores::all(); // Substitua "Mediador" pelo nome do seu modelo

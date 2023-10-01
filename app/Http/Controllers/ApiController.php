@@ -22,4 +22,17 @@ class ApiController extends Controller
 
         return response()->json(['message' => 'Usuário encontrado.', 'Data' => $result], 200);
     }
+
+    public function find_user2($data)
+    {
+        $result = ModelController::where('id', $data)
+        ->get();
+
+
+        if ($result->isEmpty()) {
+            return response()->json(['message' => 'Usuário não encontrado.'], 404);
+        }
+
+        return response()->json(['message' => 'Usuário encontrado.', 'Data' => $result], 200);
+    }
 }
