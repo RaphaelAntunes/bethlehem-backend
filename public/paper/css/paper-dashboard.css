@@ -6967,6 +6967,9 @@ License - nucleoapp.com/license/
         width: 38%;
         padding: 15px;
     }
+    .btn-outline-success {
+        width: 100%;
+    }
 }
 
 .section-image {

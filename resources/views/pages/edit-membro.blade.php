@@ -66,420 +66,421 @@
             <input type="hidden" name="_token" value="{{ csrf_token() }}" autocomplete="off">
             <section class="formulario-section" id="secao-pessoal">
 
-            <div class="card" style="margin-bottom: 0px !important;">
-                <div class="card-header d-flex justify-content-between align-items-center">
-                    <div>
-                        <h5 class="title">Cadastro</h5>
-                        <p class="title">Dados Pessoais:</p>
-                    </div>
-                    <span data-notify="icon" onclick="fecharModal()" class="nc-icon nc-simple-remove"></span>
-
-                </div>
-                <div class="card-body">
-                    <div class="row">
-                        <label class="col-md-3 col-form-label">Nome Completo*</label>
-                        <div class="col-md-9">
-                            <div class="form-group">
-                                <input type="text" name="nome_completo" class="form-control" value="" >
-                            </div>
+                <div class="card" style="margin-bottom: 0px !important;">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <div>
+                            <h5 class="title">Cadastro</h5>
+                            <p class="title">Dados Pessoais:</p>
                         </div>
-                    </div>
-                    <div class="row">
-                        <label class="col-md-3 col-form-label">Apelido</label>
-                        <div class="col-md-9">
-                            <div class="form-group">
-                                <input type="text" name="apelido" class="form-control" placeholder="" value=""
-                                    >
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <label class="col-md-3 col-form-label">E-mail</label>
-                        <div class="col-md-9">
-                            <div class="form-group">
-                                <input type="text" name="email" id="email" class="form-control" value=""
-                                    oninput="sugerirDominio(this)">
-
-                                <div id="sugestoes-dominio" style="display: none;">
-                                    <p>Sugestões de domínio:</p>
-                                    <ul>
-                                        <li><a href="#" onclick="selecionarDominio('gmail.com')">gmail.com</a>
-                                        </li>
-                                        <li><a href="#" onclick="selecionarDominio('hotmail.com')">hotmail.com</a>
-                                        </li>
-                                        <!-- Adicione mais domínios conforme necessário -->
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <label class="col-md-3 col-form-label">CPF</label>
-                        <div class="col-md-9">
-                            <div class="form-group">
-                                <input type="text" name="cpf" class="form-control" value=""
-                                    oninput="mascaraCPF(this)" maxlength="14">
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <label class="col-md-3 col-form-label">RG</label>
-                        <div class="col-md-9">
-                            <div class="form-group">
-                                <input type="text" name="rg" id="rg" class="form-control" value=""
-                                    oninput="formatarRG(this)">
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <label class="col-md-3 col-form-label">Data de Nascimento</label>
-                        <div class="col-md-9">
-                            <div class="form-group">
-                                <input type="date" name="data_de_nascimento" class="form-control">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <label class="col-md-3 col-form-label">Sexo</label>
-                        <div class="col-md-9">
-                            <div class="form-group">
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="sexo" id="sexo-masculino"
-                                        value="Masculino">
-                                    <label style="padding-left: 0px" class="form-check-label"
-                                        for="sexo-masculino">Masculino</label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="sexo" id="sexo-feminino"
-                                        value="Feminino">
-                                    <label style="padding-left: 0px" class="form-check-label">Feminino</label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <div class="row">
-                        <label class="col-md-3 col-form-label">Telefone Principal</label>
-                        <div class="col-md-9">
-                            <div class="form-group">
-                                <input type="text" name="telefone_principal" id="telefone_principal"
-                                    class="form-control" value="" maxlength="11"
-                                    oninput="formatarTelefone(this)">
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <label class="col-md-3 col-form-label">Telefone Secundário</label>
-                        <div class="col-md-9">
-                            <div class="form-group">
-                                <input type="text" name="telefone_secundario" id="telefone_secundario"
-                                    class="form-control" value="" maxlength="11"
-                                    oninput="formatarTelefone(this)">
-                            </div>
-                        </div>
-                    </div>
-
-
-
-                </div>
-
-
-                <div class="card-footer ">
-                    <div class="row">
-                        <div class="col-md-12 text-center">
-                            <button onclick="mostrarProximaSecao('secao-pessoal-2')"
-                                class="btn btn-info btn-round">Próximo</button>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-        </section>
-        <section class="formulario-section2" id="secao-pessoal-2">
-
-            <div class="card" style="margin-bottom: 0px !important;">
-                <div class="card-header d-flex justify-content-between align-items-center">
-                    <div>
-                        <h5 class="title">Cadastro</h5>
-                        <p class="title">Dados Pessoais:</p>
-                    </div>
-                    <span data-notify="icon" onclick="fecharModal()" class="nc-icon nc-simple-remove"></span>
-
-                </div>
-                <div class="card-body">
-
-                    <div class="row">
-                        <label class="col-md-3 col-form-label">Naturalidade</label>
-                        <div class="col-md-9">
-                            <div class="form-group">
-                                <input type="text" name="naturalidade" class="form-control" placeholder=""
-                                    value="" >
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <label class="col-md-3 col-form-label">Estado Civil</label>
-                        <div class="col-md-9">
-                            <div class="form-group">
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="estado_civil"
-                                        id="civil-casado" value="Casado">
-                                    <label style="padding-left: 0px" class="form-check-label"
-                                     >Casado(a)</label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="estado_civil"
-                                        id="civil-noivo" value="Noivo">
-                                    <label style="padding-left: 0px" class="form-check-label">Noivo(a)</label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="estado_civil"
-                                        id="civil-solteiro" value="Solteiro">
-                                    <label style="padding-left: 0px" class="form-check-label">Solteiro(a)</label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="estado_civil"
-                                        id="civil-outro" value="outro">
-                                    <label style="padding-left: 0px" class="form-check-label">Outro</label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <label class="col-md-3 col-form-label">Nome Conjuge</label>
-                        <div class="col-md-9">
-                            <div class="form-group">
-                                <input type="text" name="nome_conjuge" class="form-control" placeholder=""
-                                    value="" >
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <label class="col-md-3 col-form-label">Conjuge é um membro IBB?</label>
-                        <div class="col-md-9">
-                            <div class="form-group">
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="conjuge_membro_ibb"
-                                        value="sim">
-                                    <label style="padding-left: 0px" class="form-check-label"
-                                        >Sim</label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="conjuge_membro_ibb"
-                                        value="nao">
-                                    <label style="padding-left: 0px" class="form-check-label"
-                                        >Não</label>
-                                </div>
-
-
-                            </div>
-
-                        </div>
+                        <span data-notify="icon" onclick="fecharModal()" class="nc-icon nc-simple-remove"></span>
 
                     </div>
-                    <div class="card-footer ">
+                    <div class="card-body">
                         <div class="row">
-                            <div class="col-md-12 text-center">
-                                <button onclick="mostrarProximaSecao('secao-pessoal')"
-                                    class="btn btn-info btn-round">Anterior</button>
-                                <button onclick="mostrarProximaSecao('secao-etapa-endereco')"
-                                    class="btn btn-info btn-round">Próximo</button>
-
+                            <label class="col-md-3 col-form-label">Nome Completo*</label>
+                            <div class="col-md-9">
+                                <div class="form-group">
+                                    <input type="text" name="nome_completo" class="form-control" value="">
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-        </section>
-        <section class="formulario-section3" id="secao-etapa-endereco">
-
-            <div class="card" style="margin-bottom: 0px !important;">
-                <div class="card-header d-flex justify-content-between align-items-center">
-                    <div>
-                        <h5 class="title">Cadastro</h5>
-                        <p class="title">Endereço</p>
-                    </div>
-                    <span data-notify="icon" onclick="fecharModal()" class="nc-icon nc-simple-remove"></span>
-
-                </div>
-                <div class="card-body">
-
-                    <div class="row">
-                        <label class="col-md-3 col-form-label">CEP</label>
-                        <div class="col-md-9">
-                            <div class="form-group">
-                                <input type="text" name="cep" id="cep" class="form-control"
-                                    value="" onblur="consultarCEP(this.value)">
-
+                        <div class="row">
+                            <label class="col-md-3 col-form-label">Apelido</label>
+                            <div class="col-md-9">
+                                <div class="form-group">
+                                    <input type="text" name="apelido" class="form-control" placeholder=""
+                                        value="">
+                                </div>
                             </div>
                         </div>
-                    </div>
+                        <div class="row">
+                            <label class="col-md-3 col-form-label">E-mail</label>
+                            <div class="col-md-9">
+                                <div class="form-group">
+                                    <input type="text" name="email" id="email" class="form-control"
+                                        value="" oninput="sugerirDominio(this)">
 
-                    <div class="row">
-                        <label class="col-md-3 col-form-label">Logradouro</label>
-                        <div class="col-md-9">
-                            <div class="form-group">
-                                <input type="text" name="logradouro" id="logradouro" class="form-control"
-                                    value="">
-
+                                    <div id="sugestoes-dominio" style="display: none;">
+                                        <p>Sugestões de domínio:</p>
+                                        <ul>
+                                            <li><a href="#" onclick="selecionarDominio('gmail.com')">gmail.com</a>
+                                            </li>
+                                            <li><a href="#"
+                                                    onclick="selecionarDominio('hotmail.com')">hotmail.com</a>
+                                            </li>
+                                            <!-- Adicione mais domínios conforme necessário -->
+                                        </ul>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                        <div class="row">
+                            <label class="col-md-3 col-form-label">CPF</label>
+                            <div class="col-md-9">
+                                <div class="form-group">
+                                    <input type="text" name="cpf" class="form-control" value=""
+                                        oninput="mascaraCPF(this)" maxlength="14">
 
-                    <div class="row">
-                        <label class="col-md-3 col-form-label">Bairro</label>
-                        <div class="col-md-9">
-                            <div class="form-group">
-                                <input type="text" name="bairro" id="bairro" class="form-control"
-                                    value="">
-
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <label class="col-md-3 col-form-label">Cidade</label>
-                        <div class="col-md-9">
-                            <div class="form-group">
-                                <input type="text" name="cidade" id="cidade" class="form-control"
-                                    value="">
+                        <div class="row">
+                            <label class="col-md-3 col-form-label">RG</label>
+                            <div class="col-md-9">
+                                <div class="form-group">
+                                    <input type="text" name="rg" id="rg" class="form-control"
+                                        value="" oninput="formatarRG(this)">
 
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <label class="col-md-3 col-form-label">Estado</label>
-                        <div class="col-md-9">
-                            <div class="form-group">
-                                <input type="text" name="estado" id="estado" class="form-control"
-                                    value="">
-
+                        <div class="row">
+                            <label class="col-md-3 col-form-label">Data de Nascimento</label>
+                            <div class="col-md-9">
+                                <div class="form-group">
+                                    <input type="date" name="data_de_nascimento" class="form-control">
+                                </div>
                             </div>
                         </div>
+                        <div class="row">
+                            <label class="col-md-3 col-form-label">Sexo</label>
+                            <div class="col-md-9">
+                                <div class="form-group">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="sexo"
+                                            id="sexo-masculino" value="Masculino">
+                                        <label style="padding-left: 0px" class="form-check-label"
+                                            for="sexo-masculino">Masculino</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="sexo" id="sexo-feminino"
+                                            value="Feminino">
+                                        <label style="padding-left: 0px" class="form-check-label">Feminino</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <label class="col-md-3 col-form-label">Telefone Principal</label>
+                            <div class="col-md-9">
+                                <div class="form-group">
+                                    <input type="text" name="telefone_principal" id="telefone_principal"
+                                        class="form-control" value="" maxlength="11"
+                                        oninput="formatarTelefone(this)">
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label class="col-md-3 col-form-label">Telefone Secundário</label>
+                            <div class="col-md-9">
+                                <div class="form-group">
+                                    <input type="text" name="telefone_secundario" id="telefone_secundario"
+                                        class="form-control" value="" maxlength="11"
+                                        oninput="formatarTelefone(this)">
+                                </div>
+                            </div>
+                        </div>
+
+
+
                     </div>
+
 
                     <div class="card-footer ">
                         <div class="row">
                             <div class="col-md-12 text-center">
                                 <button onclick="mostrarProximaSecao('secao-pessoal-2')"
-                                    class="btn btn-info btn-round">Anterior</button>
-                                <button onclick="mostrarProximaSecao('secao-etapa-profissao')"
                                     class="btn btn-info btn-round">Próximo</button>
 
                             </div>
                         </div>
                     </div>
                 </div>
-        </section>
-        <section class="formulario-section4" id="secao-etapa-profissao">
 
-            <div class="card" style="margin-bottom: 0px !important;">
-                <div class="card-header d-flex justify-content-between align-items-center">
-                    <div>
-                        <h5 class="title">Cadastro</h5>
-                        <p class="title">Profissão</p>
-                    </div>
-                    <span data-notify="icon" onclick="fecharModal()" class="nc-icon nc-simple-remove"></span>
 
-                </div>
-                <div class="card-body">
+            </section>
+            <section class="formulario-section2" id="secao-pessoal-2">
 
-                    <div class="row">
-                        <label class="col-md-3 col-form-label">Profissão</label>
-                        <div class="col-md-9">
-                            <div class="form-group">
-                                <input type="text" name="profissao" class="form-control" value="">
-
-                            </div>
+                <div class="card" style="margin-bottom: 0px !important;">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <div>
+                            <h5 class="title">Cadastro</h5>
+                            <p class="title">Dados Pessoais:</p>
                         </div>
-                    </div>
+                        <span data-notify="icon" onclick="fecharModal()" class="nc-icon nc-simple-remove"></span>
 
-                    <div class="row">
-                        <label class="col-md-3 col-form-label">Escolaridade</label>
-                        <div class="col-md-9">
-                            <div class="form-group">
-                                <input type="text" name="escolaridade" class="form-control" placeholder=""
-                                value="" >                            </div>
-                        </div>
                     </div>
+                    <div class="card-body">
 
-                    <div class="row">
-                        <label class="col-md-3 col-form-label">Tipo Sanguíneo</label>
-                        <div class="col-md-9">
-                            <div class="form-group">
-                                <input type="text" name="tipo_sanguineo" class="form-control" placeholder=""
-                                value="" >  
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <label class="col-md-3 col-form-label">Data Conversão</label>
-                        <div class="col-md-9">
-                            <div class="form-group">
-                                <input type="date" name="data_conversao" class="form-control" placeholder=""
-                                    value="" >
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <label class="col-md-3 col-form-label">Data Batismo</label>
-                        <div class="col-md-9">
-                            <div class="form-group">
-                                <input type="date" name="data_batismo" class="form-control" placeholder=""
-                                    value="" >
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <label class="col-md-3 col-form-label">Igreja Batismo</label>
-                        <div class="col-md-9">
-                            <div class="form-group">
-                                <input type="input" name="igreja_batismo" class="form-control" placeholder=""
-                                    value="" >
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <label class="col-md-3 col-form-label">Data Profissao de Fé</label>
-                        <div class="col-md-9">
-                            <div class="form-group">
-                                <input type="date" name="data_profissao_fe" class="form-control" placeholder=""
-                                    value="" >
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <label class="col-md-3 col-form-label">Igreja Origem</label>
-                        <div class="col-md-9">
-                            <div class="form-group">
-                                <input type="text" name="igreja_origem" class="form-control" placeholder=""
-                                    value="" >
-                            </div>
-                        </div>
-                    </div>
-
-
-
-
-                    <div class="card-footer ">
                         <div class="row">
-                            <div class="col-md-12 text-center">
-                                <button onclick="mostrarProximaSecao('secao-etapa-endereco')"
-                                    class="btn btn-info btn-round">Anterior</button>
-                                <button id="btn-submit"
-                                    class="btn btn-success btn-round">Cadastrar Membro</button>
+                            <label class="col-md-3 col-form-label">Naturalidade</label>
+                            <div class="col-md-9">
+                                <div class="form-group">
+                                    <input type="text" name="naturalidade" class="form-control" placeholder=""
+                                        value="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label class="col-md-3 col-form-label">Estado Civil</label>
+                            <div class="col-md-9">
+                                <div class="form-group">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="estado_civil"
+                                            id="civil-casado" value="Casado">
+                                        <label style="padding-left: 0px" class="form-check-label">Casado(a)</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="estado_civil"
+                                            id="civil-noivo" value="Noivo">
+                                        <label style="padding-left: 0px" class="form-check-label">Noivo(a)</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="estado_civil"
+                                            id="civil-solteiro" value="Solteiro">
+                                        <label style="padding-left: 0px" class="form-check-label">Solteiro(a)</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="estado_civil"
+                                            id="civil-outro" value="outro">
+                                        <label style="padding-left: 0px" class="form-check-label">Outro</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label class="col-md-3 col-form-label">Nome Conjuge</label>
+                            <div class="col-md-9">
+                                <div class="form-group">
+                                    <input type="text" name="nome_conjuge" class="form-control" placeholder=""
+                                        value="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label class="col-md-3 col-form-label">Conjuge é um membro IBB?</label>
+                            <div class="col-md-9">
+                                <div class="form-group">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="conjuge_membro_ibb"
+                                            id="ibb-nao" value="Não">
+                                        <label style="padding-left: 0px" class="form-check-label"
+                                            for="ibb-nao">Não</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="conjuge_membro_ibb"
+                                            id="ibb-sim" value="Sim">
+                                        <label style="padding-left: 0px" class="form-check-label"
+                                            for="ibb-sim">Sim</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer ">
+                            <div class="row">
+                                <div class="col-md-12 text-center">
+                                    <button onclick="mostrarProximaSecao('secao-pessoal')"
+                                        class="btn btn-info btn-round">Anterior</button>
+                                    <button onclick="mostrarProximaSecao('secao-etapa-endereco')"
+                                        class="btn btn-info btn-round">Próximo</button>
 
-
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-        </section>
+            </section>
+            <section class="formulario-section3" id="secao-etapa-endereco">
+
+                <div class="card" style="margin-bottom: 0px !important;">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <div>
+                            <h5 class="title">Cadastro</h5>
+                            <p class="title">Endereço</p>
+                        </div>
+                        <span data-notify="icon" onclick="fecharModal()" class="nc-icon nc-simple-remove"></span>
+
+                    </div>
+                    <div class="card-body">
+
+                        <div class="row">
+                            <label class="col-md-3 col-form-label">CEP</label>
+                            <div class="col-md-9">
+                                <div class="form-group">
+                                    <input type="text" name="cep" id="cep" class="form-control"
+                                        value="" onblur="consultarCEP(this.value)">
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <label class="col-md-3 col-form-label">Logradouro</label>
+                            <div class="col-md-9">
+                                <div class="form-group">
+                                    <input type="text" name="logradouro" id="logradouro" class="form-control"
+                                        value="">
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <label class="col-md-3 col-form-label">Bairro</label>
+                            <div class="col-md-9">
+                                <div class="form-group">
+                                    <input type="text" name="bairro" id="bairro" class="form-control"
+                                        value="">
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label class="col-md-3 col-form-label">Cidade</label>
+                            <div class="col-md-9">
+                                <div class="form-group">
+                                    <input type="text" name="cidade" id="cidade" class="form-control"
+                                        value="">
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label class="col-md-3 col-form-label">Estado</label>
+                            <div class="col-md-9">
+                                <div class="form-group">
+                                    <input type="text" name="estado" id="estado" class="form-control"
+                                        value="">
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card-footer ">
+                            <div class="row">
+                                <div class="col-md-12 text-center">
+                                    <button onclick="mostrarProximaSecao('secao-pessoal-2')"
+                                        class="btn btn-info btn-round">Anterior</button>
+                                    <button onclick="mostrarProximaSecao('secao-etapa-profissao')"
+                                        class="btn btn-info btn-round">Próximo</button>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="formulario-section4" id="secao-etapa-profissao">
+
+                <div class="card" style="margin-bottom: 0px !important;">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <div>
+                            <h5 class="title">Cadastro</h5>
+                            <p class="title">Profissão</p>
+                        </div>
+                        <span data-notify="icon" onclick="fecharModal()" class="nc-icon nc-simple-remove"></span>
+
+                    </div>
+                    <div class="card-body">
+
+                        <div class="row">
+                            <label class="col-md-3 col-form-label">Profissão</label>
+                            <div class="col-md-9">
+                                <div class="form-group">
+                                    <input type="text" name="profissao" class="form-control" value="">
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <label class="col-md-3 col-form-label">Escolaridade</label>
+                            <div class="col-md-9">
+                                <div class="form-group">
+                                    <input type="text" name="escolaridade" class="form-control" placeholder=""
+                                        value="">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <label class="col-md-3 col-form-label">Tipo Sanguíneo</label>
+                            <div class="col-md-9">
+                                <div class="form-group">
+                                    <input type="text" name="tipo_sanguineo" class="form-control" placeholder=""
+                                        value="">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <label class="col-md-3 col-form-label">Data Conversão</label>
+                            <div class="col-md-9">
+                                <div class="form-group">
+                                    <input type="date" name="data_conversao" class="form-control" placeholder=""
+                                        value="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label class="col-md-3 col-form-label">Data Batismo</label>
+                            <div class="col-md-9">
+                                <div class="form-group">
+                                    <input type="date" name="data_batismo" class="form-control" placeholder=""
+                                        value="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label class="col-md-3 col-form-label">Igreja Batismo</label>
+                            <div class="col-md-9">
+                                <div class="form-group">
+                                    <input type="input" name="igreja_batismo" class="form-control" placeholder=""
+                                        value="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label class="col-md-3 col-form-label">Data Profissao de Fé</label>
+                            <div class="col-md-9">
+                                <div class="form-group">
+                                    <input type="date" name="data_profissao_fe" class="form-control"
+                                        placeholder="" value="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label class="col-md-3 col-form-label">Igreja Origem</label>
+                            <div class="col-md-9">
+                                <div class="form-group">
+                                    <input type="text" name="igreja_origem" class="form-control" placeholder=""
+                                        value="">
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+                        <div class="card-footer ">
+                            <div class="row">
+                                <div class="col-md-12 text-center">
+                                    <button onclick="mostrarProximaSecao('secao-etapa-endereco')"
+                                        class="btn btn-info btn-round">Anterior</button>
+                                    <button id="btn-submit" class="btn btn-success btn-round">Cadastrar
+                                        Membro</button>
+                                    <button id="btn-submit-cad" class="btn btn-success btn-round">Cadastrar
+                                        Membro</button>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </section>
         </form>
     </div>
 
@@ -488,12 +489,11 @@
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-           
     $(document).ready(function() {
         // Selecione todos os elementos do tipo "button" dentro do formulário.
         $("#form-edit button").on("click", function(event) {
             event.preventDefault(); // Isso evitará o comportamento padrão do formulário.
-           
+
         });
         $("#btn-submit").on("click", function(event) {
             event.preventDefault(); // Isso evitará o comportamento padrão do formulário.
@@ -512,7 +512,7 @@
                 },
                 success: function(response) {
                     // Faça algo com a resposta, se necessário.
-                    if(response == 200){
+                    if (response == 200) {
                         location.reload();
                     }
                 },
@@ -520,9 +520,37 @@
                     // Trate erros, se ocorrerem.
                     console.log(error);
                 }
-            });           
+            });
         });
-       
+
+        $("#btn-submit-cad").on("click", function(event) {
+            event.preventDefault(); // Isso evitará o comportamento padrão do formulário.
+
+            // Execute qualquer lógica de validação ou manipulação de dados aqui, se necessário.
+
+            // Serialize o formulário para enviar os dados.
+            var formData = $("#form-edit").serialize();
+            var token = $('input[name="_token"]').val();
+            $.ajax({
+                type: "POST",
+                url: "{{ route('cadastrar-membro') }}",
+                data: formData,
+                headers: {
+                    'X-CSRF-TOKEN': token // Inclua o token CSRF no cabeçalho da requisição
+                },
+                success: function(response) {
+                    // Faça algo com a resposta, se necessário.
+                    if (response == 200) {
+                        location.reload();
+                    }
+                },
+                error: function(error) {
+                    // Trate erros, se ocorrerem.
+                    console.log(error);
+                }
+            });
+        });
+
     });
 </script>
 
@@ -633,7 +661,24 @@
 <script>
     function abrirModal(id) {
         document.getElementById('meuModal').style.display = 'block';
+        var elemento = document.getElementById('btn-submit');
+        var elemento2 = document.getElementById('btn-submit-cad');
+        elemento.style.display = 'initial';
+        elemento2.style.display = 'none';
         carrega_dados(id);
+    }
+
+    function abrirModal3(id) {
+        var inputs = document.querySelectorAll('input[name]');
+        var elemento = document.getElementById('btn-submit');
+        var elemento2 = document.getElementById('btn-submit-cad');
+        elemento.style.display = 'none';
+        elemento2.style.display = 'initial';
+
+        document.getElementById('meuModal').style.display = 'block';
+        for (var i = 1; i < inputs.length; i++) {
+    inputs[i].value = ''; // Define o valor como vazio apenas para os elementos a partir do segundo
+}
     }
 
     function converterData(data) {
@@ -668,12 +713,12 @@
                 var inputs = document.querySelectorAll('input[name]');
                 console.log(inputs);
                 inputs[1].value = data
-                .nome_completo; 
-                inputs[2].value = data.apelido; 
-                inputs[3].value = data.email; 
-                inputs[4].value = data.cpf; 
-                inputs[5].value = data.rg; 
-                inputs[6].value = converterData(data.data_de_nascimento); 
+                    .nome_completo;
+                inputs[2].value = data.apelido;
+                inputs[3].value = data.email;
+                inputs[4].value = data.cpf;
+                inputs[5].value = data.rg;
+                inputs[6].value = converterData(data.data_de_nascimento);
                 if (data.sexo === "Masculino") {
                     document.getElementById("sexo-masculino").checked = true;
                 } else if (data.sexo === "Feminino") {
@@ -682,24 +727,26 @@
                 inputs[9].value = data.telefone_principal;
                 inputs[10].value = data.telefone_secundario;
                 inputs[11].value = data.naturalidade;
-                if (data.estado_civil === "Casado" || data.estado_civil === "Casado(a)" || data.estado_civil === "Casada" || data.estado_civil === "Casada(o)") {
+                if (data.estado_civil === "Casado" || data.estado_civil === "Casado(a)" || data
+                    .estado_civil === "Casada" || data.estado_civil === "Casada(o)") {
                     document.getElementById("civil-casado").checked = true;
-                } else if (data.estado_civil === "Noivo" || data.estado_civil === "Noivo(a)" || data.estado_civil === "Noiva" || data.estado_civil === "Noiva(o)") {
+                } else if (data.estado_civil === "Noivo" || data.estado_civil === "Noivo(a)" || data
+                    .estado_civil === "Noiva" || data.estado_civil === "Noiva(o)") {
                     document.getElementById("civil-noivo").checked = true;
-                }
-                else if (data.estado_civil === "Solteiro" || data.estado_civil === "Solteiro(a)" || data.estado_civil === "Solteira" || data.estado_civil === "Solteira(o)") {
+                } else if (data.estado_civil === "Solteiro" || data.estado_civil === "Solteiro(a)" || data
+                    .estado_civil === "Solteira" || data.estado_civil === "Solteira(o)") {
                     document.getElementById("civil-noivo").checked = true;
                 } else {
                     document.getElementById("civil-outro").checked = true;
 
                 }
                 inputs[16].value = data.nome_conjuge;
-                inputs[17].value = data.nome_conjuge;
-                if(data.conjuge_membro_ibb == 'Sim'){
-                    inputs[17].checked = true;
-                }else{
+                if (data.conjuge_membro_ibb == 'Sim') {
                     inputs[18].checked = true;
+                } else {
+                    inputs[17].checked = true;
                 }
+
                 inputs[19].value = data.cep;
                 consultarCEP(data.cep);
                 inputs[24].value = data.profissao;

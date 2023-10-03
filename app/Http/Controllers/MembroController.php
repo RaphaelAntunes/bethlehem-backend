@@ -6,6 +6,45 @@ use Illuminate\Http\Request;
 use App\Models\ModelController;
 class MembroController extends Controller
 {
+    public function cadastrarMembro(Request $request)
+    {
+        $data = $request->all(); // Obtém todos os dados do formulário
+
+        // Crie um novo registro no banco de dados usando o modelo Membro
+        $evento = new ModelController([
+            'nome_completo' => $data['nome_completo'],
+            'apelido' => $data['apelido'],
+            'email' => $data['email'],
+            'cpf' => $data['cpf'],
+            'rg' => $data['rg'],
+            'data_de_nascimento' => $data['data_de_nascimento'],
+            'sexo' => $data['sexo'],
+            'telefone_principal' => $data['telefone_principal'],
+            'telefone_secundario' => $data['telefone_secundario'],
+            'naturalidade' => $data['naturalidade'],
+            'estado_civil' => $data['estado_civil'],
+            'nome_conjuge' => $data['nome_conjuge'],
+            'conjuge_membro_ibb' => $data['conjuge_membro_ibb'],
+            'cep' => $data['cep'],
+            'logradouro' => $data['logradouro'],
+            'bairro' => $data['bairro'],
+            'cidade' => $data['cidade'],
+            'estado' => $data['estado'],
+            'profissao' => $data['profissao'],
+            'escolaridade' => $data['escolaridade'],
+            'tipo_sanguineo' => $data['tipo_sanguineo'],
+            'data_conversao' => $data['data_conversao'],
+            'data_batismo' => $data['data_batismo'],
+            'igreja_batismo' => $data['igreja_batismo'],
+            'data_profissao_fe' => $data['data_profissao_fe'],
+            'igreja_origem' => $data['igreja_origem'],
+        ]);
+        if ($evento->save()) {
+            return  200;
+        } else {
+            return response()->json(['message' => 'Erro ao cadastrar membro'], 500);
+        }
+    }
     public function editmembro(Request $request)
     {
         // Recupere os dados do formulário

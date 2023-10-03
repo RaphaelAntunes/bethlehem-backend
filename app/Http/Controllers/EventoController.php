@@ -93,6 +93,8 @@ public function marcarPresenca(Request $request)
         // Redirecione para a página desejada após a conclusão da operação
     }
 
+    
+
     public function removerEvento($evento_id)
     {
         // Encontre o evento com base no ID

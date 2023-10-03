@@ -8,10 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class ModelController extends Model
 {
     protected $table = 'base_api';
-    protected $fillable = [
-        'email',// Add 'titulo' to the fillable array
-        // Add other attributes here if needed
-    ];
-    
+
+    protected $guarded = [];
+
     public $timestamps = false; // Desabilita as colunas de data e hora
 }

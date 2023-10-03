@@ -26,13 +26,23 @@ class ApiController extends Controller
     public function find_user2($data)
     {
         $result = ModelController::where('id', $data)
+        ->orderBy('id', 'asc')
         ->get();
-
 
         if ($result->isEmpty()) {
             return response()->json(['message' => 'Usuário não encontrado.'], 404);
         }
 
         return response()->json(['message' => 'Usuário encontrado.', 'Data' => $result], 200);
+    }
+
+    public function search(Request $request)
+    {
+        $search = $request->input('search');
+
+        $users = ModelController::where('nome_completo', 'like', '%' . $search . '%')
+                 ->paginate(10);
+
+        return view('users.index', compact('users'));
     }
 }

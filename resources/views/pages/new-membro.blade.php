@@ -59,9 +59,9 @@
 </style>
 
 
-<div id="meuModal" class="modal">
+<div id="meuModal3" class="modal">
     <div class="modal-content">
-        <section class="formulario-section" id="secao-pessoal">
+        <section class="formulario-section" id="secao-cad-pessoal">
 
             <div class="card" style="margin-bottom: 0px !important;">
                 <div class="card-header d-flex justify-content-between align-items-center">
@@ -69,7 +69,7 @@
                         <h5 class="title">Cadastro</h5>
                         <p class="title">Dados Pessoais:</p>
                     </div>
-                    <span data-notify="icon" onclick="fecharModal()" class="nc-icon nc-simple-remove"></span>
+                    <span data-notify="icon" onclick="fecharModal3()" class="nc-icon nc-simple-remove"></span>
 
                 </div>
                 <div class="card-body">
@@ -176,7 +176,7 @@
                 <div class="card-footer ">
                     <div class="row">
                         <div class="col-md-12 text-center">
-                            <button onclick="mostrarProximaSecao('secao-pessoal-2')" class="btn btn-info btn-round">Próximo</button>
+                            <button onclick="mostrarProximaSecao3('secao-cad-pessoal2')" class="btn btn-info btn-round">Próximo</button>
             
                         </div>
                     </div>
@@ -185,7 +185,7 @@
             
 
         </section>
-        <section class="formulario-section2" id="secao-pessoal-2">
+        <section class="formulario-section2" id="secao-cad-pessoal2">
 
             <div class="card" style="margin-bottom: 0px !important;">
                 <div class="card-header d-flex justify-content-between align-items-center">
@@ -257,15 +257,15 @@
                 <div class="card-footer ">
                     <div class="row">
                         <div class="col-md-12 text-center">
-                            <button onclick="mostrarProximaSecao('secao-pessoal')" class="btn btn-info btn-round">Anterior</button>
-                            <button onclick="mostrarProximaSecao('secao-etapa-endereco')" class="btn btn-info btn-round">Próximo</button>
+                            <button onclick="mostrarProximaSecao3('secao-cad-pessoal')" class="btn btn-info btn-round">Anterior</button>
+                            <button onclick="mostrarProximaSecao3('secao-cad-etapa-endereco')" class="btn btn-info btn-round">Próximo</button>
             
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-        <section class="formulario-section3" id="secao-etapa-endereco">
+        <section class="formulario-section3" id="secao-cad-etapa-endereco">
 
             <div class="card" style="margin-bottom: 0px !important;">
                 <div class="card-header d-flex justify-content-between align-items-center">
@@ -282,7 +282,7 @@
                     <label class="col-md-3 col-form-label">CEP</label>
                     <div class="col-md-9">
                         <div class="form-group">
-                            <input type="text" name="cep" id="cep" class="form-control" value="" onblur="consultarCEP(this.value)">
+                            <input type="text" name="cep" id="cep" class="form-control" value="" onblur="consultarCEP2(this.value)">
 
                         </div>
                     </div>
@@ -329,15 +329,15 @@
                 <div class="card-footer ">
                     <div class="row">
                         <div class="col-md-12 text-center">
-                            <button onclick="mostrarProximaSecao('secao-pessoal-2')" class="btn btn-info btn-round">Anterior</button>
-                            <button onclick="mostrarProximaSecao('secao-etapa-profissao')" class="btn btn-info btn-round">Próximo</button>
+                            <button onclick="mostrarProximaSecao3('secao-cad-pessoal2')" class="btn btn-info btn-round">Anterior</button>
+                            <button onclick="mostrarProximaSecao3('secao-cad-etapa-profissao')" class="btn btn-info btn-round">Próximo</button>
             
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-        <section class="formulario-section4" id="secao-etapa-profissao">
+        <section class="formulario-section4" id="secao-cad-etapa-profissao">
 
             <div class="card" style="margin-bottom: 0px !important;">
                 <div class="card-header d-flex justify-content-between align-items-center">
@@ -449,8 +449,8 @@
                 <div class="card-footer ">
                     <div class="row">
                         <div class="col-md-12 text-center">
-                            <button onclick="mostrarProximaSecao('secao-etapa-endereco')" class="btn btn-info btn-round">Anterior</button>
-                            <button onclick="mostrarProximaSecao('secao-etapa-profissao')" class="btn btn-success btn-round">Cadastrar Membro</button>
+                            <button onclick="mostrarProximaSecao3('secao-cad-etapa-endereco')" class="btn btn-info btn-round">Anterior</button>
+                            <button onclick="mostrarProximaSecao3('secao-cad-etapa-profissao')" class="btn btn-success btn-round">Cadastrar Membro</button>
             
             
                         </div>
@@ -466,7 +466,7 @@
 
 
 <script>
-    function consultarCEP(cep) {
+    function consultarCEP2(cep) {
         // Remove qualquer caractere que não seja número do CEP
         cep = cep.replace(/\D/g, '');
 
@@ -553,27 +553,27 @@
     }
 </script>
 <script>
-            //document.getElementById('secao-etapa-endereco').style.display = 'block';
-           document.getElementById('secao-pessoal').style.display = 'block';
-        document.getElementById('secao-pessoal-2').style.display = 'none';
-        document.getElementById('secao-etapa-endereco').style.display = 'none';
-        document.getElementById('secao-etapa-profissao').style.display = 'none';
-    function mostrarProximaSecao(secaoId) {
-        document.getElementById('secao-pessoal').style.display = 'none';
-        document.getElementById('secao-pessoal-2').style.display = 'none';
-        document.getElementById('secao-etapa-endereco').style.display = 'none';
-        document.getElementById('secao-etapa-profissao').style.display = 'none';
+            //document.getElementById('secao-cad-etapa-endereco').style.display = 'block';
+           document.getElementById('secao-cad-pessoal').style.display = 'block';
+        document.getElementById('secao-cad-pessoal2').style.display = 'none';
+        document.getElementById('secao-cad-etapa-endereco').style.display = 'none';
+        document.getElementById('secao-cad-etapa-profissao').style.display = 'none';
+    function mostrarProximaSecao3(secaoId) {
+        document.getElementById('secao-cad-pessoal').style.display = 'none';
+        document.getElementById('secao-cad-pessoal2').style.display = 'none';
+        document.getElementById('secao-cad-etapa-endereco').style.display = 'none';
+        document.getElementById('secao-cad-etapa-profissao').style.display = 'none';
 
        document.getElementById(secaoId).style.display = 'block';
     }
 </script>
 <script>
-    function abrirModal() {
-        document.getElementById('meuModal').style.display = 'block';
+    function abrirModal3() {
+        document.getElementById('meuModal3').style.display = 'block';
     }
 
-    function fecharModal() {
-        document.getElementById('meuModal').style.display = 'none';
+    function fecharModal3() {
+        document.getElementById('meuModal3').style.display = 'none';
     }
 </script>
 
