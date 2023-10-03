@@ -26,7 +26,6 @@ class ApiController extends Controller
     public function find_user2($data)
     {
         $result = ModelController::where('id', $data)
-        ->orderBy('id', 'asc')
         ->get();
 
         if ($result->isEmpty()) {
