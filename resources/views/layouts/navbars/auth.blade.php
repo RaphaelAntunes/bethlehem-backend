@@ -32,12 +32,13 @@
                                 <p>{{ __('GERENCIAR MEMBROS') }}</p>
                             </a>
                         </li>
+                          <!--
                         <li class="{{ $elementActive == 'eventos' ? 'active' : '' }}">
                             <a href="{{ route('page.index', 'eventos') }}">
                                 <i class="nc-icon nc-istanbul"></i>
                                 <p>{{ __('GERENCIAR EVENTOS') }}</p>
                             </a>
-                        </li>
+                        </li> -->
                     </ul>
                 </div>
             </li>
@@ -45,6 +46,7 @@
         </li>
 
         <hr>
+        <!--
         <li class="{{ $elementActive == 'icons' ? 'active' : '' }}">
             <a href="{{ route('page.index', 'icons') }}">
                 <i class="nc-icon nc-diamond"></i>
@@ -75,6 +77,8 @@
                     <p>{{ __('Typography') }}</p>
                 </a>
             </li>
+
+        -->
            
         </ul>
     </div>

@@ -4762,6 +4762,7 @@ License - nucleoapp.com/license/
 
 .usertable {
     padding: 10px;
+    overflow: hidden;
 }
 
 #tables .table-responsive {
@@ -7076,6 +7077,23 @@ License - nucleoapp.com/license/
     align-self: center;
 }
 
+.col-form-label {
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+.col-md-8 {
+    align-self: center;
+}
+
+.card-body {
+    min-height: 310px;
+}
+
+.naviga svg {
+    width: 10px;
+}
+
 .icons- @-webkit-keyframes hearthing {
     0% {
         -webkit-transform: scale(0.75);
@@ -7102,6 +7120,9 @@ License - nucleoapp.com/license/
         transform: scale(0.75);
     }
 }
+
+
+/*# sourceMappingURL=dashboard-free.css.map */
 
 
 /*# sourceMappingURL=dashboard-free.css.map */

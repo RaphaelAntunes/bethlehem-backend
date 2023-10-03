@@ -40,20 +40,67 @@ The above copyright notice and this permission notice shall be included in all c
 
     <!-- End Google Tag Manager -->
 
-@extends('layouts.app', [
-    'class' => '',
-    'elementActive' => 'GerenEventos'
-])
+    @extends('layouts.app', [
+        'class' => '',
+        'elementActive' => 'GerenEventos',
+    ])
 
 
-@include('pages.edit-membro')
+    @include('pages.edit-membro')
+    @include('pages.ver-membro')
 
 
 
 <body>
 
     <div class="wrapper">
-      
+
+        <!--
+        <div class="collapse navbar-collapse justify-content-end" id="navigation">
+          
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link btn-magnify" href="{{ route('profile.edit') }}">
+                        <i class="nc-icon nc-single-02"></i>
+                        <p>
+                            <span class="d-lg-none d-md-block">{{ __('Stats') }}</span>
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item btn-rotate dropdown">
+                    <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="nc-icon nc-bell-55"></i>
+                        <p>
+                            <span class="d-lg-none d-md-block">{{ __('Some Actions') }}</span>
+                        </p>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="#">{{ __('Action') }}</a>
+                        <a class="dropdown-item" href="#">{{ __('Another action') }}</a>
+                        <a class="dropdown-item" href="#">{{ __('Something else here') }}</a>
+                    </div>
+                </li>
+                <li class="nav-item btn-rotate dropdown">
+                    <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink2"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="nc-icon nc-settings-gear-65"></i>
+                        <p>
+                            <span class="d-lg-none d-md-block">{{ __('Account') }}</span>
+                        </p>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink2">
+                        <form class="dropdown-item" action="{{ route('logout') }}" id="formLogOut" method="POST" style="display: none;">
+                            @csrf
+                        </form>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" onclick="document.getElementById('formLogOut').submit();">{{ __('Log out') }}</a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div> -->
+
 
     </div>
     <div class="main-panel">
@@ -74,48 +121,70 @@ The above copyright notice and this permission notice shall be included in all c
                     <span class="navbar-toggler-bar navbar-kebab"></span>
                     <span class="navbar-toggler-bar navbar-kebab"></span>
                 </button>
+                <!--
+        <div class="collapse navbar-collapse justify-content-end" id="navigation">
+          
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link btn-magnify" href="{{ route('profile.edit') }}">
+                        <i class="nc-icon nc-single-02"></i>
+                        <p>
+                            <span class="d-lg-none d-md-block">{{ __('Stats') }}</span>
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item btn-rotate dropdown">
+                    <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="nc-icon nc-bell-55"></i>
+                        <p>
+                            <span class="d-lg-none d-md-block">{{ __('Some Actions') }}</span>
+                        </p>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="#">{{ __('Action') }}</a>
+                        <a class="dropdown-item" href="#">{{ __('Another action') }}</a>
+                        <a class="dropdown-item" href="#">{{ __('Something else here') }}</a>
+                    </div>
+                </li>
+                <li class="nav-item btn-rotate dropdown">
+                    <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink2"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="nc-icon nc-settings-gear-65"></i>
+                        <p>
+                            <span class="d-lg-none d-md-block">{{ __('Account') }}</span>
+                        </p>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink2">
+                        <form class="dropdown-item" action="{{ route('logout') }}" id="formLogOut" method="POST" style="display: none;">
+                            @csrf
+                        </form>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" onclick="document.getElementById('formLogOut').submit();">{{ __('Log out') }}</a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div> -->
+
                 <div class="collapse navbar-collapse justify-content-end" id="navigation">
-               
+
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link btn-magnify" href="{{ route('profile.edit') }}">
-                                <i class="nc-icon nc-single-02"></i>
-                                <p>
-                                    <span class="d-lg-none d-md-block">{{ __('Stats') }}</span>
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item btn-rotate dropdown">
-                            <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="nc-icon nc-bell-55"></i>
-                                <p>
-                                    <span class="d-lg-none d-md-block">{{ __('Some Actions') }}</span>
-                                </p>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                                <a class="dropdown-item" href="#">{{ __('Action') }}</a>
-                                <a class="dropdown-item" href="#">{{ __('Another action') }}</a>
-                                <a class="dropdown-item" href="#">{{ __('Something else here') }}</a>
-                            </div>
-                        </li>
-                        <li class="nav-item btn-rotate dropdown">
-                            <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink2"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="nc-icon nc-settings-gear-65"></i>
-                                <p>
-                                    <span class="d-lg-none d-md-block">{{ __('Account') }}</span>
-                                </p>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink2">
-                                <form class="dropdown-item" action="{{ route('logout') }}" id="formLogOut" method="POST" style="display: none;">
+                            <a class="nav-link btn-magnify">
+                                <i class="nc-icon nc-button-power"
+                                    onclick="document.getElementById('formLogOut').submit();"></i>
+
+
+
+                                <form class="dropdown-item" action="{{ route('logout') }}" id="formLogOut"
+                                    method="POST" style="display: none;">
                                     @csrf
                                 </form>
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                                    <a class="dropdown-item" onclick="document.getElementById('formLogOut').submit();">{{ __('Log out') }}</a>
-                                </div>
-                            </div>
+                            </a>
                         </li>
+
+
                     </ul>
                 </div>
             </div>
@@ -127,11 +196,13 @@ The above copyright notice and this permission notice shall be included in all c
                         <div class="card shadow">
                             <div class="card-header border-0">
                                 <div class="row align-items-center">
-                                    <div class="col-8">
+                                    <div class="col-4">
                                         <h3 class="mb-0">Membros</h3>
                                     </div>
+                                    
                                     <div class="col-4 text-right">
-                                        <a href="#" class="btn btn-sm btn-primary">Adicionar</a>
+                                        <a href="#" class="btn btn-sm btn-primary"><i style="width: 20px;"
+                                                class="nc-icon nc-simple-add"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -155,10 +226,12 @@ The above copyright notice and this permission notice shall be included in all c
                                                 <td>
                                                     <a href="mailto:{{ $user->email }}">{{ $user->email }}</a>
                                                 </td>
-                                                <td><?php echo (strlen($user->telefone_principal) < 5) ? $user->telefone_secundario : $user->telefone_principal; ?></td>
+                                                <td><?php echo strlen($user->telefone_principal) < 5 ? $user->telefone_secundario : $user->telefone_principal; ?></td>
                                                 <td class="icons-int">
-                                                    <i onclick="Vermembro({{$user->id}})"class="nc-icon nc-zoom-split"></i>
-                                                    <i onclick="abrirModal({{$user->id}})" class="nc-icon nc-settings-gear-65"></i>
+                                                    <i
+                                                        onclick="abrirModal2({{ $user->id }})"class="nc-icon nc-zoom-split"></i>
+                                                    <i onclick="abrirModal({{ $user->id }})"
+                                                        class="nc-icon nc-settings-gear-65"></i>
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -166,8 +239,16 @@ The above copyright notice and this permission notice shall be included in all c
                                 </table>
                             </div>
                             <div class="card-footer py-4">
-                                <nav class="d-flex justify-content-end" aria-label="...">
+                                <nav aria-label="Page navigation example">
+                                    <ul class="pagination justify-content-center">
+                                        <li class="page-item">
+                                            <a class="page-link" href="{{ $users->previousPageUrl() }}">Anterior</a>
+                                        </li>
 
+                                        <li class="page-item">
+                                            <a class="page-link" href="{{ $users->nextPageUrl() }}">Proxima</a>
+                                        </li>
+                                    </ul>
                                 </nav>
                             </div>
                         </div>
@@ -176,7 +257,7 @@ The above copyright notice and this permission notice shall be included in all c
 
             </div>
         </div>
-      
+
     </div>
     </div>
 
@@ -198,9 +279,7 @@ The above copyright notice and this permission notice shall be included in all c
     <!-- Sharrre libray -->
     <script src="{{ asset('paper') }}/demo/jquery.sharrre.js"></script>
 
-    @stack('scripts')
 
-    @include('layouts.navbars.fixed-plugin-js')
 </body>
 
 </html>
