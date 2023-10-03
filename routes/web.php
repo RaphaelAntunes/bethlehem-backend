@@ -33,7 +33,7 @@ Route::post('/remover-presenca', 'App\Http\Controllers\EventoController@removerP
 Route::post('/marcar-presenca', 'App\Http\Controllers\EventoController@marcarPresenca')->name('marcar-presenca');
 Route::get('/new-evento', 'EventoController@index');
 Route::get('/new-membro', 'EventoController@membro');
-Route::get('/api/user/{id_user}', [App\Http\Controllers\ApiController::class, 'find_user2']);
+Route::get('/api/user/{id_user}', [App\Http\Controllers\ApiController::class, 'find_user2'])->name('marcar-presenca');
 
 Route::resource('user', 'App\Http\Controllers\UserController', ['except' => ['show']]);
 Route::get('profile', ['as' => 'profile.edit', 'uses' => 'App\Http\Controllers\ProfileController@edit']);

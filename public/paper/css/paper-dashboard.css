@@ -4760,6 +4760,10 @@ License - nucleoapp.com/license/
     padding-bottom: 10px;
 }
 
+.usertable {
+    padding: 10px;
+}
+
 #tables .table-responsive {
     margin-bottom: 30px;
 }
@@ -7052,7 +7056,27 @@ License - nucleoapp.com/license/
     align-items: center;
 }
 
-@-webkit-keyframes hearthing {
+.icons-int i {
+    cursor: pointer;
+    padding: 5px;
+    font-size: 20px;
+}
+
+.btn-nav-card-view-member {
+    padding: 6px;
+    border: 1px solid #DDDDDD;
+}
+
+.card-body p {
+    margin: 0px;
+    padding: 0px;
+}
+
+.card-body>.form-group {
+    align-self: center;
+}
+
+.icons- @-webkit-keyframes hearthing {
     0% {
         -webkit-transform: scale(0.75);
         transform: scale(0.75);

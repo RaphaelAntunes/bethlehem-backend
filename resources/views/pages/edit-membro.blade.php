@@ -62,9 +62,7 @@
 
 <div id="meuModal" class="modal">
     <div class="modal-content">
-        <form action="" id="form-edit">
-            <input type="hidden" name="_token" value="{{ csrf_token() }}" autocomplete="off">
-            <section class="formulario-section" id="secao-pessoal">
+        <section class="formulario-section" id="secao-pessoal">
 
             <div class="card" style="margin-bottom: 0px !important;">
                 <div class="card-header d-flex justify-content-between align-items-center">
@@ -80,7 +78,7 @@
                         <label class="col-md-3 col-form-label">Nome Completo*</label>
                         <div class="col-md-9">
                             <div class="form-group">
-                                <input type="text" name="nome_completo" class="form-control" value="" >
+                                <input type="text" name="titulo" class="form-control" value="" required="">
                             </div>
                         </div>
                     </div>
@@ -89,7 +87,7 @@
                         <div class="col-md-9">
                             <div class="form-group">
                                 <input type="text" name="apelido" class="form-control" placeholder="" value=""
-                                    >
+                                    required="">
                             </div>
                         </div>
                     </div>
@@ -137,7 +135,7 @@
                         <label class="col-md-3 col-form-label">Data de Nascimento</label>
                         <div class="col-md-9">
                             <div class="form-group">
-                                <input type="date" name="data_de_nascimento" class="form-control">
+                                <input type="date" name="data_de_nascimento" class="form-control" required>
                             </div>
                         </div>
                     </div>
@@ -147,14 +145,15 @@
                             <div class="form-group">
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio" name="sexo" id="sexo-masculino"
-                                        value="Masculino">
+                                        value="Masculino" required>
                                     <label style="padding-left: 0px" class="form-check-label"
                                         for="sexo-masculino">Masculino</label>
                                 </div>
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio" name="sexo" id="sexo-feminino"
-                                        value="Feminino">
-                                    <label style="padding-left: 0px" class="form-check-label">Feminino</label>
+                                        value="Feminino" required>
+                                    <label style="padding-left: 0px" class="form-check-label"
+                                        for="sexo-feminino">Feminino</label>
                                 </div>
                             </div>
                         </div>
@@ -219,7 +218,7 @@
                         <div class="col-md-9">
                             <div class="form-group">
                                 <input type="text" name="naturalidade" class="form-control" placeholder=""
-                                    value="" >
+                                    value="" required="">
                             </div>
                         </div>
                     </div>
@@ -229,24 +228,21 @@
                             <div class="form-group">
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio" name="estado_civil"
-                                        id="civil-casado" value="Casado">
+                                        id="sexo-masculino" value="Casado" required>
                                     <label style="padding-left: 0px" class="form-check-label"
-                                     >Casado(a)</label>
+                                        for="sexo-masculino">Casado(a)</label>
                                 </div>
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio" name="estado_civil"
-                                        id="civil-noivo" value="Noivo">
-                                    <label style="padding-left: 0px" class="form-check-label">Noivo(a)</label>
+                                        id="sexo-feminino" value="Noivo" required>
+                                    <label style="padding-left: 0px" class="form-check-label"
+                                        for="sexo-feminino">Noivo(a)</label>
                                 </div>
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio" name="estado_civil"
-                                        id="civil-solteiro" value="Solteiro">
-                                    <label style="padding-left: 0px" class="form-check-label">Solteiro(a)</label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="estado_civil"
-                                        id="civil-outro" value="outro">
-                                    <label style="padding-left: 0px" class="form-check-label">Outro</label>
+                                        id="sexo-feminino" value="Solteiro" required>
+                                    <label style="padding-left: 0px" class="form-check-label"
+                                        for="sexo-feminino">Solteiro(a)</label>
                                 </div>
                             </div>
                         </div>
@@ -255,8 +251,8 @@
                         <label class="col-md-3 col-form-label">Nome Conjuge</label>
                         <div class="col-md-9">
                             <div class="form-group">
-                                <input type="text" name="nome_conjuge" class="form-control" placeholder=""
-                                    value="" >
+                                <input type="text" name="naturalidade" class="form-control" placeholder=""
+                                    value="" required="">
                             </div>
                         </div>
                     </div>
@@ -266,15 +262,15 @@
                             <div class="form-group">
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio" name="conjuge_membro_ibb"
-                                        value="sim">
+                                        id="sexo-masculino" value="sim" required>
                                     <label style="padding-left: 0px" class="form-check-label"
-                                        >Sim</label>
+                                        for="sexo-masculino">Sim</label>
                                 </div>
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio" name="conjuge_membro_ibb"
-                                        value="nao">
+                                        id="sexo-masculino" value="nao" required>
                                     <label style="padding-left: 0px" class="form-check-label"
-                                        >Não</label>
+                                        for="sexo-masculino">Não</label>
                                 </div>
 
 
@@ -402,8 +398,17 @@
                         <label class="col-md-3 col-form-label">Escolaridade</label>
                         <div class="col-md-9">
                             <div class="form-group">
-                                <input type="text" name="escolaridade" class="form-control" placeholder=""
-                                value="" >                            </div>
+                                <select name="escolaridade" class="form-control">
+                                    <option value="">Selecione um grau de escolaridade</option>
+                                    <option value="Ensino Fundamental">Ensino Fundamental</option>
+                                    <option value="Ensino Médio">Ensino Médio</option>
+                                    <option value="Técnico">Técnico</option>
+                                    <option value="Graduação">Graduação</option>
+                                    <option value="Pós-Graduação">Pós-Graduação</option>
+                                    <option value="Mestrado">Mestrado</option>
+                                    <option value="Doutorado">Doutorado</option>
+                                </select>
+                            </div>
                         </div>
                     </div>
 
@@ -411,8 +416,17 @@
                         <label class="col-md-3 col-form-label">Tipo Sanguíneo</label>
                         <div class="col-md-9">
                             <div class="form-group">
-                                <input type="text" name="tipo_sanguineo" class="form-control" placeholder=""
-                                value="" >  
+                                <select name="tipo_sanguineo" class="form-control">
+                                    <option value="">Selecione um tipo sanguíneo</option>
+                                    <option value="A+">A+</option>
+                                    <option value="A-">A-</option>
+                                    <option value="B+">B+</option>
+                                    <option value="B-">B-</option>
+                                    <option value="AB+">AB+</option>
+                                    <option value="AB-">AB-</option>
+                                    <option value="O+">O+</option>
+                                    <option value="O-">O-</option>
+                                </select>
                             </div>
                         </div>
                     </div>
@@ -422,7 +436,7 @@
                         <div class="col-md-9">
                             <div class="form-group">
                                 <input type="date" name="data_conversao" class="form-control" placeholder=""
-                                    value="" >
+                                    value="" required="">
                             </div>
                         </div>
                     </div>
@@ -431,7 +445,7 @@
                         <div class="col-md-9">
                             <div class="form-group">
                                 <input type="date" name="data_batismo" class="form-control" placeholder=""
-                                    value="" >
+                                    value="" required="">
                             </div>
                         </div>
                     </div>
@@ -440,7 +454,7 @@
                         <div class="col-md-9">
                             <div class="form-group">
                                 <input type="input" name="igreja_batismo" class="form-control" placeholder=""
-                                    value="" >
+                                    value="" required="">
                             </div>
                         </div>
                     </div>
@@ -448,8 +462,8 @@
                         <label class="col-md-3 col-form-label">Data Profissao de Fé</label>
                         <div class="col-md-9">
                             <div class="form-group">
-                                <input type="date" name="data_profissao_fe" class="form-control" placeholder=""
-                                    value="" >
+                                <input type="data" name="data_profissao_fe" class="form-control" placeholder=""
+                                    value="" required="">
                             </div>
                         </div>
                     </div>
@@ -457,8 +471,8 @@
                         <label class="col-md-3 col-form-label">Igreja Origem</label>
                         <div class="col-md-9">
                             <div class="form-group">
-                                <input type="text" name="igreja_origem" class="form-control" placeholder=""
-                                    value="" >
+                                <input type="data" name="igreja_origem" class="form-control" placeholder=""
+                                    value="" required="">
                             </div>
                         </div>
                     </div>
@@ -471,7 +485,7 @@
                             <div class="col-md-12 text-center">
                                 <button onclick="mostrarProximaSecao('secao-etapa-endereco')"
                                     class="btn btn-info btn-round">Anterior</button>
-                                <button id="btn-submit"
+                                <button onclick="mostrarProximaSecao('secao-etapa-profissao')"
                                     class="btn btn-success btn-round">Cadastrar Membro</button>
 
 
@@ -480,51 +494,12 @@
                     </div>
                 </div>
         </section>
-        </form>
     </div>
 
 
 </div>
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
-           
-    $(document).ready(function() {
-        // Selecione todos os elementos do tipo "button" dentro do formulário.
-        $("#form-edit button").on("click", function(event) {
-            event.preventDefault(); // Isso evitará o comportamento padrão do formulário.
-           
-        });
-        $("#btn-submit").on("click", function(event) {
-            event.preventDefault(); // Isso evitará o comportamento padrão do formulário.
 
-            // Execute qualquer lógica de validação ou manipulação de dados aqui, se necessário.
-
-            // Serialize o formulário para enviar os dados.
-            var formData = $("#form-edit").serialize();
-            var token = $('input[name="_token"]').val();
-            $.ajax({
-                type: "POST",
-                url: "{{ route('edit-membro') }}",
-                data: formData,
-                headers: {
-                    'X-CSRF-TOKEN': token // Inclua o token CSRF no cabeçalho da requisição
-                },
-                success: function(response) {
-                    // Faça algo com a resposta, se necessário.
-                    if(response == 200){
-                        location.reload();
-                    }
-                },
-                error: function(error) {
-                    // Trate erros, se ocorrerem.
-                    console.log(error);
-                }
-            });           
-        });
-       
-    });
-</script>
 
 <script>
     function consultarCEP(cep) {
@@ -631,94 +606,8 @@
     }
 </script>
 <script>
-    function abrirModal(id) {
+    function abrirModal() {
         document.getElementById('meuModal').style.display = 'block';
-        carrega_dados(id);
-    }
-
-    function converterData(data) {
-        const partesData = data.split('/');
-        if (partesData.length === 3) {
-            // Verifica se a data tem três partes (mês, dia, ano)
-            const mes = partesData[0].padStart(2, '0');
-            const dia = partesData[1].padStart(2, '0');
-            const ano = partesData[2];
-
-            // Formata o ano para quatro dígitos (considerando que 2 dígitos representam o ano de 1900)
-            const anoFormatado = (ano.length === 2) ? '19' + ano : ano;
-
-            // Formata a data no formato "yyyy-MM-dd"
-            return `${anoFormatado}-${mes}-${dia}`;
-        } else {
-            // Se a data não estiver no formato esperado, retorne a data original
-            return data;
-        }
-    }
-
-    function carrega_dados(id) {
-
-        $.ajax({
-            url: '/api/user/' + id, // Substitua pelo seu endpoint real
-            type: 'GET',
-            success: function(data) {
-                // Preencha o formulário dentro do modal com os dados retornados
-                data = data.Data[0];
-                console.log(data);
-
-                var inputs = document.querySelectorAll('input[name]');
-                console.log(inputs);
-                inputs[1].value = data
-                .nome_completo; 
-                inputs[2].value = data.apelido; 
-                inputs[3].value = data.email; 
-                inputs[4].value = data.cpf; 
-                inputs[5].value = data.rg; 
-                inputs[6].value = converterData(data.data_de_nascimento); 
-                if (data.sexo === "Masculino") {
-                    document.getElementById("sexo-masculino").checked = true;
-                } else if (data.sexo === "Feminino") {
-                    document.getElementById("sexo-feminino").checked = true;
-                }
-                inputs[9].value = data.telefone_principal;
-                inputs[10].value = data.telefone_secundario;
-                inputs[11].value = data.naturalidade;
-                if (data.estado_civil === "Casado" || data.estado_civil === "Casado(a)" || data.estado_civil === "Casada" || data.estado_civil === "Casada(o)") {
-                    document.getElementById("civil-casado").checked = true;
-                } else if (data.estado_civil === "Noivo" || data.estado_civil === "Noivo(a)" || data.estado_civil === "Noiva" || data.estado_civil === "Noiva(o)") {
-                    document.getElementById("civil-noivo").checked = true;
-                }
-                else if (data.estado_civil === "Solteiro" || data.estado_civil === "Solteiro(a)" || data.estado_civil === "Solteira" || data.estado_civil === "Solteira(o)") {
-                    document.getElementById("civil-noivo").checked = true;
-                } else {
-                    document.getElementById("civil-outro").checked = true;
-
-                }
-                inputs[16].value = data.nome_conjuge;
-                inputs[17].value = data.nome_conjuge;
-                if(data.conjuge_membro_ibb == 'Sim'){
-                    inputs[17].checked = true;
-                }else{
-                    inputs[18].checked = true;
-                }
-                inputs[19].value = data.cep;
-                consultarCEP(data.cep);
-                inputs[24].value = data.profissao;
-                inputs[25].value = data.escolaridade;
-                inputs[26].value = data.tipo_sanguineo;
-                inputs[27].value = converterData(data.data_conversao);
-                inputs[28].value = converterData(data.data_batismo);
-                inputs[29].value = data.igreja_batismo;
-                inputs[30].value = data.data_profissao_fe;
-                inputs[31].value = data.igreja_origem;
-
-                console.log(data.data_profissao_fe);
-
-
-            },
-            error: function() {
-                // Lide com erros, se necessário
-            }
-        });
     }
 
     function fecharModal() {

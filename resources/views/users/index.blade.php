@@ -138,7 +138,7 @@ The above copyright notice and this permission notice shall be included in all c
 
                             <div class="col-12">
                             </div>
-                            <div class="table-responsive">
+                            <div class="table-responsive usertable">
                                 <table class="table align-items-center table-flush">
                                     <thead class="thead-light">
                                         <tr>
@@ -155,10 +155,10 @@ The above copyright notice and this permission notice shall be included in all c
                                                 <td>
                                                     <a href="mailto:{{ $user->email }}">{{ $user->email }}</a>
                                                 </td>
-                                                <td>{{ $user->telefone_principal }}</td>
-                                                <td>
-                                                    <button class="btn btn-danger mr-3">Redefinir Acesso</button>
-                                                    <button class="btn btn-primary" onclick="abrirModal({{$user->id}})">Editar</button>
+                                                <td><?php echo (strlen($user->telefone_principal) < 5) ? $user->telefone_secundario : $user->telefone_principal; ?></td>
+                                                <td class="icons-int">
+                                                    <i onclick="Vermembro({{$user->id}})"class="nc-icon nc-zoom-split"></i>
+                                                    <i onclick="abrirModal({{$user->id}})" class="nc-icon nc-settings-gear-65"></i>
                                                 </td>
                                             </tr>
                                         @endforeach
