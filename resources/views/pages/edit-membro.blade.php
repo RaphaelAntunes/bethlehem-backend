@@ -633,7 +633,12 @@
 
         document.getElementById('meuModal').style.display = 'block';
         for (var i = 1; i < inputs.length; i++) {
-            inputs[i].value = ''; // Define o valor como vazio apenas para os elementos a partir do segundo
+            if(i == 8 || i == 9 ||i == 13 ||i == 14 ||i == 15 ||i == 16 ||i == 18 ||i == 19){
+
+            }else{
+                inputs[i].value = ''; // Define o valor como vazio apenas para os elementos a partir do segundo
+            }
+
         }
         const form = document.getElementById('form-edit');
         form.action = '/cadastrar-membro';
@@ -659,10 +664,7 @@
         }
     }
 
-    function modo_edit(){
-        
-    }
-
+   
     function carrega_dados(id) {
 
         $.ajax({
@@ -673,6 +675,7 @@
                 data = data.Data[0];
                 console.log(data);
                 var inputs = document.querySelectorAll('input[name]');
+                console.log(inputs);
                 const previewImg = document.querySelector('.preview-img');
                 previewImg.src = 'fotos/'+data.imagem;
                 inputs[2].value = data
