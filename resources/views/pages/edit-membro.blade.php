@@ -62,32 +62,32 @@
 
 <div id="meuModal" class="modal">
     <div class="modal-content">
-    
-       
-         <section class="formulario-section" id="secao-pessoal">
+        <section class="formulario-section" id="secao-pessoal">
 
-                <div class="card" style="margin-bottom: 0px !important;">
-                    <div class="card-header d-flex justify-content-between align-items-center">
-                        <div>
-                            <h5 class="title">Cadastro</h5>
-                            <p class="title">Dados Pessoais:</p>
-                        </div>
-                        <span data-notify="icon" onclick="fecharModal()" class="nc-icon nc-simple-remove"></span>
-
+            <div class="card" style="margin-bottom: 0px !important;">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <div>
+                        <h5 class="title">Cadastro</h5>
+                        <p class="title">Dados Pessoais:</p>
                     </div>
-                    <div class="card-body">
-                        <form id="form-edit" action="/cadastrar-membro" method="post" enctype="multipart/form-data">
-                            @csrf
-                            <div class="row">
-                                <label class="col-md-3 col-form-label">Foto</label>
-                                <div class="col-md-9">
-                                    <div class="form-group">
-                                        <p for="image"><i style="font-size: 40px;" class="nc-icon nc-camera-compact"></i></p>
-                                        <img class="preview-img fotosub">
-                                        <input type="file" name="image" id="image" class="file-chooser" accept="image/*">
-                                    </div>
+                    <span data-notify="icon" onclick="fecharModal()" class="nc-icon nc-simple-remove"></span>
+
+                </div>
+                <div class="card-body">
+                    <form id="form-edit" action="/cadastrar-membro" method="post" enctype="multipart/form-data">
+                        @csrf
+                        <div class="row">
+                            <label class="col-md-3 col-form-label">Foto</label>
+                            <div class="col-md-9">
+                                <div class="form-group">
+                                    <p for="image"><i style="font-size: 40px;" class="nc-icon nc-camera-compact"></i>
+                                    </p>
+                                    <img class="preview-img fotosub">
+                                    <input type="file" name="image" id="image" class="file-chooser"
+                                        accept="image/*">
                                 </div>
                             </div>
+                        </div>
                         <div class="row">
                             <label class="col-md-3 col-form-label">Nome Completo*</label>
                             <div class="col-md-9">
@@ -126,23 +126,25 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <label class="col-md-3 col-form-label">CPF</label>
-                            <div class="col-md-9">
-                                <div class="form-group">
-                                    <input type="text" name="cpf" class="form-control" value=""
-                                        oninput="mascaraCPF(this)" maxlength="14">
+                        <div class="d-flex flex-md-column flex-row">
+                            <div class="row">
+                                <label class="col-md-3 col-form-label">CPF</label>
+                                <div class="col-md-9 ">
+                                    <div class="form-group">
+                                        <input type="text" name="cpf" class="form-control" value=""
+                                            oninput="mascaraCPF(this)" maxlength="14">
 
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
-                            <label class="col-md-3 col-form-label">RG</label>
-                            <div class="col-md-9">
-                                <div class="form-group">
-                                    <input type="text" name="rg" id="rg" class="form-control"
-                                        value="" oninput="formatarRG(this)">
+                            <div class="row">
+                                <label class="col-md-3 col-form-label">RG</label>
+                                <div class="col-md-9">
+                                    <div class="form-group">
+                                        <input type="text" name="rg" id="rg" class="form-control"
+                                            value="" oninput="formatarRG(this)">
 
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -198,298 +200,298 @@
 
 
 
+                </div>
+
+
+                <div class="card-footer ">
+                    <div class="row">
+                        <div class="col-md-12 text-center">
+                            <p onclick="mostrarProximaSecao('secao-pessoal-2')" class="btn btn-info btn-round">Próximo
+                            </p>
+
+                        </div>
                     </div>
+                </div>
+            </div>
 
 
+        </section>
+        <section class="formulario-section2" id="secao-pessoal-2">
+
+            <div class="card" style="margin-bottom: 0px !important;">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <div>
+                        <h5 class="title">Cadastro</h5>
+                        <p class="title">Dados Pessoais:</p>
+                    </div>
+                    <span data-notify="icon" onclick="fecharModal()" class="nc-icon nc-simple-remove"></span>
+
+                </div>
+                <div class="card-body">
+
+                    <div class="row">
+                        <label class="col-md-3 col-form-label">Naturalidade</label>
+                        <div class="col-md-9">
+                            <div class="form-group">
+                                <input type="text" name="naturalidade" class="form-control" placeholder=""
+                                    value="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label class="col-md-3 col-form-label">Estado Civil</label>
+                        <div class="col-md-9">
+                            <div class="form-group">
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="estado_civil"
+                                        id="civil-casado" value="Casado">
+                                    <label style="padding-left: 0px" class="form-check-label">Casado(a)</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="estado_civil"
+                                        id="civil-noivo" value="Noivo">
+                                    <label style="padding-left: 0px" class="form-check-label">Noivo(a)</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="estado_civil"
+                                        id="civil-solteiro" value="Solteiro">
+                                    <label style="padding-left: 0px" class="form-check-label">Solteiro(a)</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="estado_civil"
+                                        id="civil-outro" value="outro">
+                                    <label style="padding-left: 0px" class="form-check-label">Outro</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label class="col-md-3 col-form-label">Nome Conjuge</label>
+                        <div class="col-md-9">
+                            <div class="form-group">
+                                <input type="text" name="nome_conjuge" class="form-control" placeholder=""
+                                    value="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label class="col-md-3 col-form-label">Conjuge é um membro IBB?</label>
+                        <div class="col-md-9">
+                            <div class="form-group">
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="conjuge_membro_ibb"
+                                        id="ibb-nao" value="Não">
+                                    <label style="padding-left: 0px" class="form-check-label"
+                                        for="ibb-nao">Não</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="conjuge_membro_ibb"
+                                        id="ibb-sim" value="Sim">
+                                    <label style="padding-left: 0px" class="form-check-label"
+                                        for="ibb-sim">Sim</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <div class="card-footer ">
                         <div class="row">
                             <div class="col-md-12 text-center">
-                                <p onclick="mostrarProximaSecao('secao-pessoal-2')"
+                                <p style="padding: 11px 22px;" onclick="mostrarProximaSecao('secao-pessoal')"
+                                    class="btn btn-info btn-round">Anterior</p>
+                                <p style="padding: 11px 22px;" onclick="mostrarProximaSecao('secao-etapa-endereco')"
                                     class="btn btn-info btn-round">Próximo</p>
 
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
+        </section>
+        <section class="formulario-section3" id="secao-etapa-endereco">
 
-
-            </section>
-            <section class="formulario-section2" id="secao-pessoal-2">
-
-                <div class="card" style="margin-bottom: 0px !important;">
-                    <div class="card-header d-flex justify-content-between align-items-center">
-                        <div>
-                            <h5 class="title">Cadastro</h5>
-                            <p class="title">Dados Pessoais:</p>
-                        </div>
-                        <span data-notify="icon" onclick="fecharModal()" class="nc-icon nc-simple-remove"></span>
-
+            <div class="card" style="margin-bottom: 0px !important;">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <div>
+                        <h5 class="title">Cadastro</h5>
+                        <p class="title">Endereço</p>
                     </div>
-                    <div class="card-body">
+                    <span data-notify="icon" onclick="fecharModal()" class="nc-icon nc-simple-remove"></span>
 
-                        <div class="row">
-                            <label class="col-md-3 col-form-label">Naturalidade</label>
-                            <div class="col-md-9">
-                                <div class="form-group">
-                                    <input type="text" name="naturalidade" class="form-control" placeholder=""
-                                        value="">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <label class="col-md-3 col-form-label">Estado Civil</label>
-                            <div class="col-md-9">
-                                <div class="form-group">
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="estado_civil"
-                                            id="civil-casado" value="Casado">
-                                        <label style="padding-left: 0px" class="form-check-label">Casado(a)</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="estado_civil"
-                                            id="civil-noivo" value="Noivo">
-                                        <label style="padding-left: 0px" class="form-check-label">Noivo(a)</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="estado_civil"
-                                            id="civil-solteiro" value="Solteiro">
-                                        <label style="padding-left: 0px" class="form-check-label">Solteiro(a)</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="estado_civil"
-                                            id="civil-outro" value="outro">
-                                        <label style="padding-left: 0px" class="form-check-label">Outro</label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <label class="col-md-3 col-form-label">Nome Conjuge</label>
-                            <div class="col-md-9">
-                                <div class="form-group">
-                                    <input type="text" name="nome_conjuge" class="form-control" placeholder=""
-                                        value="">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <label class="col-md-3 col-form-label">Conjuge é um membro IBB?</label>
-                            <div class="col-md-9">
-                                <div class="form-group">
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="conjuge_membro_ibb"
-                                            id="ibb-nao" value="Não">
-                                        <label style="padding-left: 0px" class="form-check-label"
-                                            for="ibb-nao">Não</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="conjuge_membro_ibb"
-                                            id="ibb-sim" value="Sim">
-                                        <label style="padding-left: 0px" class="form-check-label"
-                                            for="ibb-sim">Sim</label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card-footer ">
-                            <div class="row">
-                                <div class="col-md-12 text-center">
-                                    <p style="padding: 11px 22px;" onclick="mostrarProximaSecao('secao-pessoal')"
-                                        class="btn btn-info btn-round">Anterior</p>
-                                    <p style="padding: 11px 22px;" onclick="mostrarProximaSecao('secao-etapa-endereco')"
-                                        class="btn btn-info btn-round">Próximo</p>
+                </div>
+                <div class="card-body">
 
-                                </div>
+                    <div class="row">
+                        <label class="col-md-3 col-form-label">CEP</label>
+                        <div class="col-md-9">
+                            <div class="form-group">
+                                <input type="text" name="cep" id="cep" class="form-control"
+                                    value="" onblur="consultarCEP(this.value)">
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <label class="col-md-3 col-form-label">Logradouro</label>
+                        <div class="col-md-9">
+                            <div class="form-group">
+                                <input type="text" name="logradouro" id="logradouro" class="form-control"
+                                    value="">
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <label class="col-md-3 col-form-label">Bairro</label>
+                        <div class="col-md-9">
+                            <div class="form-group">
+                                <input type="text" name="bairro" id="bairro" class="form-control"
+                                    value="">
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label class="col-md-3 col-form-label">Cidade</label>
+                        <div class="col-md-9">
+                            <div class="form-group">
+                                <input type="text" name="cidade" id="cidade" class="form-control"
+                                    value="">
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label class="col-md-3 col-form-label">Estado</label>
+                        <div class="col-md-9">
+                            <div class="form-group">
+                                <input type="text" name="estado" id="estado" class="form-control"
+                                    value="">
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card-footer ">
+                        <div class="row">
+                            <div class="col-md-12 text-center">
+                                <p style="padding: 11px 22px;" onclick="mostrarProximaSecao('secao-pessoal-2')"
+                                    class="btn btn-info btn-round">Anterior</p>
+                                <p style="padding: 11px 22px;" onclick="mostrarProximaSecao('secao-etapa-profissao')"
+                                    class="btn btn-info btn-round">Próximo</p>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+        <section class="formulario-section4" id="secao-etapa-profissao">
+
+            <div class="card" style="margin-bottom: 0px !important;">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <div>
+                        <h5 class="title">Cadastro</h5>
+                        <p class="title">Profissão</p>
+                    </div>
+                    <span data-notify="icon" onclick="fecharModal()" class="nc-icon nc-simple-remove"></span>
+
+                </div>
+                <div class="card-body">
+
+                    <div class="row">
+                        <label class="col-md-3 col-form-label">Profissão</label>
+                        <div class="col-md-9">
+                            <div class="form-group">
+                                <input type="text" name="profissao" class="form-control" value="">
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <label class="col-md-3 col-form-label">Escolaridade</label>
+                        <div class="col-md-9">
+                            <div class="form-group">
+                                <input type="text" name="escolaridade" class="form-control" placeholder=""
+                                    value="">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <label class="col-md-3 col-form-label">Tipo Sanguíneo</label>
+                        <div class="col-md-9">
+                            <div class="form-group">
+                                <input type="text" name="tipo_sanguineo" class="form-control" placeholder=""
+                                    value="">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <label class="col-md-3 col-form-label">Data Conversão</label>
+                        <div class="col-md-9">
+                            <div class="form-group">
+                                <input type="date" name="data_conversao" class="form-control" placeholder=""
+                                    value="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label class="col-md-3 col-form-label">Data Batismo</label>
+                        <div class="col-md-9">
+                            <div class="form-group">
+                                <input type="date" name="data_batismo" class="form-control" placeholder=""
+                                    value="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label class="col-md-3 col-form-label">Igreja Batismo</label>
+                        <div class="col-md-9">
+                            <div class="form-group">
+                                <input type="input" name="igreja_batismo" class="form-control" placeholder=""
+                                    value="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label class="col-md-3 col-form-label">Data Profissao de Fé</label>
+                        <div class="col-md-9">
+                            <div class="form-group">
+                                <input type="date" name="data_profissao_fe" class="form-control" placeholder=""
+                                    value="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label class="col-md-3 col-form-label">Igreja Origem</label>
+                        <div class="col-md-9">
+                            <div class="form-group">
+                                <input type="text" name="igreja_origem" class="form-control" placeholder=""
+                                    value="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer ">
+                        <div class="row">
+                            <div class="col-md-12 text-center">
+                                <p style="padding: 11px 22px;" onclick="mostrarProximaSecao('secao-etapa-endereco')"
+                                    class="btn btn-info btn-round">Anterior</p>
+                                <button id="btn-submit" class="btn btn-success btn-round">Cadastrar
+                                    Membro</button>
+                                <button id="btn-submit-cad" class="btn btn-success btn-round">Cadastrar
+                                    Membro</button>
+
+
                             </div>
                         </div>
                     </div>
                 </div>
-            </section>
-            <section class="formulario-section3" id="secao-etapa-endereco">
-
-                <div class="card" style="margin-bottom: 0px !important;">
-                    <div class="card-header d-flex justify-content-between align-items-center">
-                        <div>
-                            <h5 class="title">Cadastro</h5>
-                            <p class="title">Endereço</p>
-                        </div>
-                        <span data-notify="icon" onclick="fecharModal()" class="nc-icon nc-simple-remove"></span>
-
-                    </div>
-                    <div class="card-body">
-
-                        <div class="row">
-                            <label class="col-md-3 col-form-label">CEP</label>
-                            <div class="col-md-9">
-                                <div class="form-group">
-                                    <input type="text" name="cep" id="cep" class="form-control"
-                                        value="" onblur="consultarCEP(this.value)">
-
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <label class="col-md-3 col-form-label">Logradouro</label>
-                            <div class="col-md-9">
-                                <div class="form-group">
-                                    <input type="text" name="logradouro" id="logradouro" class="form-control"
-                                        value="">
-
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <label class="col-md-3 col-form-label">Bairro</label>
-                            <div class="col-md-9">
-                                <div class="form-group">
-                                    <input type="text" name="bairro" id="bairro" class="form-control"
-                                        value="">
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <label class="col-md-3 col-form-label">Cidade</label>
-                            <div class="col-md-9">
-                                <div class="form-group">
-                                    <input type="text" name="cidade" id="cidade" class="form-control"
-                                        value="">
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <label class="col-md-3 col-form-label">Estado</label>
-                            <div class="col-md-9">
-                                <div class="form-group">
-                                    <input type="text" name="estado" id="estado" class="form-control"
-                                        value="">
-
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="card-footer ">
-                            <div class="row">
-                                <div class="col-md-12 text-center">
-                                    <p style="padding: 11px 22px;" onclick="mostrarProximaSecao('secao-pessoal-2')"
-                                        class="btn btn-info btn-round">Anterior</p>
-                                    <p style="padding: 11px 22px;" onclick="mostrarProximaSecao('secao-etapa-profissao')"
-                                        class="btn btn-info btn-round">Próximo</p>
-
-                                </div>
-                            </div>
-                        </div>
-                       
-                    </div>
-                </div>
-            </section>
-            <section class="formulario-section4" id="secao-etapa-profissao">
-
-                <div class="card" style="margin-bottom: 0px !important;">
-                    <div class="card-header d-flex justify-content-between align-items-center">
-                        <div>
-                            <h5 class="title">Cadastro</h5>
-                            <p class="title">Profissão</p>
-                        </div>
-                        <span data-notify="icon" onclick="fecharModal()" class="nc-icon nc-simple-remove"></span>
-
-                    </div>
-                    <div class="card-body">
-
-                        <div class="row">
-                            <label class="col-md-3 col-form-label">Profissão</label>
-                            <div class="col-md-9">
-                                <div class="form-group">
-                                    <input type="text" name="profissao" class="form-control" value="">
-
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <label class="col-md-3 col-form-label">Escolaridade</label>
-                            <div class="col-md-9">
-                                <div class="form-group">
-                                    <input type="text" name="escolaridade" class="form-control" placeholder=""
-                                        value="">
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <label class="col-md-3 col-form-label">Tipo Sanguíneo</label>
-                            <div class="col-md-9">
-                                <div class="form-group">
-                                    <input type="text" name="tipo_sanguineo" class="form-control" placeholder=""
-                                        value="">
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <label class="col-md-3 col-form-label">Data Conversão</label>
-                            <div class="col-md-9">
-                                <div class="form-group">
-                                    <input type="date" name="data_conversao" class="form-control" placeholder=""
-                                        value="">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <label class="col-md-3 col-form-label">Data Batismo</label>
-                            <div class="col-md-9">
-                                <div class="form-group">
-                                    <input type="date" name="data_batismo" class="form-control" placeholder=""
-                                        value="">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <label class="col-md-3 col-form-label">Igreja Batismo</label>
-                            <div class="col-md-9">
-                                <div class="form-group">
-                                    <input type="input" name="igreja_batismo" class="form-control" placeholder=""
-                                        value="">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <label class="col-md-3 col-form-label">Data Profissao de Fé</label>
-                            <div class="col-md-9">
-                                <div class="form-group">
-                                    <input type="date" name="data_profissao_fe" class="form-control"
-                                        placeholder="" value="">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <label class="col-md-3 col-form-label">Igreja Origem</label>
-                            <div class="col-md-9">
-                                <div class="form-group">
-                                    <input type="text" name="igreja_origem" class="form-control" placeholder=""
-                                        value="">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card-footer ">
-                            <div class="row">
-                                <div class="col-md-12 text-center">
-                                    <p style="padding: 11px 22px;" onclick="mostrarProximaSecao('secao-etapa-endereco')"
-                                        class="btn btn-info btn-round">Anterior</p>
-                                    <button id="btn-submit" class="btn btn-success btn-round">Cadastrar
-                                        Membro</button>
-                                    <button id="btn-submit-cad" class="btn btn-success btn-round">Cadastrar
-                                        Membro</button>
-
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-            </section>
+        </section>
         </form>
     </div>
 
@@ -505,7 +507,7 @@
             event.preventDefault(); // Isso evitará o comportamento padrão do formulário.
 
         });
-       
+
     });
 </script>
 
@@ -603,6 +605,7 @@
     document.getElementById('secao-pessoal-2').style.display = 'none';
     document.getElementById('secao-etapa-endereco').style.display = 'none';
     document.getElementById('secao-etapa-profissao').style.display = 'none';
+
     function mostrarProximaSecao(secaoId) {
         document.getElementById('secao-pessoal').style.display = 'none';
         document.getElementById('secao-pessoal-2').style.display = 'none';
@@ -633,16 +636,16 @@
 
         document.getElementById('meuModal').style.display = 'block';
         for (var i = 1; i < inputs.length; i++) {
-            if(i == 8 || i == 9 ||i == 13 ||i == 14 ||i == 15 ||i == 16 ||i == 18 ||i == 19){
+            if (i == 8 || i == 9 || i == 13 || i == 14 || i == 15 || i == 16 || i == 18 || i == 19) {
 
-            }else{
+            } else {
                 inputs[i].value = ''; // Define o valor como vazio apenas para os elementos a partir do segundo
             }
 
         }
         const form = document.getElementById('form-edit');
         form.action = '/cadastrar-membro';
-        
+
     }
 
     function converterData(data) {
@@ -664,7 +667,7 @@
         }
     }
 
-   
+
     function carrega_dados(id) {
 
         $.ajax({
@@ -677,7 +680,7 @@
                 var inputs = document.querySelectorAll('input[name]');
                 console.log(inputs);
                 const previewImg = document.querySelector('.preview-img');
-                previewImg.src = 'fotos/'+data.imagem;
+                previewImg.src = 'fotos/' + data.imagem;
                 inputs[2].value = data
                     .nome_completo;
                 inputs[3].value = data.apelido;
@@ -740,22 +743,22 @@
 </script>
 
 <script>
-const $2 = document.querySelector.bind(document);
-const previewImg = $2('.preview-img');
-const fileChooser = $2('.file-chooser');
+    const $2 = document.querySelector.bind(document);
+    const previewImg = $2('.preview-img');
+    const fileChooser = $2('.file-chooser');
 
-fileChooser.onchange = e => {
-    const fileToUpload = e.target.files.item(0);
-    const reader = new FileReader();
+    fileChooser.onchange = e => {
+        const fileToUpload = e.target.files.item(0);
+        const reader = new FileReader();
 
-    // evento disparado quando o reader terminar de ler 
-    reader.onload = e => previewImg.src = e.target.result;
+        // evento disparado quando o reader terminar de ler 
+        reader.onload = e => previewImg.src = e.target.result;
 
-    // solicita ao reader que leia o arquivo 
-    // transformando-o para DataURL. 
-    // Isso disparará o evento reader.onload.
-    reader.readAsDataURL(fileToUpload);
-};
+        // solicita ao reader que leia o arquivo 
+        // transformando-o para DataURL. 
+        // Isso disparará o evento reader.onload.
+        reader.readAsDataURL(fileToUpload);
+    };
 </script>
 
 </div>

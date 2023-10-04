@@ -24,6 +24,7 @@ The above copyright notice and this permission notice shall be included in all c
     <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('paper') }}/img/apple-icon.png">
     <link rel="icon" type="image/png" href="{{ asset('paper') }}/img/favicon.png">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
 
 
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no'
@@ -237,11 +238,16 @@ The above copyright notice and this permission notice shall be included in all c
                                                     <a>{{ $user->email }}</a>
                                                 </td>
                                                 <td><?php echo strlen($user->telefone_principal) < 5 ? $user->telefone_secundario : $user->telefone_principal; ?></td>
-                                                <td class="icons-int">
+                                                <td style="
+                                                align-items: center;
+                                                justify-content: start;
+                                                display: flex;
+                                            " class="icons-int">
                                                     <i
                                                         onclick="abrirModal2({{ $user->id }})"class="nc-icon nc-zoom-split"></i>
-                                                    <i onclick="abrirModal({{ $user->id }})"
-                                                        class="nc-icon nc-settings-gear-65"></i>
+                                                    <i onclick="abrirModal({{ $user->id }})" class="fa fa-pencil"
+                                                        aria-hidden="true"></i>
+
                                                 </td>
                                             </tr>
                                         @endforeach
