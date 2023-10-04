@@ -2856,8 +2856,9 @@ a[data-toggle="collapse"][aria-expanded="true"] .caret,
     display: inline-block;
     position: relative;
     cursor: pointer;
+    font-size: 15px;
     padding-left: 35px;
-    line-height: 26px;
+    line-height: 30px;
     margin-bottom: 0;
 }
 
@@ -2866,8 +2867,8 @@ a[data-toggle="collapse"][aria-expanded="true"] .caret,
     content: " ";
     display: inline-block;
     position: absolute;
-    width: 24px;
-    height: 24px;
+    width: 32px;
+    height: 32px;
     left: 0;
     cursor: pointer;
     border-radius: 6px;
@@ -2883,9 +2884,9 @@ a[data-toggle="collapse"][aria-expanded="true"] .caret,
 .form-check .form-check-sign::after {
     font-family: 'FontAwesome';
     content: "\f00c";
-    top: -1px;
+    top: 2px;
     text-align: center;
-    font-size: 15px;
+    font-size: 20px;
     opacity: 0;
     color: #FFF;
     border: 0;
@@ -4781,6 +4782,7 @@ License - nucleoapp.com/license/
 .wrapper.wrapper-full-page {
     min-height: 100vh;
     height: auto;
+    background-color: #ffcc29;
 }
 
 .sidebar,
