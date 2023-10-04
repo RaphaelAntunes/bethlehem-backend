@@ -4,14 +4,25 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\ModelController;
+
 class MembroController extends Controller
 {
     public function cadastrarMembro(Request $request)
     {
         $data = $request->all(); // Obtém todos os dados do formulário
 
-        // Crie um novo registro no banco de dados usando o modelo Membro
+        $img = $request->image;
+        if ($img) {
+            $extension = $img->extension();
+            $imageName = md5($img->getClientOriginalName() . strtotime("now")) . "." . $extension;
+
+            $img->move(public_path('/fotos'), $imageName);
+        } else {
+            $imageName = null;
+        }
+
         $evento = new ModelController([
+            'imagem' => $imageName, // Defina as regras de validação da imagem aqui
             'nome_completo' => $data['nome_completo'],
             'apelido' => $data['apelido'],
             'email' => $data['email'],
@@ -39,6 +50,8 @@ class MembroController extends Controller
             'data_profissao_fe' => $data['data_profissao_fe'],
             'igreja_origem' => $data['igreja_origem'],
         ]);
+
+
         if ($evento->save()) {
             return  200;
         } else {
@@ -52,6 +65,18 @@ class MembroController extends Controller
 
         // Use o email como identificador para encontrar o usuário no banco de dados
         $user = ModelController::where('email', $data['email'])->first();
+        $img = $request->image;
+
+
+        if ($img) {
+            $extension = $img->extension();
+            $imageName = md5($img->getClientOriginalName() . strtotime("now")) . "." . $extension;
+
+            $img->move(public_path('/fotos'), $imageName);
+            $user->imagem = $imageName;
+        }
+
+
 
         if ($user) {
             // Atualize os campos do usuário com os novos dados
@@ -93,4 +118,5 @@ class MembroController extends Controller
             // Caso o usuário não seja encontrado, você pode lidar com isso de acordo com suas necessidades
             return 201;
         }
-    }}
+    }
+}

@@ -27,6 +27,8 @@ Route::get('/search', 'App\Http\Controllers\ApiController@search')->name('users.
 Route::group(['middleware' => 'auth'], function () {
 Route::post('/edit-membro', [App\Http\Controllers\MembroController::class, 'editmembro'])->name('edit-membro');
 Route::post('/salvar-evento', [App\Http\Controllers\EventoController::class, 'salvarEvento'])->name('salvarEvento');
+Route::post('/salvar-foto', [App\Http\Controllers\EventoController::class, 'salvarFoto']);
+
 Route::post('/cadastrar-membro', [App\Http\Controllers\MembroController::class, 'cadastrarMembro'])->name('cadastrar-membro');
 
 Route::get('/eventos', ['as' => 'eventos', 'uses' => 'App\Http\Controllers\PageController@eventos']);

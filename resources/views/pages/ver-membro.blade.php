@@ -71,13 +71,14 @@
                 <div class="d-flex flex-row justify-content-center ">
                     <button class="btn-nav-card-view-member" onclick="mostrarProximaSecao2('secao-view-pessoal')">Dados
                         Pessoais</button>
-                        <button class="btn-nav-card-view-member"
+                    <button class="btn-nav-card-view-member"
                         onclick="mostrarProximaSecao2('secao-view-etapa-profissao')">Outros Dados</button>
                     <button class="btn-nav-card-view-member"
                         onclick="mostrarProximaSecao2('secao-view-etapa-endereco')">Endereço</button>
-                        
-                    
-                    <button class="btn-nav-card-view-member" onclick="mostrarProximaSecao2('secao-view-etapa-religiao')">Informações Religiosas</button>
+
+
+                    <button class="btn-nav-card-view-member"
+                        onclick="mostrarProximaSecao2('secao-view-etapa-religiao')">Informações Religiosas</button>
                 </div>
             </div>
 
@@ -88,6 +89,14 @@
                 <div class="card" style="margin-bottom: 0px !important;">
 
                     <div class="card-body">
+                        <div class="row">
+                            <label class="col-md-4 col-form-label">Foto</label>
+                            <div class="col-md-8">
+                                <div class="form-group">
+                                    <img class="groupdata2 foto-img" style="width: 100%; max-width: 200px;" id="view-imagem">
+                                </div>
+                            </div>
+                        </div>
                         <div class="row">
                             <label class="col-md-4 col-form-label">Nome Completo</label>
                             <div class="col-md-8">
@@ -166,8 +175,8 @@
                                 </div>
                             </div>
                         </div>
-                        
-                        
+
+
 
 
 
@@ -389,14 +398,17 @@
                             </div>
                         </div>
                         <div class="row">
-                            <label class="col-md-4 col-form-label" style="font-weight:bold; color:black;">O Membro compromete-se as seguintes clausulas:</label>
-                           
+                            <label class="col-md-4 col-form-label" style="font-weight:bold; color:black;">O Membro
+                                compromete-se as seguintes clausulas:</label>
+
                         </div>
                         <div class="row">
-                            <label class="col-md-4 col-form-label">Frequentar regularmente as atividades da igreja ?</label>
+                            <label class="col-md-4 col-form-label">Frequentar regularmente as atividades da igreja
+                                ?</label>
                             <div class="col-md-8">
                                 <div class="form-group">
-                                    <p class="groupdata2" id="view-comp_frequentar_regularmente_atividades_igreja"></p>
+                                    <p class="groupdata2" id="view-comp_frequentar_regularmente_atividades_igreja">
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -425,7 +437,8 @@
                             </div>
                         </div>
                         <div class="row">
-                            <label class="col-md-4 col-form-label">Em caso de ausência, corresponder a igreja em até 6 meses ?</label>
+                            <label class="col-md-4 col-form-label">Em caso de ausência, corresponder a igreja em até 6
+                                meses ?</label>
                             <div class="col-md-8">
                                 <div class="form-group">
                                     <p class="groupdata2" id="comp_caso_ausencia_corresponder_igreja_6_meses"></p>
@@ -439,7 +452,8 @@
                                     <p class="groupdata2" id="comp_receber_visita_comissao_disciplinar"></p>
                                 </div>
                             </div>
-                        </div><div class="row">
+                        </div>
+                        <div class="row">
                             <label class="col-md-4 col-form-label">Receber visita da comissão disciplinar ?</label>
                             <div class="col-md-8">
                                 <div class="form-group">
@@ -447,7 +461,8 @@
                                 </div>
                             </div>
                         </div>
-                    </div><div class="row">
+                    </div>
+                    <div class="row">
                         <label class="col-md-4 col-form-label">pg sim</label>
                         <div class="col-md-8">
                             <div class="form-group">
@@ -455,8 +470,8 @@
                             </div>
                         </div>
                     </div>
-                       
-                    </div>
+
+                </div>
             </section>
         </div>
     </div>
@@ -474,7 +489,7 @@
     document.getElementById('secao-view-etapa-profissao').style.display = 'none';
     document.getElementById('secao-view-etapa-religiao').style.display = 'none';
 
-    
+
     function mostrarProximaSecao2(secaoId) {
         document.getElementById('secao-view-etapa-religiao').style.display = 'none';
         document.getElementById('secao-view-pessoal').style.display = 'none';
@@ -506,27 +521,29 @@
                 console.log(data);
                 var elementosP = document.querySelectorAll('.groupdata2');
 
-// Itera sobre os elementos <p> e atribui os valores correspondentes da variável 'data'
-elementosP.forEach(function (elemento) {
-    var campo = elemento.id.replace('view-', ''); // Remove o prefixo 'view-'
-    if (data.hasOwnProperty(campo)) {
-        elemento.textContent = data[campo];
+                const previewImg = document.querySelector('.foto-img');
+                previewImg.src = 'fotos/'+data.imagem;
+                // Itera sobre os elementos <p> e atribui os valores correspondentes da variável 'data'
+                elementosP.forEach(function(elemento) {
+                    var campo = elemento.id.replace('view-', ''); // Remove o prefixo 'view-'
+                    if (data.hasOwnProperty(campo)) {
+                        elemento.textContent = data[campo];
 
-        // Verifica se o campo está vazio e adiciona ou remove a classe 'd-none' ao elemento pai <div class="row">
-        if (data[campo] === "" || data[campo] === null) {
-            var divRow = elemento.closest('.row');
-            if (divRow) {
-                divRow.classList.add('d-none');
-            }
-        } else {
-            var divRow = elemento.closest('.row');
-            if (divRow) {
-                divRow.classList.remove('d-none');
-            }
-        }
-    }
-});
-               
+                        // Verifica se o campo está vazio e adiciona ou remove a classe 'd-none' ao elemento pai <div class="row">
+                        if (data[campo] === "" || data[campo] === null) {
+                            var divRow = elemento.closest('.row');
+                            if (divRow) {
+                                divRow.classList.add('d-none');
+                            }
+                        } else {
+                            var divRow = elemento.closest('.row');
+                            if (divRow) {
+                                divRow.classList.remove('d-none');
+                            }
+                        }
+                    }
+                });
+
             },
             error: function() {
 

@@ -62,9 +62,9 @@
 
 <div id="meuModal" class="modal">
     <div class="modal-content">
-        <form action="" id="form-edit">
-            <input type="hidden" name="_token" value="{{ csrf_token() }}" autocomplete="off">
-            <section class="formulario-section" id="secao-pessoal">
+    
+       
+         <section class="formulario-section" id="secao-pessoal">
 
                 <div class="card" style="margin-bottom: 0px !important;">
                     <div class="card-header d-flex justify-content-between align-items-center">
@@ -76,6 +76,18 @@
 
                     </div>
                     <div class="card-body">
+                        <form id="form-edit" action="/cadastrar-membro" method="post" enctype="multipart/form-data">
+                            @csrf
+                            <div class="row">
+                                <label class="col-md-3 col-form-label">Foto</label>
+                                <div class="col-md-9">
+                                    <div class="form-group">
+                                        <p for="image"><i style="font-size: 40px;" class="nc-icon nc-camera-compact"></i></p>
+                                        <img class="preview-img fotosub">
+                                        <input type="file" name="image" id="image" class="file-chooser" accept="image/*">
+                                    </div>
+                                </div>
+                            </div>
                         <div class="row">
                             <label class="col-md-3 col-form-label">Nome Completo*</label>
                             <div class="col-md-9">
@@ -153,8 +165,8 @@
                                             for="sexo-masculino">Masculino</label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="sexo" id="sexo-feminino"
-                                            value="Feminino">
+                                        <input class="form-check-input" type="radio" name="sexo"
+                                            id="sexo-feminino" value="Feminino">
                                         <label style="padding-left: 0px" class="form-check-label">Feminino</label>
                                     </div>
                                 </div>
@@ -192,8 +204,8 @@
                     <div class="card-footer ">
                         <div class="row">
                             <div class="col-md-12 text-center">
-                                <button onclick="mostrarProximaSecao('secao-pessoal-2')"
-                                    class="btn btn-info btn-round">Próximo</button>
+                                <p onclick="mostrarProximaSecao('secao-pessoal-2')"
+                                    class="btn btn-info btn-round">Próximo</p>
 
                             </div>
                         </div>
@@ -282,10 +294,10 @@
                         <div class="card-footer ">
                             <div class="row">
                                 <div class="col-md-12 text-center">
-                                    <button onclick="mostrarProximaSecao('secao-pessoal')"
-                                        class="btn btn-info btn-round">Anterior</button>
-                                    <button onclick="mostrarProximaSecao('secao-etapa-endereco')"
-                                        class="btn btn-info btn-round">Próximo</button>
+                                    <p style="padding: 11px 22px;" onclick="mostrarProximaSecao('secao-pessoal')"
+                                        class="btn btn-info btn-round">Anterior</p>
+                                    <p style="padding: 11px 22px;" onclick="mostrarProximaSecao('secao-etapa-endereco')"
+                                        class="btn btn-info btn-round">Próximo</p>
 
                                 </div>
                             </div>
@@ -362,14 +374,15 @@
                         <div class="card-footer ">
                             <div class="row">
                                 <div class="col-md-12 text-center">
-                                    <button onclick="mostrarProximaSecao('secao-pessoal-2')"
-                                        class="btn btn-info btn-round">Anterior</button>
-                                    <button onclick="mostrarProximaSecao('secao-etapa-profissao')"
-                                        class="btn btn-info btn-round">Próximo</button>
+                                    <p style="padding: 11px 22px;" onclick="mostrarProximaSecao('secao-pessoal-2')"
+                                        class="btn btn-info btn-round">Anterior</p>
+                                    <p style="padding: 11px 22px;" onclick="mostrarProximaSecao('secao-etapa-profissao')"
+                                        class="btn btn-info btn-round">Próximo</p>
 
                                 </div>
                             </div>
                         </div>
+                       
                     </div>
                 </div>
             </section>
@@ -461,15 +474,11 @@
                                 </div>
                             </div>
                         </div>
-
-
-
-
                         <div class="card-footer ">
                             <div class="row">
                                 <div class="col-md-12 text-center">
-                                    <button onclick="mostrarProximaSecao('secao-etapa-endereco')"
-                                        class="btn btn-info btn-round">Anterior</button>
+                                    <p style="padding: 11px 22px;" onclick="mostrarProximaSecao('secao-etapa-endereco')"
+                                        class="btn btn-info btn-round">Anterior</p>
                                     <button id="btn-submit" class="btn btn-success btn-round">Cadastrar
                                         Membro</button>
                                     <button id="btn-submit-cad" class="btn btn-success btn-round">Cadastrar
@@ -488,6 +497,7 @@
 </div>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 <script>
     $(document).ready(function() {
         // Selecione todos os elementos do tipo "button" dentro do formulário.
@@ -495,62 +505,7 @@
             event.preventDefault(); // Isso evitará o comportamento padrão do formulário.
 
         });
-        $("#btn-submit").on("click", function(event) {
-            event.preventDefault(); // Isso evitará o comportamento padrão do formulário.
-
-            // Execute qualquer lógica de validação ou manipulação de dados aqui, se necessário.
-
-            // Serialize o formulário para enviar os dados.
-            var formData = $("#form-edit").serialize();
-            var token = $('input[name="_token"]').val();
-            $.ajax({
-                type: "POST",
-                url: "{{ route('edit-membro') }}",
-                data: formData,
-                headers: {
-                    'X-CSRF-TOKEN': token // Inclua o token CSRF no cabeçalho da requisição
-                },
-                success: function(response) {
-                    // Faça algo com a resposta, se necessário.
-                    if (response == 200) {
-                        location.reload();
-                    }
-                },
-                error: function(error) {
-                    // Trate erros, se ocorrerem.
-                    console.log(error);
-                }
-            });
-        });
-
-        $("#btn-submit-cad").on("click", function(event) {
-            event.preventDefault(); // Isso evitará o comportamento padrão do formulário.
-
-            // Execute qualquer lógica de validação ou manipulação de dados aqui, se necessário.
-
-            // Serialize o formulário para enviar os dados.
-            var formData = $("#form-edit").serialize();
-            var token = $('input[name="_token"]').val();
-            $.ajax({
-                type: "POST",
-                url: "{{ route('cadastrar-membro') }}",
-                data: formData,
-                headers: {
-                    'X-CSRF-TOKEN': token // Inclua o token CSRF no cabeçalho da requisição
-                },
-                success: function(response) {
-                    // Faça algo com a resposta, se necessário.
-                    if (response == 200) {
-                        location.reload();
-                    }
-                },
-                error: function(error) {
-                    // Trate erros, se ocorrerem.
-                    console.log(error);
-                }
-            });
-        });
-
+       
     });
 </script>
 
@@ -648,7 +603,6 @@
     document.getElementById('secao-pessoal-2').style.display = 'none';
     document.getElementById('secao-etapa-endereco').style.display = 'none';
     document.getElementById('secao-etapa-profissao').style.display = 'none';
-
     function mostrarProximaSecao(secaoId) {
         document.getElementById('secao-pessoal').style.display = 'none';
         document.getElementById('secao-pessoal-2').style.display = 'none';
@@ -666,6 +620,8 @@
         elemento.style.display = 'initial';
         elemento2.style.display = 'none';
         carrega_dados(id);
+        const form = document.getElementById('form-edit');
+        form.action = '/edit-membro';
     }
 
     function abrirModal3(id) {
@@ -677,8 +633,11 @@
 
         document.getElementById('meuModal').style.display = 'block';
         for (var i = 1; i < inputs.length; i++) {
-    inputs[i].value = ''; // Define o valor como vazio apenas para os elementos a partir do segundo
-}
+            inputs[i].value = ''; // Define o valor como vazio apenas para os elementos a partir do segundo
+        }
+        const form = document.getElementById('form-edit');
+        form.action = '/cadastrar-membro';
+        
     }
 
     function converterData(data) {
@@ -700,6 +659,10 @@
         }
     }
 
+    function modo_edit(){
+        
+    }
+
     function carrega_dados(id) {
 
         $.ajax({
@@ -709,24 +672,24 @@
                 // Preencha o formulário dentro do modal com os dados retornados
                 data = data.Data[0];
                 console.log(data);
-
                 var inputs = document.querySelectorAll('input[name]');
-                console.log(inputs);
-                inputs[1].value = data
+                const previewImg = document.querySelector('.preview-img');
+                previewImg.src = 'fotos/'+data.imagem;
+                inputs[2].value = data
                     .nome_completo;
-                inputs[2].value = data.apelido;
-                inputs[3].value = data.email;
-                inputs[4].value = data.cpf;
-                inputs[5].value = data.rg;
-                inputs[6].value = converterData(data.data_de_nascimento);
+                inputs[3].value = data.apelido;
+                inputs[4].value = data.email;
+                inputs[5].value = data.cpf;
+                inputs[6].value = data.rg;
+                inputs[7].value = converterData(data.data_de_nascimento);
                 if (data.sexo === "Masculino") {
                     document.getElementById("sexo-masculino").checked = true;
                 } else if (data.sexo === "Feminino") {
                     document.getElementById("sexo-feminino").checked = true;
                 }
-                inputs[9].value = data.telefone_principal;
-                inputs[10].value = data.telefone_secundario;
-                inputs[11].value = data.naturalidade;
+                inputs[10].value = data.telefone_principal;
+                inputs[11].value = data.telefone_secundario;
+                inputs[12].value = data.naturalidade;
                 if (data.estado_civil === "Casado" || data.estado_civil === "Casado(a)" || data
                     .estado_civil === "Casada" || data.estado_civil === "Casada(o)") {
                     document.getElementById("civil-casado").checked = true;
@@ -740,23 +703,23 @@
                     document.getElementById("civil-outro").checked = true;
 
                 }
-                inputs[16].value = data.nome_conjuge;
+                inputs[17].value = data.nome_conjuge;
                 if (data.conjuge_membro_ibb == 'Sim') {
-                    inputs[18].checked = true;
+                    inputs[19].checked = true;
                 } else {
-                    inputs[17].checked = true;
+                    inputs[18].checked = true;
                 }
 
-                inputs[19].value = data.cep;
+                inputs[20].value = data.cep;
                 consultarCEP(data.cep);
-                inputs[24].value = data.profissao;
-                inputs[25].value = data.escolaridade;
-                inputs[26].value = data.tipo_sanguineo;
-                inputs[27].value = converterData(data.data_conversao);
-                inputs[28].value = converterData(data.data_batismo);
-                inputs[29].value = data.igreja_batismo;
-                inputs[30].value = data.data_profissao_fe;
-                inputs[31].value = data.igreja_origem;
+                inputs[25].value = data.profissao;
+                inputs[26].value = data.escolaridade;
+                inputs[27].value = data.tipo_sanguineo;
+                inputs[28].value = converterData(data.data_conversao);
+                inputs[29].value = converterData(data.data_batismo);
+                inputs[30].value = data.igreja_batismo;
+                inputs[31].value = data.data_profissao_fe;
+                inputs[32].value = data.igreja_origem;
 
                 console.log(data.data_profissao_fe);
 
@@ -771,6 +734,25 @@
     function fecharModal() {
         document.getElementById('meuModal').style.display = 'none';
     }
+</script>
+
+<script>
+const $2 = document.querySelector.bind(document);
+const previewImg = $2('.preview-img');
+const fileChooser = $2('.file-chooser');
+
+fileChooser.onchange = e => {
+    const fileToUpload = e.target.files.item(0);
+    const reader = new FileReader();
+
+    // evento disparado quando o reader terminar de ler 
+    reader.onload = e => previewImg.src = e.target.result;
+
+    // solicita ao reader que leia o arquivo 
+    // transformando-o para DataURL. 
+    // Isso disparará o evento reader.onload.
+    reader.readAsDataURL(fileToUpload);
+};
 </script>
 
 </div>

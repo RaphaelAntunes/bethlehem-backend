@@ -195,18 +195,23 @@ The above copyright notice and this permission notice shall be included in all c
                     <div class="col">
                         <div class="card shadow">
                             <div class="card-header border-0">
-                                <div class="align-items-center d-flex flex-lg-row flex-column justify-content-lg-between justify-content-center align-items-center">
+                                <div
+                                    class="align-items-center d-flex flex-lg-row flex-column justify-content-lg-between justify-content-center align-items-center">
                                     <div class="ml-2">
                                         <h3 class="mb-0">Membros</h3>
                                     </div>
                                     <div class="d-flex justify-content-center container align-items-center">
-                                        <form action="{{ route('users.search') }}" method="GET" class="form-inline">
-                                            <input type="text" name="search" class="form-control" placeholder="Pesquisar" value="{{ request('search') }}">
-                                            <button style="padding: 5px 20px 5px 20px;" class="btn btn-outline-success"  type="submit">Buscar</button>
-                                          </form>
+                                        <form action="{{ route('users.search') }}" method="GET"
+                                            class="form-inline">
+                                            <input type="text" name="search" class="form-control"
+                                                placeholder="Pesquisar" value="{{ request('search') }}">
+                                            <button style="padding: 5px 20px 5px 20px;"
+                                                class="btn btn-outline-success" type="submit">Buscar</button>
+                                        </form>
                                     </div>
                                     <div class="text-right mr-2">
-                                        <a onclick="abrirModal3()" class="btn btn-sm btn-success"><i style="width: 20px; font-weight: bold; color: white;"
+                                        <a onclick="abrirModal3()" class="btn btn-sm btn-success"><i
+                                                style="width: 20px; font-weight: bold; color: white;"
                                                 class="nc-icon nc-simple-add"></i></a>
                                     </div>
                                 </div>
@@ -229,7 +234,7 @@ The above copyright notice and this permission notice shall be included in all c
                                             <tr>
                                                 <td>{{ $user->nome_completo }}</td>
                                                 <td>
-                                                    <a >{{ $user->email }}</a>
+                                                    <a>{{ $user->email }}</a>
                                                 </td>
                                                 <td><?php echo strlen($user->telefone_principal) < 5 ? $user->telefone_secundario : $user->telefone_principal; ?></td>
                                                 <td class="icons-int">
