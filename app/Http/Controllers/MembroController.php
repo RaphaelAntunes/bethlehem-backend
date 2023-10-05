@@ -62,7 +62,7 @@ class MembroController extends Controller
 
 
         if ($evento->save()) {
-            return redirect()->back()->with(['ultimo' => $data['id'], 'message' => 'Membro cadastrado com sucesso', 'status' => true]);
+            return redirect()->back()->with(['ultimo' => $data['cpf'], 'message' => 'Membro cadastrado com sucesso', 'status' => true]);
         } else {
             return redirect()->back()->with(['message' => 'Erro ao cadastrar membro, consulte um desenvolvedor', 'status' => false]);
         }

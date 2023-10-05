@@ -26,6 +26,7 @@ class ApiController extends Controller
     public function find_user2($data)
     {
         $result = ModelController::where('id', $data)
+        ->orWhere('cpf', $data)
         ->get();
 
         if ($result->isEmpty()) {
