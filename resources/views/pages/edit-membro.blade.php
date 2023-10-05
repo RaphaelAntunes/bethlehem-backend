@@ -313,7 +313,7 @@
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <div>
                         <h5 class="title">Cadastro</h5>
-                        <p class="title">Endereço</p>
+                        <p class="title">Endereço:</p>
                     </div>
                     <span data-notify="icon" onclick="fecharModal()" class="nc-icon nc-simple-remove"></span>
 
@@ -394,7 +394,7 @@
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <div>
                         <h5 class="title">Cadastro</h5>
-                        <p class="title">Profissão</p>
+                        <p class="title">Profissão:</p>
                     </div>
                     <span data-notify="icon" onclick="fecharModal()" class="nc-icon nc-simple-remove"></span>
 
@@ -481,6 +481,143 @@
                             <div class="col-md-12 text-center">
                                 <p style="padding: 11px 22px;" onclick="mostrarProximaSecao('secao-etapa-endereco')"
                                     class="btn btn-info btn-round">Anterior</p>
+                                <p style="padding: 11px 22px;"
+                                    onclick="mostrarProximaSecao('secao-etapa-comprometese')"
+                                    class="btn btn-info btn-round">Proximo</p>
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </section>
+        <section class="formulario-section5" id="secao-etapa-comprometese">
+
+            <div class="card" style="margin-bottom: 0px !important;">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <div>
+                        <h5 class="title">Cadastro</h5>
+                        <p class="title">O membro Compromete-se com as seguintes clausulas:</p>
+                    </div>
+                    <span data-notify="icon" onclick="fecharModal()" class="nc-icon nc-simple-remove"></span>
+
+                </div>
+                <div class="card-body">
+
+                    <div class="row">
+                        <label class="col-md-3 col-form-label">Frequentar regularmente às atividades da
+                            igreja? </label>
+                        <div class="col-md-9">
+                            <div class="form-group">
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="comp_frequentar_regularmente_atividades_igreja" value="Sim">
+                                    <label style="padding-left: 0px" class="form-check-label">Sim</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="comp_frequentar_regularmente_atividades_igreja" value="Não">
+                                    <label style="padding-left: 0px" class="form-check-label">Não</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label class="col-md-3 col-form-label">Ser aluno da Escola Bíblica Dominical (EBD)?</label>
+                        <div class="col-md-9">
+                            <div class="form-group">
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="comp_ser_aluno_EBD" value="Sim">
+                                    <label style="padding-left: 0px" class="form-check-label">Sim</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="comp_ser_aluno_EBD" value="Não">
+                                    <label style="padding-left: 0px" class="form-check-label">Não</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label class="col-md-3 col-form-label">Viver em harmonia com seus irmãos em Cristo?</label>
+                        <div class="col-md-9">
+                            <div class="form-group">
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="comp_viver_em_harmonia_com_irmaos" value="Sim">
+                                    <label style="padding-left: 0px" class="form-check-label">Sim</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="comp_viver_em_harmonia_com_irmaos" value="Não">
+                                    <label style="padding-left: 0px" class="form-check-label">Não</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label class="col-md-3 col-form-label">Ser dízimista/ofertante?</label>
+                        <div class="col-md-9">
+                            <div class="form-group">
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="comp_ser_dizimista_ofertante" value="Sim">
+                                    <label style="padding-left: 0px" class="form-check-label">Sim</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="comp_ser_dizimista_ofertante" value="Não">
+                                    <label style="padding-left: 0px" class="form-check-label">Não</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label class="col-md-3 col-form-label">Em caso de ausência, a corresponder-se com a igreja no prazo de 6 meses?</label>
+                        <div class="col-md-9">
+                            <div class="form-group">
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="comp_caso_ausencia_corresponder_igreja_6_meses" value="Sim">
+                                    <label style="padding-left: 0px" class="form-check-label">Sim</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="comp_caso_ausencia_corresponder_igreja_6_meses" value="Não">
+                                    <label style="padding-left: 0px" class="form-check-label">Não</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label class="col-md-3 col-form-label">Receber a visita de uma comissão disciplinar?</label>
+                        <div class="col-md-9">
+                            <div class="form-group">
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="comp_receber_visita_comissao_disciplinar" value="Sim">
+                                    <label style="padding-left: 0px" class="form-check-label">Sim</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="comp_receber_visita_comissao_disciplinar" value="Não">
+                                    <label style="padding-left: 0px" class="form-check-label">Não</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label class="col-md-3 col-form-label">Sobre a coleta de dados:</label>
+                        <div class="col-md-9">
+                            <div class="form-group">
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="coleta_dados" value="Concordo">
+                                    <label style="padding-left: 0px" class="form-check-label">Concordo</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="coleta_dados" value="Não Concordo">
+                                    <label style="padding-left: 0px" class="form-check-label">Não Concordo</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="card-footer ">
+                        <div class="row">
+                            <div class="col-md-12 text-center">
+                                <p style="padding: 11px 22px;" onclick="mostrarProximaSecao('secao-etapa-profissao')"
+                                    class="btn btn-info btn-round">Anterior</p>
                                 <button id="btn-submit" class="btn btn-success btn-round">Cadastrar
                                     Membro</button>
                                 <button id="btn-submit-cad" class="btn btn-success btn-round">Cadastrar
@@ -508,7 +645,13 @@
 
         });
 
-    });
+        // Verifica se tem alguma edição / criação de membro novo
+        var ultimo = @json(session('ultimo'));
+        if(ultimo){
+        abrirModal2(ultimo);
+        const datanotify = [{ texto: @json(session('message')), sucesso: @json(session('status'))}];
+        notify(datanotify);    
+    }});
 </script>
 
 <script>
@@ -605,13 +748,14 @@
     document.getElementById('secao-pessoal-2').style.display = 'none';
     document.getElementById('secao-etapa-endereco').style.display = 'none';
     document.getElementById('secao-etapa-profissao').style.display = 'none';
+    document.getElementById('secao-etapa-comprometese').style.display = 'none';
 
     function mostrarProximaSecao(secaoId) {
         document.getElementById('secao-pessoal').style.display = 'none';
         document.getElementById('secao-pessoal-2').style.display = 'none';
         document.getElementById('secao-etapa-endereco').style.display = 'none';
         document.getElementById('secao-etapa-profissao').style.display = 'none';
-
+        document.getElementById('secao-etapa-comprometese').style.display = 'none';
         document.getElementById(secaoId).style.display = 'block';
     }
 </script>
@@ -649,23 +793,23 @@
     }
 
     function converterData(data) {
+    if (data && typeof data === 'string') {
         const partesData = data.split('/');
         if (partesData.length === 3) {
-            // Verifica se a data tem três partes (mês, dia, ano)
             const mes = partesData[0].padStart(2, '0');
             const dia = partesData[1].padStart(2, '0');
             const ano = partesData[2];
 
-            // Formata o ano para quatro dígitos (considerando que 2 dígitos representam o ano de 1900)
             const anoFormatado = (ano.length === 2) ? '19' + ano : ano;
 
-            // Formata a data no formato "yyyy-MM-dd"
             return `${anoFormatado}-${mes}-${dia}`;
         } else {
-            // Se a data não estiver no formato esperado, retorne a data original
-            return data;
+            return data; // Se a data não estiver no formato esperado, retorne a data original
         }
+    } else {
+        return ''; // Se data for nula ou não for uma string, retorne vazio ou outro valor padrão
     }
+}
 
 
     function carrega_dados(id) {
@@ -680,7 +824,7 @@
                 var inputs = document.querySelectorAll('input[name]');
                 console.log(inputs);
                 const previewImg = document.querySelector('.preview-img');
-                previewImg.src = 'fotos/' + data.imagem;
+               // previewImg.src = 'fotos/' + data.imagem;
                 inputs[2].value = data
                     .nome_completo;
                 inputs[3].value = data.apelido;
@@ -726,9 +870,40 @@
                 inputs[30].value = data.igreja_batismo;
                 inputs[31].value = data.data_profissao_fe;
                 inputs[32].value = data.igreja_origem;
-
-                console.log(data.data_profissao_fe);
-
+                if (data.comp_frequentar_regularmente_atividades_igreja == 'Sim') {
+                    inputs[33].checked = true;
+                } else {
+                    inputs[34].checked = true;
+                }
+                if (data.comp_ser_aluno_EBD == 'Sim') {
+                    inputs[35].checked = true;
+                } else {
+                    inputs[36].checked = true;
+                }
+                if (data.comp_viver_em_harmonia_com_irmaos == 'Sim') {
+                    inputs[37].checked = true;
+                } else {
+                    inputs[38].checked = true;
+                }
+                if (data.comp_ser_dizimista_ofertante == 'Sim') {
+                    inputs[39].checked = true;
+                } else {
+                    inputs[40].checked = true;
+                }
+                if (data.comp_caso_ausencia_corresponder_igreja_6_meses == 'Sim') {
+                    inputs[41].checked = true;
+                } else {
+                    inputs[42].checked = true;
+                }
+                if (data.comp_receber_visita_comissao_disciplinar == 'Sim') {
+                    inputs[43].checked = true;
+                } else {
+                    inputs[44].checked = true;
+                }if (data.coleta_dados == 'Concordo') {
+                    inputs[45].checked = true;
+                } else {
+                    inputs[46].checked = true;
+                }
 
             },
             error: function() {

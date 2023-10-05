@@ -50,9 +50,107 @@ The above copyright notice and this permission notice shall be included in all c
     @include('pages.edit-membro')
     @include('pages.ver-membro')
 
+    <style>
+        .toast {
+            z-index: 10000;
+            position: absolute;
+            top: 25px;
+            right: 30px;
+            border-radius: 12px;
+            background: #fff;
+            padding: 20px 35px 20px 25px;
+            box-shadow: 0 6px 20px -5px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transform: translateX(calc(100% + 30px));
+            transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.35);
+        }
+
+        .toast.active {
+            transform: translateX(0%);
+            
+        }
+
+        .toast .toast-content {
+            display: flex;
+            align-items: center;
+        }
+
+        .toast-content .check {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 35px;
+            min-width: 35px;
+            background-color: #2770ff;
+            color: #fff;
+            font-size: 20px;
+            border-radius: 50%;
+        }
+
+        .toast-content .message {
+            display: flex;
+            flex-direction: column;
+            margin: 0 20px;
+        }
+
+        .message .text {
+            font-size: 16px;
+            font-weight: 400;
+            color: #666666;
+        }
+
+        .message .text.text-1 {
+            font-weight: 600;
+            color: #333;
+        }
+
+        .toast .close {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            padding: 5px;
+            cursor: pointer;
+            opacity: 0.7;
+        }
+
+        .toast .close:hover {
+            opacity: 1;
+        }
+
+        .toast .progress {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 3px;
+            width: 100%;
+
+        }
+
+        .toast .progress:before {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            height: 100%;
+            width: 100%;
+            background-color: #2770ff;
+        }
+
+        .progress.active:before {
+            animation: progress 5s linear forwards;
+        }
+
+        @keyframes progress {
+            100% {
+                right: 100%;
+            }
+        }
+    </style>
 
 
 <body>
+
+    
 
     <div class="wrapper">
 
@@ -105,6 +203,18 @@ The above copyright notice and this permission notice shall be included in all c
 
     </div>
     <div class="main-panel">
+        <div class="toast">
+            <div class="toast-content">
+                <i class="fa fa-solid fa-check check"></i>
+                <div class="message">
+                    <span class="text text-1 statustext"></span>
+                    <span class="text text-2 contenttext"></span>
+                </div>
+            </div>
+            <div class="progress"></div>
+
+
+        </div>
         <nav class="navbar navbar-expand-lg navbar-absolute fixed-top navbar-transparent">
             <div class="container-fluid">
                 <div class="navbar-wrapper">
@@ -199,7 +309,6 @@ The above copyright notice and this permission notice shall be included in all c
                                 <div
                                     class="align-items-center d-flex flex-lg-row flex-column justify-content-lg-between justify-content-center align-items-center">
                                     <div class="ml-2">
-                                        <h3 class="mb-0">Membros</h3>
                                     </div>
                                     <div class="d-flex justify-content-center container align-items-center">
                                         <form action="{{ route('users.search') }}" method="GET"
@@ -242,7 +351,8 @@ The above copyright notice and this permission notice shall be included in all c
                                                 align-items: center;
                                                 justify-content: start;
                                                 display: flex;
-                                            " class="icons-int">
+                                            "
+                                                    class="icons-int">
                                                     <i
                                                         onclick="abrirModal2({{ $user->id }})"class="nc-icon nc-zoom-split"></i>
                                                     <i onclick="abrirModal({{ $user->id }})" class="fa fa-pencil"
@@ -277,6 +387,54 @@ The above copyright notice and this permission notice shall be included in all c
     </div>
     </div>
 
+    <script>
+        
+
+        function notify(data){
+            // Instância de variaveis
+            data = data[0];
+            console.log(data);
+
+            toast = document.querySelector(".toast");
+            closeIcon = document.querySelector(".close");
+            progress = document.querySelector(".progress");
+            statustext = document.querySelector(".statustext");
+            contenttext = document.querySelector(".contenttext");
+            contenttext.innerHTML = data.texto;
+            if(data.sucesso == true){
+                statustext.innerHTML = 'Sucesso';
+            }else{
+                statustext.innerHTML = 'Erro';
+            }
+            let timer1, timer2;
+
+            toast.classList.add("active");
+            progress.classList.add("active");
+
+
+            //Temporizadores
+            timer1 = setTimeout(() => {
+                toast.classList.remove("active");
+            }, 5000); //1s = 1000 milliseconds
+
+            timer2 = setTimeout(() => {
+                progress.classList.remove("active");
+            }, 5300);
+        }
+
+        // Fechar notify
+        closeIcon.addEventListener("click", () => {
+            toast.classList.remove("active");
+
+            setTimeout(() => {
+                progress.classList.remove("active");
+            }, 300);
+
+            clearTimeout(timer1);
+            clearTimeout(timer2);
+        });
+    </script>
+
     <!--   Core JS Files   -->
     <script src="{{ asset('paper') }}/js/core/jquery.min.js"></script>
     <script src="{{ asset('paper') }}/js/core/popper.min.js"></script>
@@ -293,7 +451,6 @@ The above copyright notice and this permission notice shall be included in all c
     <!-- Paper Dashboard DEMO methods, don't include it in your project! -->
     <script src="{{ asset('paper') }}/demo/demo.js"></script>
     <!-- Sharrre libray -->
-    <script src="{{ asset('paper') }}/demo/jquery.sharrre.js"></script>
 
 
 </body>

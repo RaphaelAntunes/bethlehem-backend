@@ -49,13 +49,22 @@ class MembroController extends Controller
             'igreja_batismo' => $data['igreja_batismo'],
             'data_profissao_fe' => $data['data_profissao_fe'],
             'igreja_origem' => $data['igreja_origem'],
+            'comp_frequentar_regularmente_atividades_igreja' => $data['comp_frequentar_regularmente_atividades_igreja'],
+            'comp_ser_aluno_EBD' => $data['comp_ser_aluno_EBD'],
+            'comp_viver_em_harmonia_com_irmaos' => $data['comp_viver_em_harmonia_com_irmaos'],
+            'comp_ser_dizimista_ofertante' => $data['comp_ser_dizimista_ofertante'],
+            'comp_caso_ausencia_corresponder_igreja_6_meses' => $data['comp_caso_ausencia_corresponder_igreja_6_meses'],
+            'comp_receber_visita_comissao_disciplinar' => $data['comp_receber_visita_comissao_disciplinar'],
+            'coleta_dados' => $data['coleta_dados'],
+
+
         ]);
 
 
         if ($evento->save()) {
-            return  200;
+            return redirect()->back()->with(['ultimo' => $data['id'], 'message' => 'Membro cadastrado com sucesso', 'status' => true]);
         } else {
-            return response()->json(['message' => 'Erro ao cadastrar membro'], 500);
+            return redirect()->back()->with(['message' => 'Erro ao cadastrar membro, consulte um desenvolvedor', 'status' => false]);
         }
     }
     public function editmembro(Request $request)
@@ -107,16 +116,27 @@ class MembroController extends Controller
             $user->igreja_batismo = $data['igreja_batismo'];
             $user->data_profissao_fe = $data['data_profissao_fe'];
             $user->igreja_origem = $data['igreja_origem'];
+            $user->comp_frequentar_regularmente_atividades_igreja = $data['comp_frequentar_regularmente_atividades_igreja'];
+            $user->comp_ser_aluno_EBD = $data['comp_ser_aluno_EBD'];
+            $user->comp_viver_em_harmonia_com_irmaos = $data['comp_viver_em_harmonia_com_irmaos'];
+            $user->comp_ser_dizimista_ofertante = $data['comp_ser_dizimista_ofertante'];
+            $user->comp_caso_ausencia_corresponder_igreja_6_meses = $data['comp_caso_ausencia_corresponder_igreja_6_meses'];
+            $user->comp_receber_visita_comissao_disciplinar = $data['comp_receber_visita_comissao_disciplinar'];
+            $user->coleta_dados = $data['coleta_dados'];
+
+
             // Continue atualizando todos os outros campos com base nos dados do formulário
 
             // Salve as alterações no banco de dados
-            $user->save();
 
-            // Redirecione o usuário para a página de perfil ou qualquer outra página apropriada
-            return 200;
-        } else {
-            // Caso o usuário não seja encontrado, você pode lidar com isso de acordo com suas necessidades
-            return 201;
+
         }
+
+        if($user->save()){
+            return redirect()->back()->with(['ultimo' => $user->id, 'message' => 'Membro editado com sucesso','status' => true]);
+
+           } else{
+            return redirect()->back()->with(['message' => 'Erro ao editar o membro, consulte um desenvolvedor','status' => false,'icon' => 'nc-check-2']);
+           }
     }
 }
