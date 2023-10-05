@@ -51,23 +51,24 @@ The above copyright notice and this permission notice shall be included in all c
     @include('pages.ver-membro')
 
     <style>
-        .toast {
+         .toast {
             z-index: 10000;
-            position: absolute;
+            position: fixed;
             top: 25px;
             right: 30px;
             border-radius: 12px;
             background: #fff;
             padding: 20px 35px 20px 25px;
             box-shadow: 0 6px 20px -5px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
+            overflow: hidden !important;
             transform: translateX(calc(100% + 30px));
             transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.35);
+
         }
 
         .toast.active {
             transform: translateX(0%);
-            
+
         }
 
         .toast .toast-content {
@@ -202,19 +203,20 @@ The above copyright notice and this permission notice shall be included in all c
 
 
     </div>
-    <div class="main-panel">
-        <div class="toast">
-            <div class="toast-content">
-                <i class="fa fa-solid fa-check check"></i>
-                <div class="message">
-                    <span class="text text-1 statustext"></span>
-                    <span class="text text-2 contenttext"></span>
-                </div>
+    <div class="toast">
+        <div class="toast-content">
+            <i class="fa fa-solid fa-check check"></i>
+            <div class="message">
+                <span class="text text-1 statustext"></span>
+                <span class="text text-2 contenttext"></span>
             </div>
-            <div class="progress"></div>
-
-
         </div>
+        <div class="progress"></div>
+
+        
+    </div>
+    <div class="main-panel">
+       
         <nav class="navbar navbar-expand-lg navbar-absolute fixed-top navbar-transparent">
             <div class="container-fluid">
                 <div class="navbar-wrapper">
@@ -422,17 +424,6 @@ The above copyright notice and this permission notice shall be included in all c
             }, 5300);
         }
 
-        // Fechar notify
-        closeIcon.addEventListener("click", () => {
-            toast.classList.remove("active");
-
-            setTimeout(() => {
-                progress.classList.remove("active");
-            }, 300);
-
-            clearTimeout(timer1);
-            clearTimeout(timer2);
-        });
     </script>
 
     <!--   Core JS Files   -->
