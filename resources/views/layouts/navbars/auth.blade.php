@@ -34,6 +34,12 @@
                                 <p>{{ __('GERENCIAR MEMBROS') }}</p>
                             </a>
                         </li>
+                         <li class="{{ $elementActive == 'user' ? 'active' : '' }}">
+                            <a href="{{ route('page.index', 'user') }}">
+                                <i class="nc-icon nc-email-85"></i>
+                                <p>{{ __('Enviar E-mail') }}</p>
+                            </a>
+                        </li>
                           <!--
                         <li class="{{ $elementActive == 'eventos' ? 'active' : '' }}">
                             <a href="{{ route('page.index', 'eventos') }}">

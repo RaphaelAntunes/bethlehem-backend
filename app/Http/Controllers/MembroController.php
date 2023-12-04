@@ -13,8 +13,8 @@ class MembroController extends Controller
 
         $img = $request->image;
         if ($img) {
-            $extension = $img->extension();
-            $imageName = md5($img->getClientOriginalName() . strtotime("now")) . "." . $extension;
+            //$extension = $img->extension();
+            $imageName = md5($img->getClientOriginalName() . strtotime("now")) . ".jpg";
 
             $img->move(public_path('/fotos'), $imageName);
         } else {

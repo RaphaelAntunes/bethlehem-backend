@@ -756,7 +756,7 @@
         document.getElementById('secao-etapa-endereco').style.display = 'none';
         document.getElementById('secao-etapa-profissao').style.display = 'none';
         document.getElementById('secao-etapa-comprometese').style.display = 'none';
-        document.getElementById(secaoId).style.display = 'block';
+        document.getElementById('secao-etapa-comprometese').style.display = 'block';
     }
 </script>
 <script>

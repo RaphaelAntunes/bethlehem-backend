@@ -21,14 +21,14 @@ The above copyright notice and this permission notice shall be included in all c
 
 <head>
     <meta charset="utf-8" />
-    <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('paper') }}/img/apple-icon.png">
-    <link rel="icon" type="image/png" href="{{ asset('paper') }}/img/favicon.png">
+    <link rel="icon" type="image/png" href="{{ asset('paper') }}/img/logo-ib.png">
+    <link rel="icon" type="image/png" href="{{ asset('paper') }}/img/logo-ib.png">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
     <!-- Extra details for Live View on GitHub Pages -->
     
     <title>
-        {{ __('Paper Dashboard by Creative Tim') }}
+        {{ __('IBB - DashBoard') }}
     </title>
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no'
         name='viewport' />
