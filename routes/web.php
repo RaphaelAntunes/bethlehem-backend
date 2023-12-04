@@ -22,6 +22,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 
 Route::get('/search', 'App\Http\Controllers\ApiController@search')->name('users.search');
+Route::get('/getemails', [App\Http\Controllers\OptionEmailSender::class, 'getemails'])->name('getemails');
 
 
 Route::group(['middleware' => 'auth'], function () {
