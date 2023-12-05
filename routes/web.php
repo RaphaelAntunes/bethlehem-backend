@@ -21,16 +21,20 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
-Route::get('/search', 'App\Http\Controllers\ApiController@search')->name('users.search');
-Route::get('/getemails', [App\Http\Controllers\OptionEmailSender::class, 'getemails'])->name('getemails');
 
 
 Route::group(['middleware' => 'auth'], function () {
+
+Route::get('/search', 'App\Http\Controllers\ApiController@search')->name('users.search');
+
 Route::post('/edit-membro', [App\Http\Controllers\MembroController::class, 'editmembro'])->name('edit-membro');
+Route::post('/cadastrar-membro', [App\Http\Controllers\MembroController::class, 'cadastrarMembro'])->name('cadastrar-membro');
+
 Route::post('/salvar-evento', [App\Http\Controllers\EventoController::class, 'salvarEvento'])->name('salvarEvento');
 Route::post('/salvar-foto', [App\Http\Controllers\EventoController::class, 'salvarFoto']);
 
-Route::post('/cadastrar-membro', [App\Http\Controllers\MembroController::class, 'cadastrarMembro'])->name('cadastrar-membro');
+Route::get('/getemails', [App\Http\Controllers\OptionEmailSender::class, 'getemails'])->name('getemails');
+
 
 Route::get('/eventos', ['as' => 'eventos', 'uses' => 'App\Http\Controllers\PageController@eventos']);
 Route::get('/get-mediadores', [App\Http\Controllers\EventoController::class, 'getMediadores']);
@@ -47,5 +51,6 @@ Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'App\Http\
 
 Route::group(['middleware' => 'auth'], function () {
 	Route::get('{page}', ['as' => 'page.index', 'uses' => 'App\Http\Controllers\PageController@index']);
+    
 });
 
