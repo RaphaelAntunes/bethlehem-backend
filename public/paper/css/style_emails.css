@@ -1,0 +1,115 @@
+.see {
+    background: #5b5b5b;
+    border-radius: 5px;
+    padding: 5px;
+    color: white;
+    margin-top: 10px;
+}
+
+.modal .seehover:hover {
+    background: #333232 !important;
+}
+
+#selectedemails div {
+    display: flex;
+    align-items: center;
+    margin-right: 3px;
+}
+
+#toolbar {
+    background: #E9ECEF;
+    width: 50%;
+    border-radius: 5px;
+}
+
+#toolbar div {
+    padding: 15px;
+}
+
+#toolbar p {
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 12px;
+    margin: 0px;
+}
+
+.nc-icon {
+    font-size: 24px !important;
+    margin-bottom: 5px;
+}
+
+#search {
+    border: 1px solid #dddddd;
+    border-radius: 5px;
+    padding: 8px;
+}
+
+.profile-card {
+    display: flex;
+    justify-content: space-between;
+}
+
+.profile {
+    border-radius: 5px;
+    padding: 10px;
+    background: #5b5b5b57;
+    display: flex;
+    align-items: center;
+    color: black;
+    margin: 5px;
+    transition: 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+    cursor: pointer;
+}
+
+.profile:hover {
+    padding: 15px;
+    background: #5b5b5b;
+    color: white;
+}
+
+.card label {
+    font-size: 17px !important;
+}
+
+.avatar {
+    margin-bottom: 0px !important;
+    background-color: #5b5b5b61;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    overflow: hidden;
+    position: relative;
+    margin-right: 10px;
+}
+
+.avatar img {
+    max-width: 100%;
+}
+
+.profile-info {
+    text-align: start;
+    display: flex;
+    flex-direction: column;
+    line-height: 13px;
+}
+
+.profile-info p {
+    margin: 0px;
+    font-size: 10px;
+}
+
+.boxfer {
+    cursor: pointer;
+    transition: .2s;
+}
+
+.boxfer:hover {
+    transition: .2s;
+    background: #495057;
+    padding: 10px;
+    color: white !important;
+}
+
+.modal-content {
+    position: block !important;
+}

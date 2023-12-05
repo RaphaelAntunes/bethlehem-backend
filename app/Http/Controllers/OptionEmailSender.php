@@ -21,11 +21,12 @@ class OptionEmailSender extends Controller
     
         return $users;
     }
+    
 
     public function getemailsall()
     {
     
-        $users = ModelController::select('email')->get();
+        $users = ModelController::select('nome_completo', 'email', 'imagem')->get();
     
         return $users;
     }

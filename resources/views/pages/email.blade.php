@@ -37,6 +37,7 @@ The above copyright notice and this permission notice shall be included in all c
     <link href="{{ asset('paper') }}/css/paper-dashboard.css?v=2.0.0" rel="stylesheet" />
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link href="{{ asset('paper') }}/demo/demo.css" rel="stylesheet" />
+    <link href="{{ asset('paper') }}/css/style_emails.css" rel="stylesheet" />
 
 
     <!-- End Google Tag Manager -->
@@ -83,6 +84,29 @@ The above copyright notice and this permission notice shall be included in all c
                 </div>
             </div>
         </nav>
+        <!-- Button trigger modal -->
+
+
+        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+            aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">E-mails selecionados</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div id="boxselectemails">
+
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <div class="content">
             <div class="container-fluid mt--7">
@@ -127,35 +151,16 @@ The above copyright notice and this permission notice shall be included in all c
                                             </div>
 
 
-
                                             <div id="profile-container" class="d-flex"></div>
 
-                                            <script>
-                                                // Função para adicionar o código HTML ao container
-                                                function addProfileCard(user) {
-                                                    // Código HTML que você deseja adicionar
-                                                    var profileCardHTML = `
-                                                        <div class="profile-card">
-                                                            <div class="profile">
-                                                                <div class="avatar">
-                                                                    <img src="fotos/` + user.imagem + `" alt="">
-                                                                </div>
-                                                                <div class="profile-info">
-                                                                    <span>` + user.nome_completo + `</span>
-                                                                    <p>` + user.email + `</p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    `;
-                                                    // Adiciona o conteúdo HTML ao container
-                                                    document.getElementById("profile-container").insertAdjacentHTML('beforeend', profileCardHTML);
-                                                }
-
-                                                // Adiciona o bloco de código três vezes como exemplo
-                                            </script>
-                                            <div class="d-flex">
-                                                <p id="countemail" style="border-radius: 5px 0px 0px 5px;" class="see">0 E-mails adicionados</p>
-                                                <p class="see seehover" style="border-radius:0px 5px 5px 0px; background: #59595994; cursor: pointer;"><img style="width:20px;" src="images/eye.png" alt=""></p>
+                                            <div class="d-flex" onclick="Atualizaeabremodal()" data-toggle="modal"
+                                                data-target="#exampleModalCenter">
+                                                <p id="countemail" style="border-radius: 5px 0px 0px 5px;"
+                                                    class="see">0 E-mails adicionados</p>
+                                                <p class="see seehover"
+                                                    style="border-radius:0px 5px 5px 0px; background: #59595994; cursor: pointer;">
+                                                    <img style="width:20px;" src="images/eye.png" alt="">
+                                                </p>
                                             </div>
                                             <div id="selectedemails" style="    flex-wrap: wrap;"
                                                 class="d-flex container">
@@ -180,128 +185,8 @@ The above copyright notice and this permission notice shall be included in all c
     </div>
     </div>
 
-    <style>
-        .see {
-            background: #5b5b5b;
-            border-radius: 5px;
-            padding: 5px;
-            color: white;
-            margin-top: 10px;
-        }
 
-        .seehover:hover{
-            background: #333232!important;
-
-        }
-
-        #selectedemails div {
-            display: flex;
-            align-items: center;
-            margin-right: 3px;
-        }
-
-        #toolbar {
-            background: #E9ECEF;
-            width: 50%;
-            border-radius: 5px;
-        }
-
-        #toolbar div {
-            padding: 15px;
-        }
-
-        #toolbar p {
-            font-size: 13px;
-            font-weight: 500;
-            line-height: 12px;
-            margin: 0px;
-        }
-
-        .nc-icon {
-            font-size: 24px !important;
-            margin-bottom: 5px;
-        }
-
-        #search {
-            border: 1px solid #dddddd;
-            border-radius: 5px;
-            padding: 8px;
-        }
-
-        .profile-card {
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .profile {
-            border-radius: 5px;
-            padding: 10px;
-            background: #5b5b5b57;
-            display: flex;
-            align-items: center;
-            color: black;
-            margin: 5px;
-            transition: 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
-            cursor: pointer;
-        }
-
-        .profile:hover {
-            padding: 15px;
-            background: #5b5b5b;
-            color: white;
-        }
-
-        .card label{
-            font-size: 17px !important;
-        }
-
-        .avatar {
-            margin-bottom: 0px !important;
-            background-color: #5b5b5b61;
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            overflow: hidden;
-            position: relative;
-            margin-right: 10px;
-        }
-
-        .avatar img {
-            max-width: 100%;
-        }
-
-        .profile-info {
-            text-align: start;
-            display: flex;
-            flex-direction: column;
-            line-height: 13px;
-        }
-
-        .profile-info p {
-            margin: 0px;
-            font-size: 10px;
-        }
-
-        .boxfer {
-            cursor: pointer;
-            transition: .2s;
-
-        }
-
-        .boxfer:hover {
-            transition: .2s;
-            background: #495057;
-            padding: 10px;
-            color: white !important;
-        }
-    </style>
     <script>
-        // Criação do elemento div
-
-
-
-
-
         // Função para exibir notificação
         function notify(data) {
             // Extrai o primeiro elemento do array (se houver)
@@ -338,36 +223,14 @@ The above copyright notice and this permission notice shall be included in all c
         var act_criarlista = $('#act_criarlista');
         var act_verlistas = $('#act_verlistas');
         var countemail = $('#countemail');
-        var emails = [];
+        var searchValue = $('#search').val();
 
+        var emails = [];
+        var sem_emails = [];
         // Função para adicionar emails à lista
         function addEmailToList(user) {
             if (!emails.includes(user.email)) {
                 emails.push(user.email);
-
-                var divElement = document.createElement('div');
-                var removeButton = document.createElement('span');
-
-                // Configuração do botão de remoção
-                removeButton.classList = 'nc-icon nc-simple-remove';
-                removeButton.style.color = 'red';
-                removeButton.style.cursor = 'pointer';
-
-                // Configuração da div de email
-                divElement.classList = 'cardemails';
-                removeButton.addEventListener('click', function() {
-                    divElement.parentNode.removeChild(divElement);
-                    var index = emails.indexOf(user.email);
-                    if (index !== -1) {
-                        emails.splice(index, 1);
-                    }
-                    updateEmailCount();
-                    console.log('E-mail removido:', user.email);
-                });
-
-                // Adiciona o email à lista na tela
-                selectedemails.appendChild(divElement).textContent = user.email;
-                divElement.appendChild(removeButton);
             }
         }
 
@@ -380,11 +243,16 @@ The above copyright notice and this permission notice shall be included in all c
         act_inserirtodos.on('click', function() {
             $.get('/getemailsall', function(data) {
                 data.forEach(function(user) {
-                    addEmailToList(user);
+                    addtolist(user.email);
                 });
                 updateEmailCount();
             });
         });
+
+
+
+
+
 
         // Evento de clique no botão "Limpar Todos"
         act_limpartodos.on('click', function() {
@@ -393,6 +261,25 @@ The above copyright notice and this permission notice shall be included in all c
             updateEmailCount();
         });
 
+
+
+        act_adicionaremail.on('click', function() {
+            var searchValue = $('#search').val();
+            if (isValidEmail(searchValue) && !emails.includes(searchValue)) {
+                var user = {
+                    "nome_completo": null,
+                    "email": searchValue,
+                    "imagem": null
+                };
+                emails.push(searchValue);
+                sem_emails.push(user);
+                updateEmailCount();
+                addSelectedCard(user);
+
+            } else {
+                alert('O valor não é um e-mail válido.');
+            }
+        });
         $(document).ready(function() {
             var searchInput = $('#search');
             var usersSelect = $('#usersSelect');
@@ -460,6 +347,108 @@ The above copyright notice and this permission notice shall be included in all c
             // Função para atualizar a contagem de emails
 
         });
+
+
+        ////////////// FUNÇÕES DE SUPORTE /////////////////////
+
+        function isValidEmail(email) {
+            // Expressão regular para verificar se o valor é um e-mail
+            var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+
+        function addtolist(email) {
+            if (!emails.includes(email)) {
+                emails.push(email);
+                updateEmailCount();
+            }
+        }
+
+        function removetolist(email) {
+            var index = emails.indexOf(email);
+            console.log(email);
+            if (index !== -1) {
+                // Remove o email do array
+                emails.splice(index, 1);
+                sem_emails.splice(index, 1);
+
+                // Remove o elemento correspondente pelo ID escapado
+                $("#profile-" + $.escapeSelector(email)).remove();
+            }
+            updateEmailCount();
+        }
+
+        function addProfileCard(user) {
+            // Código HTML que você deseja adicionar
+            var profileCardHTML = ` <div class="profile-card" onclick="addtolist('${user.email}')">
+        <div class="profile">
+            <div class="avatar">
+                <img src="fotos/${user.imagem}" alt="">
+            </div>
+            <div class="profile-info">
+                <span>${user.nome_completo}</span>
+                <p>${user.email}</p>
+            </div>
+        </div>
+    </div>`;
+            // Adiciona o conteúdo HTML ao container
+            document.getElementById("profile-container").insertAdjacentHTML('beforeend', profileCardHTML);
+
+        }
+
+
+        function Atualizaeabremodal() {
+           $('#boxselectemails .profile').remove();
+            $.get('/getemailsall', function(data) {
+                data.forEach(function(user) {
+                    if (emails.includes(user.email)) {
+                        addSelectedCard(user);
+                    }
+                });
+                sem_emails.forEach(function(user) {
+                    addSelectedCard(user);
+
+                });
+                console.log(emails);
+                console.log(sem_emails);
+
+                
+            });
+        }
+
+        function addSelectedCard(user) {
+            // Cria o elemento jQuery com o HTML desejado
+            if(user.imagem == null){
+                user.imagem = 'not-user.png';
+            }
+            else if(user.nome_completo == null){
+                user.nome_completo = 'Não cadastrado';
+
+            }
+
+            console.log(user);
+            var $selectedCard = $(
+                `
+        <div class="profile d-flex justify-content-between" id="profile-${user.email}">
+            <div class="d-flex justify-content-center align-items-center">
+                <div class="avatar">
+                    <img src="fotos/${user.imagem}" alt="">
+                </div>
+                <div class="profile-info">
+                    <span>${user.nome_completo}</span>
+                    <p>${user.email}</p>
+                </div>
+            </div>
+            <div onclick="removetolist('${user.email}')">
+                <h1 style="margin: 0px;" >X</h1>
+            </div>    
+        </div>
+    `
+            );
+
+            // Adiciona o elemento ao container
+            $("#boxselectemails").append($selectedCard);
+        }
     </script>
 
     <!--   Core JS Files   -->
