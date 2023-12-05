@@ -50,15 +50,15 @@ The above copyright notice and this permission notice shall be included in all c
     @include('pages.edit-membro')
     @include('pages.ver-membro')
 
-    
+
 
 
 <body>
 
 
 
-  
-  
+
+
     <div class="main-panel">
 
         <nav class="navbar navbar-expand-lg navbar-absolute fixed-top navbar-transparent">
@@ -96,37 +96,67 @@ The above copyright notice and this permission notice shall be included in all c
                                         <h4>Envie e-mails, faça comunicados !</h4>
                                         <div
                                             class="d-flex justify-content-center flex-column container align-items-center">
-                                            <div class="d-flex flex-column">
+                                            <div class="d-flex flex-column container">
                                                 <label for="search">Digite o E-mail / Nome</label>
-                                                <input type="text" class="mb-3" id="search">
+                                                <input type="text" class="mb-3" id="search"
+                                                    placeholder="Digite o E-mail / Nome">
                                             </div>
-                                            <div id="toolbar" class="d-flex flex-row justify-content-center align-items-center">
-                                                <div class="d-flex flex-column-reverse ">
-                                                    <label for="">Adicionar<br>E-mail</label>
-                                                    <i class="nc-icon nc-single-02"></i>
+                                            <div id="toolbar"
+                                                class="d-flex flex-row justify-content-center align-items-center">
+                                                <div id="act_adicionaremail" class="d-flex flex-column-reverse boxfer">
+                                                    <p>Adicionar<br>E-mail</p>
+                                                    <i class="nc-icon nc-email-85"></i>
                                                 </div>
-                                                <div id="act_inserirtodos" class="d-flex flex-column-reverse ">
-                                                    <label for="">Inserir<br>todos</label>
-                                                    <i class="nc-icon nc-single-02"></i>
+                                                <div id="act_inserirtodos" class="d-flex flex-column-reverse boxfer">
+                                                    <p>Inserir<br>todos</p>
+                                                    <i class="nc-icon nc-cloud-upload-94"></i>
                                                 </div>
-                                                <div id="act_limpartodos" class="d-flex flex-column-reverse ">
-                                                    <label for="">Limpar<br>todos</label>
-                                                    <i class="nc-icon nc-single-02"></i>
-                                                </div><div class="d-flex flex-column-reverse ">
-                                                    <label for="">Criar<br>Lista</label>
-                                                    <i class="nc-icon nc-single-02"></i>
-                                                </div>  
-                                                <div class="d-flex flex-column-reverse ">
-                                                    <label for="">Ver<br>Listas</label>
-                                                    <i class="nc-icon nc-single-02"></i>
-                                                </div> 
-                                             
-                                            </div>
-                                            <select id="usersSelect" class="form-control">
-                                                <option value="">Selecione um usuário</option>
-                                                <!-- As opções serão preenchidas dinamicamente pelo JavaScript -->
-                                            </select>
+                                                <div id="act_limpartodos" class="d-flex flex-column-reverse boxfer">
+                                                    <p>Limpar<br>todos</p>
+                                                    <i class="nc-icon nc-simple-remove"></i>
+                                                </div>
+                                                <div class="d-flex flex-column-reverse boxfer">
+                                                    <p>Criar<br>Lista</p>
+                                                    <i class="nc-icon nc-simple-add"></i>
+                                                </div>
+                                                <div id="act_verlistas"class="d-flex flex-column-reverse boxfer">
+                                                    <p>Ver<br>Listas</p>
+                                                    <i class="nc-icon nc-single-copy-04"></i>
+                                                </div>
 
+                                            </div>
+
+
+
+                                            <div id="profile-container" class="d-flex"></div>
+
+                                            <script>
+                                                // Função para adicionar o código HTML ao container
+                                                function addProfileCard(user) {
+                                                    // Código HTML que você deseja adicionar
+                                                    var profileCardHTML = `
+                                                        <div class="profile-card">
+                                                            <div class="profile">
+                                                                <div class="avatar">
+                                                                    <img src="fotos/` + user.imagem + `" alt="">
+                                                                </div>
+                                                                <div class="profile-info">
+                                                                    <span>` + user.nome_completo + `</span>
+                                                                    <p>` + user.email + `</p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    `;
+                                                    // Adiciona o conteúdo HTML ao container
+                                                    document.getElementById("profile-container").insertAdjacentHTML('beforeend', profileCardHTML);
+                                                }
+
+                                                // Adiciona o bloco de código três vezes como exemplo
+                                            </script>
+                                            <div class="d-flex">
+                                                <p id="countemail" style="border-radius: 5px 0px 0px 5px;" class="see">0 E-mails adicionados</p>
+                                                <p class="see seehover" style="border-radius:0px 5px 5px 0px; background: #59595994; cursor: pointer;"><img style="width:20px;" src="images/eye.png" alt=""></p>
+                                            </div>
                                             <div id="selectedemails" style="    flex-wrap: wrap;"
                                                 class="d-flex container">
                                             </div>
@@ -151,130 +181,286 @@ The above copyright notice and this permission notice shall be included in all c
     </div>
 
     <style>
+        .see {
+            background: #5b5b5b;
+            border-radius: 5px;
+            padding: 5px;
+            color: white;
+            margin-top: 10px;
+        }
+
+        .seehover:hover{
+            background: #333232!important;
+
+        }
+
         #selectedemails div {
             display: flex;
             align-items: center;
             margin-right: 3px;
         }
 
-        #toolbar{
+        #toolbar {
             background: #E9ECEF;
+            width: 50%;
+            border-radius: 5px;
         }
 
-        #toolbar div{
-            padding: 5px;
+        #toolbar div {
+            padding: 15px;
         }
 
-        #toolbar label{
-            color: #495057;
-            font-weight: 600;
+        #toolbar p {
+            font-size: 13px;
+            font-weight: 500;
             line-height: 12px;
+            margin: 0px;
+        }
+
+        .nc-icon {
+            font-size: 24px !important;
+            margin-bottom: 5px;
+        }
+
+        #search {
+            border: 1px solid #dddddd;
+            border-radius: 5px;
+            padding: 8px;
+        }
+
+        .profile-card {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .profile {
+            border-radius: 5px;
+            padding: 10px;
+            background: #5b5b5b57;
+            display: flex;
+            align-items: center;
+            color: black;
+            margin: 5px;
+            transition: 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+            cursor: pointer;
+        }
+
+        .profile:hover {
+            padding: 15px;
+            background: #5b5b5b;
+            color: white;
+        }
+
+        .card label{
+            font-size: 17px !important;
+        }
+
+        .avatar {
+            margin-bottom: 0px !important;
+            background-color: #5b5b5b61;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            overflow: hidden;
+            position: relative;
+            margin-right: 10px;
+        }
+
+        .avatar img {
+            max-width: 100%;
+        }
+
+        .profile-info {
+            text-align: start;
+            display: flex;
+            flex-direction: column;
+            line-height: 13px;
+        }
+
+        .profile-info p {
+            margin: 0px;
+            font-size: 10px;
+        }
+
+        .boxfer {
+            cursor: pointer;
+            transition: .2s;
+
+        }
+
+        .boxfer:hover {
+            transition: .2s;
+            background: #495057;
+            padding: 10px;
+            color: white !important;
         }
     </style>
-
     <script>
+        // Criação do elemento div
+
+
+
+
+
+        // Função para exibir notificação
         function notify(data) {
-            // Instância de variaveis
+            // Extrai o primeiro elemento do array (se houver)
             data = data[0];
-            console.log(data);
 
-            toast = document.querySelector(".toast");
-            closeIcon = document.querySelector(".close");
-            progress = document.querySelector(".progress");
-            statustext = document.querySelector(".statustext");
-            contenttext = document.querySelector(".contenttext");
+            // Variáveis de elementos da notificação
+            var toast = document.querySelector(".toast");
+            var closeIcon = document.querySelector(".close");
+            var progress = document.querySelector(".progress");
+            var statustext = document.querySelector(".statustext");
+            var contenttext = document.querySelector(".contenttext");
+
+            // Define o conteúdo da notificação
             contenttext.innerHTML = data.texto;
-            if (data.sucesso == true) {
-                statustext.innerHTML = 'Sucesso';
-            } else {
-                statustext.innerHTML = 'Erro';
-            }
-            let timer1, timer2;
+            statustext.innerHTML = data.sucesso ? 'Sucesso' : 'Erro';
 
-            toast.classList.add("active");
-            progress.classList.add("active");
-
-
-            //Temporizadores
-            timer1 = setTimeout(() => {
+            // Temporizadores para ocultar a notificação após alguns segundos
+            var timer1 = setTimeout(() => {
                 toast.classList.remove("active");
-            }, 5000); //1s = 1000 milliseconds
+            }, 5000);
 
-            timer2 = setTimeout(() => {
+            var timer2 = setTimeout(() => {
                 progress.classList.remove("active");
             }, 5300);
+
+            // Console.log para depuração
+            console.log(data);
         }
-    </script>
 
-    @push('scripts')
-        <script>
-            var emails = [];
-            $(document).ready(function() {
-                $('#search').on('input', function() {
-                    var searchValue = $(this).val();
-                    var usersSelect = $('#usersSelect');
-                    var selectedemails = $('#selectedemails');
+        // Variáveis globais
+        var act_adicionaremail = $('#act_adicionaremail');
+        var act_inserirtodos = $('#act_inserirtodos');
+        var act_limpartodos = $('#act_limpartodos');
+        var act_criarlista = $('#act_criarlista');
+        var act_verlistas = $('#act_verlistas');
+        var countemail = $('#countemail');
+        var emails = [];
 
-                    $.get('/getemails?search=' + searchValue, function(data) {
-                        // Limpa as opções existentes
-                        usersSelect.empty();
+        // Função para adicionar emails à lista
+        function addEmailToList(user) {
+            if (!emails.includes(user.email)) {
+                emails.push(user.email);
 
-                        // Adiciona a opção padrão
-                        usersSelect.append('<option value="">Selecione um usuário</option>');
+                var divElement = document.createElement('div');
+                var removeButton = document.createElement('span');
 
-                        // Adiciona as opções retornadas pela API
-                        data.forEach(function(user) {
-                            usersSelect.append('<option value="' + user.email + '">' + user
-                                .nome_completo + ' - ' + user.email + '</option>');
-                        });
+                // Configuração do botão de remoção
+                removeButton.classList = 'nc-icon nc-simple-remove';
+                removeButton.style.color = 'red';
+                removeButton.style.cursor = 'pointer';
 
-                    });
+                // Configuração da div de email
+                divElement.classList = 'cardemails';
+                removeButton.addEventListener('click', function() {
+                    divElement.parentNode.removeChild(divElement);
+                    var index = emails.indexOf(user.email);
+                    if (index !== -1) {
+                        emails.splice(index, 1);
+                    }
+                    updateEmailCount();
+                    console.log('E-mail removido:', user.email);
                 });
-                usersSelect.addEventListener('change', function() {
-                    // Obtém o valor selecionado
-                    var selectedValue = usersSelect.value;
 
-                    // Verifica se o valor já está no array
-                    if (!emails.includes(selectedValue) && selectedValue.trim() !== '') {
-                        // Adiciona o valor ao array de emails
-                        emails.push(selectedValue);
-                        // Registra no console.log
-                        console.log('Seleção do usuário:', emails);
-                        //div
-                        var divElement = document.createElement('div');
-                        // Cria um botão de remoção
-                        var removeButton = document.createElement('span');
-                        removeButton.classList = 'nc-icon nc-simple-remove';
-                        removeButton.style.color = 'red';
-                        removeButton.style.cursor = 'pointer';
+                // Adiciona o email à lista na tela
+                selectedemails.appendChild(divElement).textContent = user.email;
+                divElement.appendChild(removeButton);
+            }
+        }
 
-                        removeButton.addEventListener('click', function() {
-                            // Remove o elemento <p> quando o botão é clicado
-                            divElement.parentNode.removeChild(divElement);
-                            var index = emails.indexOf(selectedValue);
-                            if (index !== -1) {
-                                // Remove o email do array
-                                emails.splice(index, 1);
+        // Função para atualizar a contagem de emails
+        function updateEmailCount() {
+            countemail.text(emails.length + ' E-mails adicionados');
+        }
+
+        // Evento de clique no botão "Inserir Todos"
+        act_inserirtodos.on('click', function() {
+            $.get('/getemailsall', function(data) {
+                data.forEach(function(user) {
+                    addEmailToList(user);
+                });
+                updateEmailCount();
+            });
+        });
+
+        // Evento de clique no botão "Limpar Todos"
+        act_limpartodos.on('click', function() {
+            emails = [];
+            $('.cardemails').remove();
+            updateEmailCount();
+        });
+
+        $(document).ready(function() {
+            var searchInput = $('#search');
+            var usersSelect = $('#usersSelect');
+            var selectedemails = $('#selectedemails');
+
+            searchInput.on('input', function() {
+                var searchValue = $(this).val();
+                $('.profile-card').remove();
+
+                $.get('/getemails?search=' + searchValue, function(data) {
+                    data.forEach(function(user) {
+                        $('.profile-card').remove();
+
+                        // Adiciona os novos perfis
+                        data.forEach(function(user) {
+                            addProfileCard(user);
+                            if (searchValue == '') {
+                                $('.profile-card').remove();
 
                             }
-
-
-                            console.log('E-mail removido:', selectedValue);
                         });
-
-
-
-                        /// Listar na tela
-                        selectedemails.appendChild(divElement).textContent = selectedValue;
-                        divElement.appendChild(removeButton);
-
-                    } else {
-                        console.log('O valor já está no array:', selectedValue);
-                    }
+                    });
                 });
             });
-        </script>
-    @endpush
+
+            usersSelect.on('change', function() {
+                // Obtém o valor selecionado
+                var selectedValue = usersSelect.val();
+
+                // Verifica se o valor já está no array
+                if (!emails.includes(selectedValue) && selectedValue.trim() !== '') {
+                    // Adiciona o valor ao array de emails
+                    emails.push(selectedValue);
+
+                    // Registra no console.log
+                    console.log('Seleção do usuário:', emails);
+
+                    // Criação de elementos HTML
+                    var divElement = $('<div>').addClass('cardemails');
+                    var removeButton = $('<span>').addClass('nc-icon nc-simple-remove').css({
+                        'color': 'red',
+                        'cursor': 'pointer'
+                    });
+
+                    // Adiciona evento de clique ao botão de remoção
+                    removeButton.on('click', function() {
+                        divElement.remove();
+                        var index = emails.indexOf(selectedValue);
+                        if (index !== -1) {
+                            // Remove o email do array
+                            emails.splice(index, 1);
+                        }
+                        updateEmailCount();
+                        console.log('E-mail removido:', selectedValue);
+                    });
+
+                    // Listar na tela
+                    selectedemails.append(divElement.text(selectedValue).append(removeButton));
+                    updateEmailCount();
+                } else {
+                    console.log('O valor já está no array:', selectedValue);
+                }
+            });
+
+            // Função para atualizar a contagem de emails
+
+        });
+    </script>
 
     <!--   Core JS Files   -->
     <script src="{{ asset('paper') }}/js/core/jquery.min.js"></script>

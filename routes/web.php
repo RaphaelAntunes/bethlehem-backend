@@ -34,6 +34,7 @@ Route::post('/salvar-evento', [App\Http\Controllers\EventoController::class, 'sa
 Route::post('/salvar-foto', [App\Http\Controllers\EventoController::class, 'salvarFoto']);
 
 Route::get('/getemails', [App\Http\Controllers\OptionEmailSender::class, 'getemails'])->name('getemails');
+Route::get('/getemailsall', [App\Http\Controllers\OptionEmailSender::class, 'getemailsall'])->name('getemailsall');
 
 
 Route::get('/eventos', ['as' => 'eventos', 'uses' => 'App\Http\Controllers\PageController@eventos']);

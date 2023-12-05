@@ -12,9 +12,20 @@ class OptionEmailSender extends Controller
         $search = $request->input('search');
     
         $users = ModelController::select('nome_completo', 'email', 'imagem')
-                 ->where('nome_completo', 'like', '%' . $search . '%')
-                 ->limit(5)
-                 ->get();
+                     ->where(function ($query) use ($search) {
+                         $query->where('nome_completo', 'like', '%' . $search . '%')
+                               ->orWhere('email', 'like', '%' . $search . '%');
+                     })
+                     ->limit(4)
+                     ->get();
+    
+        return $users;
+    }
+
+    public function getemailsall()
+    {
+    
+        $users = ModelController::select('email')->get();
     
         return $users;
     }
