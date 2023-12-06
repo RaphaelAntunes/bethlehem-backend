@@ -11,6 +11,8 @@ class PHPMailerController extends Controller
     {
         try {
             $emails = $request->input('emails');
+            $assunto = $request->input('assunto');
+            $msg = $request->input('msg');
 
             // Configurações do servidor SMTP
             $mail = new PHPMailer(true);
@@ -27,7 +29,7 @@ class PHPMailerController extends Controller
 
             // Conteúdo do e-mail
             $mail->isHTML(true);
-            $mail->Subject = 'Assunto do E-mail';
+            $mail->Subject = $assunto;
 
             foreach ($emails as $destinatario) {
                 // Adiciona um destinatário
@@ -99,9 +101,7 @@ class PHPMailerController extends Controller
                             <p class="txt-logo">Igreja<br>Batista<br>Bethleem</p>
                         </div>
                         <main>
-                            <h1>Olá,</h1>
-                            <p>Este é um exemplo de e-mail em HTML com uma logo.</p>
-                            <p>Você pode personalizar este conteúdo de acordo com suas necessidades.</p>
+                           '.$msg.' 
                         </main>
                         <footer>
                             <p>Atenciosamente,<br>Seu Nome</p>
@@ -115,9 +115,12 @@ class PHPMailerController extends Controller
                 $mail->send();
             }
 
-            return response()->json(['message' => 'E-mails enviados com sucesso']);
+            return response()->json(['message' => 'E-mails enviados com sucesso','status' => true]);
+            
         } catch (Exception $e) {
-            return response()->json(['error' => "Erro no envio do e-mail: {$mail->ErrorInfo}"], 500);
+            //return response()->json(['error' => "Erro no envio do e-mail: {$mail->ErrorInfo}"], 500);
+            return response()->json(['message' => "Erro no envio do e-mail: {$mail->ErrorInfo}",'status' => false]);
+
         }
     }
 }

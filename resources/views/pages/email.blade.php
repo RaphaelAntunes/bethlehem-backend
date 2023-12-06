@@ -38,6 +38,7 @@ The above copyright notice and this permission notice shall be included in all c
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link href="{{ asset('paper') }}/demo/demo.css" rel="stylesheet" />
     <link href="{{ asset('paper') }}/css/style_emails.css" rel="stylesheet" />
+    <x-head.tinymce-config />
 
 
     <!-- End Google Tag Manager -->
@@ -59,6 +60,18 @@ The above copyright notice and this permission notice shall be included in all c
 
 
 
+    <div class="toast">
+        <div class="toast-content">
+            <i class="fa fa-solid fa-check check"></i>
+            <div class="message">
+                <span class="text text-1 statustext"></span>
+                <span class="text text-2 contenttext"></span>
+            </div>
+        </div>
+        <div class="progress"></div>
+
+
+    </div>
 
     <div class="main-panel">
 
@@ -166,12 +179,15 @@ The above copyright notice and this permission notice shall be included in all c
                                                 class="d-flex container">
                                             </div>
 
+                                            <input type="text" class="mb-3" id="assunto"
+                                                style="width:100%; max-width:700px;" placeholder="Assunto">
 
+                                            <x-forms.tinymce-editor />
                                         </div>
                                     </div>
-                                    <textarea style="border-radius: 5px;" class="mt-3" name="" id="" cols="50" rows="10"></textarea>
 
-                                    <button class="mt-5 mb-5 btn" onclick="submitemail();">Enviar</button>
+
+                                    <button id="btnsubmit" class="mt-5 mb-5 btn" onclick="submitemail();">Enviar</button>
                                 </div>
                             </div>
 
@@ -191,31 +207,35 @@ The above copyright notice and this permission notice shall be included in all c
     <script>
         // Função para exibir notificação
         function notify(data) {
-            // Extrai o primeiro elemento do array (se houver)
+            // Instância de variaveis
             data = data[0];
+            console.log(data);
 
-            // Variáveis de elementos da notificação
-            var toast = document.querySelector(".toast");
-            var closeIcon = document.querySelector(".close");
-            var progress = document.querySelector(".progress");
-            var statustext = document.querySelector(".statustext");
-            var contenttext = document.querySelector(".contenttext");
-
-            // Define o conteúdo da notificação
+            toast = document.querySelector(".toast");
+            closeIcon = document.querySelector(".close");
+            progress = document.querySelector(".progress");
+            statustext = document.querySelector(".statustext");
+            contenttext = document.querySelector(".contenttext");
             contenttext.innerHTML = data.texto;
-            statustext.innerHTML = data.sucesso ? 'Sucesso' : 'Erro';
+            if (data.sucesso == true) {
+                statustext.innerHTML = 'Sucesso';
+            } else {
+                statustext.innerHTML = 'Erro';
+            }
+            let timer1, timer2;
 
-            // Temporizadores para ocultar a notificação após alguns segundos
-            var timer1 = setTimeout(() => {
+            toast.classList.add("active");
+            progress.classList.add("active");
+
+
+            //Temporizadores
+            timer1 = setTimeout(() => {
                 toast.classList.remove("active");
-            }, 5000);
+            }, 5000); //1s = 1000 milliseconds
 
-            var timer2 = setTimeout(() => {
+            timer2 = setTimeout(() => {
                 progress.classList.remove("active");
             }, 5300);
-
-            // Console.log para depuração
-            console.log(data);
         }
 
         // Variáveis globais
@@ -451,22 +471,50 @@ The above copyright notice and this permission notice shall be included in all c
             $("#boxselectemails").append($selectedCard);
         }
 
+        function limpar(){
+            $("#search").val("");
+            emails = [];
+            updateEmailCount();
+
+        }
 
 
         function submitemail() {
+
+            if(emails.length == 0){
+                $("#search").focus();
+            }
+
+            var assunto = $('#assunto').val();
+            var msg = tinymce.get('myeditorinstance').getContent();
+            $("#btnsubmit").prop("disabled", true);
             $.ajax({
                 url: '{{ route('enviarEmail') }}',
                 type: 'POST',
                 data: {
                     _token: '{{ csrf_token() }}', // Adicione o token CSRF aqui
-                    emails: emails
+                    emails: emails,
+                    assunto: assunto,
+                    msg: msg
                 },
                 success: function(response) {
                     console.log(response);
-                    // Faça algo com a resposta, se necessário
+                    $("#btnsubmit").prop("disabled", false);
+                    const datanotify = [{
+                        texto: response.message,
+                        sucesso: response.status
+                    }];
+                    notify(datanotify);
+                    limpar();
                 },
                 error: function(error) {
+                    $("#btnsubmit").prop("disabled", false);
                     console.log(error);
+                    const datanotify = [{
+                        texto: 'Um erro ocorreu, não foi possivel concluir',
+                        sucesso: false
+                    }];
+                    notify(datanotify);
                 }
             });
         }
