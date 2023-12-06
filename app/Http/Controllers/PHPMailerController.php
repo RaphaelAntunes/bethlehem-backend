@@ -1,69 +1,124 @@
 <?php
- 
 namespace App\Http\Controllers;
- 
 use Illuminate\Http\Request;
- 
+
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
- 
-class MailerController extends Controller {
- 
-    // =============== [ Email ] ===================
-    public function email() {
-        return view("email");
-    }
- 
- 
-    // ========== [ Compose Email ] ================
-    public function composeEmail(Request $request) {
-        require base_path("vendor/autoload.php");
-        $mail = new PHPMailer(true);     // Passing `true` enables exceptions
- 
+
+class PHPMailerController extends Controller
+{
+    public function enviarEmail(Request $request)
+    {
         try {
- 
-            // Email server settings
-            $mail->SMTPDebug = 0;
+            $emails = $request->input('emails');
+
+            // Configurações do servidor SMTP
+            $mail = new PHPMailer(true);
             $mail->isSMTP();
-            $mail->Host = 'smtp.example.com';             //  smtp host
-            $mail->SMTPAuth = true;
-            $mail->Username = 'user@example.com';   //  sender username
-            $mail->Password = '**********';       // sender password
-            $mail->SMTPSecure = 'tls';                  // encryption - ssl/tls
-            $mail->Port = 587;                          // port - 587/465
- 
-            $mail->setFrom('sender@example.com', 'SenderName');
-            $mail->addAddress($request->emailRecipient);
-            $mail->addCC($request->emailCc);
-            $mail->addBCC($request->emailBcc);
- 
-            $mail->addReplyTo('sender@example.com', 'SenderReplyName');
- 
-            if(isset($_FILES['emailAttachments'])) {
-                for ($i=0; $i < count($_FILES['emailAttachments']['tmp_name']); $i++) {
-                    $mail->addAttachment($_FILES['emailAttachments']['tmp_name'][$i], $_FILES['emailAttachments']['name'][$i]);
-                }
+            $mail->Host       = 'smtp.titan.email';
+            $mail->SMTPAuth   = true;
+            $mail->Username   = 'ig@eye.lotomunir.com';
+            $mail->Password   = '/;+!iO!K5G6Nd>_';
+            $mail->SMTPSecure = 'ssl';
+            $mail->Port       = 465;
+
+            // Configurações do remetente
+            $mail->setFrom('ig@eye.lotomunir.com', '');
+
+            // Conteúdo do e-mail
+            $mail->isHTML(true);
+            $mail->Subject = 'Assunto do E-mail';
+
+            foreach ($emails as $destinatario) {
+                // Adiciona um destinatário
+                $mail->clearAddresses();
+                $mail->addAddress($destinatario);
+
+                // Corpo do e-mail
+                $mail->Body = '<!DOCTYPE html>
+                <html>
+                
+                <head>
+                    <style>
+                        body {
+                            font-family: Arial, sans-serif;
+                            background-color: #f4f4f4;
+                            color: #333;
+                            margin: 0;
+                            padding: 0;
+                        }
+                        
+                        .container {
+                            max-width: 600px;
+                            margin: 0 auto;
+                            background-color: #f5f5f5;
+                            padding: 20px;
+                            border-radius: 5px;
+                            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                        }
+                        
+                        header {
+                            text-align: center;
+                            margin-bottom: 20px;
+                        }
+                        
+                        header img {
+                            max-width: 100%;
+                            height: auto;
+                        }
+                        
+                        main {
+                            margin-bottom: 20px;
+                        }
+                        
+                        footer {
+                            text-align: center;
+                            color: #777;
+                        }
+                        
+                        .logo {
+                            text-align: center;
+                        }
+                        
+                        .logo img {
+                            margin-bottom: 10px;
+                        }
+                        
+                        .txt-logo {
+                            font-size: 20px;
+                            color: #000000;
+                            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+                        }
+                    </style>
+                </head>
+                
+                <body>
+                    <div class="container">
+                        <div class="logo">
+                            <img src="https://i.imgur.com/FSKQVll.png" alt="Logo da Igreja">
+                            <p class="txt-logo">Igreja<br>Batista<br>Bethleem</p>
+                        </div>
+                        <main>
+                            <h1>Olá,</h1>
+                            <p>Este é um exemplo de e-mail em HTML com uma logo.</p>
+                            <p>Você pode personalizar este conteúdo de acordo com suas necessidades.</p>
+                        </main>
+                        <footer>
+                            <p>Atenciosamente,<br>Seu Nome</p>
+                        </footer>
+                    </div>
+                </body>
+                
+                </html>
+            ';        
+                // Envia o e-mail
+                $mail->send();
             }
- 
- 
-            $mail->isHTML(true);                // Set email content format to HTML
- 
-            $mail->Subject = $request->emailSubject;
-            $mail->Body    = $request->emailBody;
- 
-            // $mail->AltBody = plain text version of email body;
- 
-            if( !$mail->send() ) {
-                return back()->with("failed", "Email not sent.")->withErrors($mail->ErrorInfo);
-            }
-            
-            else {
-                return back()->with("success", "Email has been sent.");
-            }
- 
+
+            return response()->json(['message' => 'E-mails enviados com sucesso']);
         } catch (Exception $e) {
-             return back()->with('error','Message could not be sent.');
+            return response()->json(['error' => "Erro no envio do e-mail: {$mail->ErrorInfo}"], 500);
         }
     }
 }
- 
+

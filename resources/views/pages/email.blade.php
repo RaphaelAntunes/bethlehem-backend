@@ -170,6 +170,8 @@ The above copyright notice and this permission notice shall be included in all c
                                         </div>
                                     </div>
                                     <textarea style="border-radius: 5px;" class="mt-3" name="" id="" cols="50" rows="10"></textarea>
+
+                                    <button class="mt-5 mb-5 btn" onclick="submitemail();">Enviar</button>
                                 </div>
                             </div>
 
@@ -398,7 +400,7 @@ The above copyright notice and this permission notice shall be included in all c
 
 
         function Atualizaeabremodal() {
-           $('#boxselectemails .profile').remove();
+            $('#boxselectemails .profile').remove();
             $.get('/getemailsall', function(data) {
                 data.forEach(function(user) {
                     if (emails.includes(user.email)) {
@@ -412,16 +414,15 @@ The above copyright notice and this permission notice shall be included in all c
                 console.log(emails);
                 console.log(sem_emails);
 
-                
+
             });
         }
 
         function addSelectedCard(user) {
             // Cria o elemento jQuery com o HTML desejado
-            if(user.imagem == null){
+            if (user.imagem == null) {
                 user.imagem = 'not-user.png';
-            }
-            else if(user.nome_completo == null){
+            } else if (user.nome_completo == null) {
                 user.nome_completo = 'Não cadastrado';
 
             }
@@ -448,6 +449,26 @@ The above copyright notice and this permission notice shall be included in all c
 
             // Adiciona o elemento ao container
             $("#boxselectemails").append($selectedCard);
+        }
+
+
+
+        function submitemail() {
+            $.ajax({
+                url: '{{ route('enviarEmail') }}',
+                type: 'POST',
+                data: {
+                    _token: '{{ csrf_token() }}', // Adicione o token CSRF aqui
+                    emails: emails
+                },
+                success: function(response) {
+                    console.log(response);
+                    // Faça algo com a resposta, se necessário
+                },
+                error: function(error) {
+                    console.log(error);
+                }
+            });
         }
     </script>
 

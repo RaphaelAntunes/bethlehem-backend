@@ -36,6 +36,7 @@ Route::post('/salvar-foto', [App\Http\Controllers\EventoController::class, 'salv
 Route::get('/getemails', [App\Http\Controllers\OptionEmailSender::class, 'getemails'])->name('getemails');
 Route::get('/getemailsall', [App\Http\Controllers\OptionEmailSender::class, 'getemailsall'])->name('getemailsall');
 
+Route::post('/enviar-email', [App\Http\Controllers\PHPMailerController::class, 'enviarEmail'])->name('enviarEmail');;
 
 Route::get('/eventos', ['as' => 'eventos', 'uses' => 'App\Http\Controllers\PageController@eventos']);
 Route::get('/get-mediadores', [App\Http\Controllers\EventoController::class, 'getMediadores']);
