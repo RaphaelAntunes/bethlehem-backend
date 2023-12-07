@@ -45,20 +45,14 @@ The above copyright notice and this permission notice shall be included in all c
 
     @extends('layouts.app', [
         'class' => '',
-        'elementActive' => 'GerenEventos',
+        'elementActive' => 'SendEmail',
     ])
 
 
     @include('pages.edit-membro')
     @include('pages.ver-membro')
 
-
-
-
 <body>
-
-
-
 
     <div class="toast">
         <div class="toast-content">
@@ -69,12 +63,9 @@ The above copyright notice and this permission notice shall be included in all c
             </div>
         </div>
         <div class="progress"></div>
-
-
     </div>
 
     <div class="main-panel">
-
         <nav class="navbar navbar-expand-lg navbar-absolute fixed-top navbar-transparent">
             <div class="container-fluid">
 
@@ -91,14 +82,11 @@ The above copyright notice and this permission notice shall be included in all c
                                 </form>
                             </a>
                         </li>
-
-
                     </ul>
                 </div>
             </div>
         </nav>
         <!-- Button trigger modal -->
-
 
         <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
             aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -110,11 +98,17 @@ The above copyright notice and this permission notice shall be included in all c
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <div id="boxselectemails">
-
-
+                    <div id="containerpages">
+                       
+                      
                     </div>
-                    <div class="modal-footer">
+
+                    <div class="modal-footer d-flex justify-content-between">
+                        <div class="d-flex align-items-center justify-content-center">
+                        <button id="leftpagebtn" onclick="pagina_anterior()" class="btn btn-danger"><</button>
+                        <h5 id="countpaginate" style="margin: 0px;">1/33</h5>
+                        <button id="nextpagebtn" onclick="proxima_pagina()" class="btn btn-danger">></button>
+                    </div>
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
                     </div>
                 </div>
@@ -187,7 +181,8 @@ The above copyright notice and this permission notice shall be included in all c
                                     </div>
 
 
-                                    <button id="btnsubmit" class="mt-5 mb-5 btn" onclick="submitemail();">Enviar</button>
+                                    <button id="btnsubmit" class="mt-5 mb-5 btn"
+                                        onclick="submitemail();">Enviar</button>
                                 </div>
                             </div>
 
@@ -204,41 +199,19 @@ The above copyright notice and this permission notice shall be included in all c
     </div>
 
 
+
+
+
     <script>
-        // Função para exibir notificação
-        function notify(data) {
-            // Instância de variaveis
-            data = data[0];
-            console.log(data);
 
-            toast = document.querySelector(".toast");
-            closeIcon = document.querySelector(".close");
-            progress = document.querySelector(".progress");
-            statustext = document.querySelector(".statustext");
-            contenttext = document.querySelector(".contenttext");
-            contenttext.innerHTML = data.texto;
-            if (data.sucesso == true) {
-                statustext.innerHTML = 'Sucesso';
-            } else {
-                statustext.innerHTML = 'Erro';
-            }
-            let timer1, timer2;
+        // VARIAVEIS PARA PAGINAÇÃO DE TODOS OS E-MAILS
 
-            toast.classList.add("active");
-            progress.classList.add("active");
+        var itemsPorPagina = 6;
+        var count = 6;
+        var page = 0;
+        var pagina_atual = 1;
 
-
-            //Temporizadores
-            timer1 = setTimeout(() => {
-                toast.classList.remove("active");
-            }, 5000); //1s = 1000 milliseconds
-
-            timer2 = setTimeout(() => {
-                progress.classList.remove("active");
-            }, 5300);
-        }
-
-        // Variáveis globais
+        // VARIAVEIS GLOBAIS
         var act_adicionaremail = $('#act_adicionaremail');
         var act_inserirtodos = $('#act_inserirtodos');
         var act_limpartodos = $('#act_limpartodos');
@@ -247,61 +220,51 @@ The above copyright notice and this permission notice shall be included in all c
         var countemail = $('#countemail');
         var searchValue = $('#search').val();
 
+        // ARRAYS GLOBAIS
         var emails = [];
         var sem_emails = [];
-        // Função para adicionar emails à lista
-        function addEmailToList(user) {
-            if (!emails.includes(user.email)) {
-                emails.push(user.email);
-            }
-        }
 
-        // Função para atualizar a contagem de emails
-        function updateEmailCount() {
-            countemail.text(emails.length + ' E-mails adicionados');
-        }
 
-        // Evento de clique no botão "Inserir Todos"
+        // SCRIPTS DE BARRA DE FERRAMENTAS
+
         act_inserirtodos.on('click', function() {
             $.get('/getemailsall', function(data) {
                 data.forEach(function(user) {
-                    addtolist(user.email);
+                    adiciona_lista_emails(user.email);
                 });
-                updateEmailCount();
+                atualiza_contador_email();
             });
         });
 
-
-
-
-
-
-        // Evento de clique no botão "Limpar Todos"
         act_limpartodos.on('click', function() {
             emails = [];
-            $('.cardemails').remove();
-            updateEmailCount();
+            sem_emails = [];
+            atualiza_contador_email();
+            $('.pg').remove();
+            count = 6;
+            page = 0;
+            pagina_atual = 1;
         });
-
-
 
         act_adicionaremail.on('click', function() {
             var searchValue = $('#search').val();
-            if (isValidEmail(searchValue) && !emails.includes(searchValue)) {
+            if (verifica_se_email_e_valido(searchValue) && !emails.includes(searchValue)) {
                 var user = {
                     "nome_completo": null,
                     "email": searchValue,
                     "imagem": null
                 };
-                emails.push(searchValue);
+               // emails.push(searchValue);
                 sem_emails.push(user);
-                updateEmailCount();
-                addSelectedCard(user);
-
+                adiciona_lista_emails(searchValue);
+                atualiza_contador_email();
             } else {
                 alert('O valor não é um e-mail válido.');
             }
         });
+
+        /// SCRIPT QUE BUSCA OS E-MAILS E IMPRIME FRONT-END
+
         $(document).ready(function() {
             var searchInput = $('#search');
             var usersSelect = $('#usersSelect');
@@ -315,94 +278,19 @@ The above copyright notice and this permission notice shall be included in all c
                     data.forEach(function(user) {
                         $('.profile-card').remove();
 
-                        // Adiciona os novos perfis
                         data.forEach(function(user) {
-                            addProfileCard(user);
+                            mostra_email_busca(user);
                             if (searchValue == '') {
                                 $('.profile-card').remove();
-
                             }
                         });
                     });
                 });
             });
-
-            usersSelect.on('change', function() {
-                // Obtém o valor selecionado
-                var selectedValue = usersSelect.val();
-
-                // Verifica se o valor já está no array
-                if (!emails.includes(selectedValue) && selectedValue.trim() !== '') {
-                    // Adiciona o valor ao array de emails
-                    emails.push(selectedValue);
-
-                    // Registra no console.log
-                    console.log('Seleção do usuário:', emails);
-
-                    // Criação de elementos HTML
-                    var divElement = $('<div>').addClass('cardemails');
-                    var removeButton = $('<span>').addClass('nc-icon nc-simple-remove').css({
-                        'color': 'red',
-                        'cursor': 'pointer'
-                    });
-
-                    // Adiciona evento de clique ao botão de remoção
-                    removeButton.on('click', function() {
-                        divElement.remove();
-                        var index = emails.indexOf(selectedValue);
-                        if (index !== -1) {
-                            // Remove o email do array
-                            emails.splice(index, 1);
-                        }
-                        updateEmailCount();
-                        console.log('E-mail removido:', selectedValue);
-                    });
-
-                    // Listar na tela
-                    selectedemails.append(divElement.text(selectedValue).append(removeButton));
-                    updateEmailCount();
-                } else {
-                    console.log('O valor já está no array:', selectedValue);
-                }
-            });
-
-            // Função para atualizar a contagem de emails
-
         });
 
-
-        ////////////// FUNÇÕES DE SUPORTE /////////////////////
-
-        function isValidEmail(email) {
-            // Expressão regular para verificar se o valor é um e-mail
-            var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            return emailRegex.test(email);
-        }
-
-        function addtolist(email) {
-            if (!emails.includes(email)) {
-                emails.push(email);
-                updateEmailCount();
-            }
-        }
-
-        function removetolist(email) {
-            var index = emails.indexOf(email);
-            console.log(email);
-            if (index !== -1) {
-                // Remove o email do array
-                emails.splice(index, 1);
-                sem_emails.splice(index, 1);
-
-                // Remove o elemento correspondente pelo ID escapado
-                $("#profile-" + $.escapeSelector(email)).remove();
-            }
-            updateEmailCount();
-        }
-
-        function addProfileCard(user) {
-            // Código HTML que você deseja adicionar
-            var profileCardHTML = ` <div class="profile-card" onclick="addtolist('${user.email}')">
+        function mostra_email_busca(user) {
+            var profileCardHTML = ` <div class="profile-card" onclick="adiciona_lista_emails('${user.email}')">
         <div class="profile">
             <div class="avatar">
                 <img src="fotos/${user.imagem}" alt="">
@@ -418,27 +306,25 @@ The above copyright notice and this permission notice shall be included in all c
 
         }
 
+        function adiciona_item_a_paginacao(user) {
+            
+            if(verifica_se_email_e_valido(user.email) == false){
+                return;  
+            }
 
-        function Atualizaeabremodal() {
-            $('#boxselectemails .profile').remove();
-            $.get('/getemailsall', function(data) {
-                data.forEach(function(user) {
-                    if (emails.includes(user.email)) {
-                        addSelectedCard(user);
-                    }
-                });
-                sem_emails.forEach(function(user) {
-                    addSelectedCard(user);
+            if (count == itemsPorPagina) {
+                page++;
+                var novaDiv = document.createElement("div");
+                if(page == 1){
+                }else{
+                    novaDiv.classList.add("d-none");
+                }
+                novaDiv.classList.add("pg");
 
-                });
-                console.log(emails);
-                console.log(sem_emails);
-
-
-            });
-        }
-
-        function addSelectedCard(user) {
+                novaDiv.id = "boxselectemails" + page;
+                $("#containerpages").append(novaDiv);
+                count = 0;
+            }
             // Cria o elemento jQuery com o HTML desejado
             if (user.imagem == null) {
                 user.imagem = 'not-user.png';
@@ -447,7 +333,6 @@ The above copyright notice and this permission notice shall be included in all c
 
             }
 
-            console.log(user);
             var $selectedCard = $(
                 `
         <div class="profile d-flex justify-content-between" id="profile-${user.email}">
@@ -460,28 +345,157 @@ The above copyright notice and this permission notice shall be included in all c
                     <p>${user.email}</p>
                 </div>
             </div>
-            <div onclick="removetolist('${user.email}')">
+            <div onclick="remove_lista_emails('${user.email}')">
                 <h1 style="margin: 0px;" >X</h1>
             </div>    
         </div>
     `
             );
-
             // Adiciona o elemento ao container
-            $("#boxselectemails").append($selectedCard);
+            $("#boxselectemails" + page).append($selectedCard);
+            count = count + 1;
         }
 
-        function limpar(){
+        /// SCRIPT QUE ADICIONA E REMOVE DO ARRAY DE EMAILS
+
+        function adiciona_lista_emails(email) {
+            if (!emails.includes(email)) {
+                emails.push(email);
+                atualiza_contador_email();
+            }
+        }
+
+        function remove_lista_emails(email) {
+            var index = emails.indexOf(email);
+            if (index !== -1) {
+                // Remove o email do array
+                emails.splice(index, 1);
+                sem_emails.splice(index, 1);
+
+                // Remove o elemento correspondente pelo ID escapado
+                $("#profile-" + $.escapeSelector(email)).remove();
+            }
+            atualiza_contador_email();
+        }
+
+
+        // CONTROLES E CONFIGURAÇÕES DA PAGINAÇÃO
+
+        function verifica_botoes_paginacao(){
+            if(pagina_atual >= total_paginas()){
+                $("#nextpagebtn").prop("disabled", true);
+            }else{
+                $("#nextpagebtn").prop("disabled", false);
+
+            }
+            if(pagina_atual == 1){
+                $("#leftpagebtn").prop("disabled", true);
+            }else{
+                $("#leftpagebtn").prop("disabled", false);
+
+            }
+        }
+
+        function total_paginas(){
+            var totalItens = emails.length;
+            var total_paginas = Math.ceil(totalItens / itemsPorPagina);
+            $('#countpaginate').text(pagina_atual+'/'+total_paginas);
+            return total_paginas;
+        }
+      
+        function proxima_pagina(){
+            $("#boxselectemails" + pagina_atual).addClass("d-none");
+            $("#boxselectemails" + (pagina_atual + 1)).removeClass("d-none");
+            pagina_atual++;
+            total_paginas();
+            verifica_botoes_paginacao();
+            
+        }
+        function pagina_anterior(){
+            $("#boxselectemails" + pagina_atual).addClass("d-none");
+            $("#boxselectemails" + (pagina_atual - 1)).removeClass("d-none");
+            pagina_atual--;
+            total_paginas();
+            verifica_botoes_paginacao();
+
+        }
+
+        // SCRIPTS GERAIS DE SUPORTE AO CODIGO
+
+        function atualiza_contador_email() {
+            countemail.text(emails.length + ' E-mails adicionados');
+        }
+
+        function verifica_se_email_e_valido(email) {
+            var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+
+            function notificacao(data) {
+            // Instância de variaveis
+            data = data[0];
+            toast = document.querySelector(".toast");
+            closeIcon = document.querySelector(".close");
+            progress = document.querySelector(".progress");
+            statustext = document.querySelector(".statustext");
+            contenttext = document.querySelector(".contenttext");
+            contenttext.innerHTML = data.texto;
+            if (data.sucesso == true) {
+                statustext.innerHTML = 'Sucesso';
+            } else {
+                statustext.innerHTML = 'Erro';
+            }
+            let timer1, timer2;
+            toast.classList.add("active");
+            progress.classList.add("active");
+            //Temporizadores
+            timer1 = setTimeout(() => {
+                toast.classList.remove("active");
+            }, 5000); //1s = 1000 milliseconds
+            timer2 = setTimeout(() => {
+                progress.classList.remove("active");
+            }, 5300);
+        }       
+
+        function Atualizaeabremodal() {
+            $('.pg').remove();
+            count = 6;
+            page = 0;
+            pagina_atual = 1;
+            $.get('/getemailsall', function(data) {
+                data.forEach(function(user) {
+                    if (emails.includes(user.email)) {
+                        adiciona_item_a_paginacao(user);
+                    }
+                });
+                sem_emails.forEach(function(user) {
+                    adiciona_item_a_paginacao(user);
+                });
+
+            });
+
+            total_paginas();
+            verifica_botoes_paginacao();
+        }
+
+        
+
+        function limpar() {
             $("#search").val("");
             emails = [];
-            updateEmailCount();
+            sem_emails = [];
+            atualiza_contador_email();
+            $('.pg').remove();
+            count = 6;
+            page = 0;
+            pagina_atual = 1;
 
         }
 
 
         function submitemail() {
 
-            if(emails.length == 0){
+            if (emails.length == 0) {
                 $("#search").focus();
             }
 
@@ -498,23 +512,21 @@ The above copyright notice and this permission notice shall be included in all c
                     msg: msg
                 },
                 success: function(response) {
-                    console.log(response);
                     $("#btnsubmit").prop("disabled", false);
                     const datanotify = [{
                         texto: response.message,
                         sucesso: response.status
                     }];
-                    notify(datanotify);
+                    notificacao(datanotify);
                     limpar();
                 },
                 error: function(error) {
                     $("#btnsubmit").prop("disabled", false);
-                    console.log(error);
                     const datanotify = [{
                         texto: 'Um erro ocorreu, não foi possivel concluir',
                         sucesso: false
                     }];
-                    notify(datanotify);
+                    notificacao(datanotify);
                 }
             });
         }
@@ -530,7 +542,7 @@ The above copyright notice and this permission notice shall be included in all c
     <!-- Chart JS -->
     <script src="{{ asset('paper') }}/js/plugins/chartjs.min.js"></script>
     <!--  Notifications Plugin    -->
-    <script src="{{ asset('paper') }}/js/plugins/bootstrap-notify.js"></script>
+    <script src="{{ asset('paper') }}/js/plugins/bootstrap-notificacao.js"></script>
     <!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
     <script src="{{ asset('paper') }}/js/paper-dashboard.min.js?v=2.0.0" type="text/javascript"></script>
     <!-- Paper Dashboard DEMO methods, don't include it in your project! -->
