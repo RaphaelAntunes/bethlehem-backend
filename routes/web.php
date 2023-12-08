@@ -35,6 +35,11 @@ Route::post('/salvar-foto', [App\Http\Controllers\EventoController::class, 'salv
 
 Route::get('/getemails', [App\Http\Controllers\OptionEmailSender::class, 'getemails'])->name('getemails');
 Route::get('/getemailsall', [App\Http\Controllers\OptionEmailSender::class, 'getemailsall'])->name('getemailsall');
+Route::post('/criar-lista', [App\Http\Controllers\OptionEmailSender::class, 'criarlista'])->name('criarlista');
+Route::get('/ver-lista', [App\Http\Controllers\OptionEmailSender::class, 'verlista'])->name('verlista');
+Route::post('/remover-lista', [App\Http\Controllers\OptionEmailSender::class, 'removerlista'])->name('removerlista');
+Route::post('/add-a-lista', [App\Http\Controllers\OptionEmailSender::class, 'addalista'])->name('addalista');
+Route::post('/coletarlista', [App\Http\Controllers\OptionEmailSender::class, 'coletarLista'])->name('coletarLista');
 
 Route::post('/enviar-email', [App\Http\Controllers\PHPMailerController::class, 'enviarEmail'])->name('enviarEmail');;
 

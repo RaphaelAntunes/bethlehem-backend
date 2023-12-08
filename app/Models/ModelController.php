@@ -13,3 +13,5 @@ class ModelController extends Model
 
     public $timestamps = false; // Desabilita as colunas de data e hora
 }
+
+

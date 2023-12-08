@@ -86,8 +86,7 @@ The above copyright notice and this permission notice shall be included in all c
                 </div>
             </div>
         </nav>
-        <!-- Button trigger modal -->
-
+        <!-- MODAL EMAILS SELECIONADOS -->
         <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
             aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
@@ -99,101 +98,184 @@ The above copyright notice and this permission notice shall be included in all c
                         </button>
                     </div>
                     <div id="containerpages">
-                       
-                      
                     </div>
-
                     <div class="modal-footer d-flex justify-content-between">
                         <div class="d-flex align-items-center justify-content-center">
-                        <button id="leftpagebtn" onclick="pagina_anterior()" class="btn btn-danger"><</button>
-                        <h5 id="countpaginate" style="margin: 0px;">1/33</h5>
-                        <button id="nextpagebtn" onclick="proxima_pagina()" class="btn btn-danger">></button>
-                    </div>
+                            <button id="leftpagebtn" onclick="pagina_anterior()" class="btn btn-danger">
+                                < </button>
+                                    <h5 id="countpaginate" style="margin: 0px;">1/33</h5>
+                                    <button id="nextpagebtn" onclick="proxima_pagina()" class="btn btn-danger"> >
+                                    </button>
+                        </div>
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="content">
-            <div class="container-fluid mt--7">
-                <div class="row">
-                    <div class="col">
-                        <div class="card shadow">
-                            <div class="card-header border-0">
-                                <div
-                                    class="container align-items-center d-flex flex-column justify-content-center justify-content-center align-items-center">
-                                    <div class="container text-center">
-                                        <h4>Envie e-mails, faça comunicados !</h4>
-                                        <div
-                                            class="d-flex justify-content-center flex-column container align-items-center">
-                                            <div class="d-flex flex-column container">
-                                                <label for="search">Digite o E-mail / Nome</label>
-                                                <input type="text" class="mb-3" id="search"
-                                                    placeholder="Digite o E-mail / Nome">
-                                            </div>
-                                            <div id="toolbar"
-                                                class="d-flex flex-row justify-content-center align-items-center">
-                                                <div id="act_adicionaremail" class="d-flex flex-column-reverse boxfer">
-                                                    <p>Adicionar<br>E-mail</p>
-                                                    <i class="nc-icon nc-email-85"></i>
-                                                </div>
-                                                <div id="act_inserirtodos" class="d-flex flex-column-reverse boxfer">
-                                                    <p>Inserir<br>todos</p>
-                                                    <i class="nc-icon nc-cloud-upload-94"></i>
-                                                </div>
-                                                <div id="act_limpartodos" class="d-flex flex-column-reverse boxfer">
-                                                    <p>Limpar<br>todos</p>
-                                                    <i class="nc-icon nc-simple-remove"></i>
-                                                </div>
-                                                <div class="d-flex flex-column-reverse boxfer">
-                                                    <p>Criar<br>Lista</p>
-                                                    <i class="nc-icon nc-simple-add"></i>
-                                                </div>
-                                                <div id="act_verlistas"class="d-flex flex-column-reverse boxfer">
-                                                    <p>Ver<br>Listas</p>
-                                                    <i class="nc-icon nc-single-copy-04"></i>
-                                                </div>
+        <!-- MODAL CRIAR LISTA -->
 
-                                            </div>
-
-
-                                            <div id="profile-container" class="d-flex"></div>
-
-                                            <div class="d-flex" onclick="Atualizaeabremodal()" data-toggle="modal"
-                                                data-target="#exampleModalCenter">
-                                                <p id="countemail" style="border-radius: 5px 0px 0px 5px;"
-                                                    class="see">0 E-mails adicionados</p>
-                                                <p class="see seehover"
-                                                    style="border-radius:0px 5px 5px 0px; background: #59595994; cursor: pointer;">
-                                                    <img style="width:20px;" src="images/eye.png" alt="">
-                                                </p>
-                                            </div>
-                                            <div id="selectedemails" style="    flex-wrap: wrap;"
-                                                class="d-flex container">
-                                            </div>
-
-                                            <input type="text" class="mb-3" id="assunto"
-                                                style="width:100%; max-width:700px;" placeholder="Assunto">
-
-                                            <x-forms.tinymce-editor />
-                                        </div>
-                                    </div>
-
-
-                                    <button id="btnsubmit" class="mt-5 mb-5 btn"
-                                        onclick="submitemail();">Enviar</button>
-                                </div>
-                            </div>
-
-
-
-                        </div>
+        <div class="modal fade" id="exampleModalCenter2" tabindex="-1" role="dialog"
+            aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Criando lista</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="d-flex justify-content-center align-items-center flex-column box-lista">
+                        <h5>Defina um nome para sua lista:</h5>
+                        <input id="inputnomelista" type="text">
+                        <button id="criarlista_acao" class="btn">Criar</button>
                     </div>
                 </div>
 
+                <div class="modal-footer d-flex justify-content-between">
+
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                </div>
             </div>
         </div>
+    </div>
+
+    <!-- MODAL VER LISTA -->
+
+    <div class="modal fade" id="exampleModalCenter3" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header d-flex align-items-center">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Suas Listas</h5>
+                    <div class="d-flex justify-content-around aling-items-center">
+                        <button class="btn bnt-success" onclick="modalcriarlista()">Criar Lista</button>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                </div>
+                <div id="grouplistaitens">
+
+                </div>
+
+            </div>
+
+            <div class="modal-footer d-flex justify-content-between">
+
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL SELECIONAR LISTA ADD -->
+
+    <div class="modal fade" id="exampleModalCenter4" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header d-flex align-items-center">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Selecione uma lista para adicionar os contatos
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div id="grouplistaitensadd">
+
+                </div>
+
+            </div>
+
+            <div class="modal-footer d-flex justify-content-between">
+
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <div class="content">
+        <div class="container-fluid mt--7">
+            <div class="row">
+                <div class="col">
+                    <div class="card shadow">
+                        <div class="card-header border-0">
+                            <div
+                                class="container align-items-center d-flex flex-column justify-content-center justify-content-center align-items-center">
+                                <div class="container text-center">
+                                    <h4>Envie e-mails, faça comunicados !</h4>
+                                    <div
+                                        class="d-flex justify-content-center flex-column container align-items-center">
+                                        <div class="d-flex flex-column container">
+                                            <label for="search">Digite o E-mail / Nome</label>
+                                            <input type="text" class="mb-3" id="search"
+                                                placeholder="Digite o E-mail / Nome">
+                                        </div>
+                                        <div id="toolbar"
+                                            class="d-flex flex-row justify-content-center align-items-center">
+                                            <div id="act_adicionaremail" class="d-flex flex-column-reverse boxfer">
+                                                <p>Adicionar<br>E-mail</p>
+                                                <i class="nc-icon nc-email-85"></i>
+                                            </div>
+                                            <div id="act_inserirtodos" class="d-flex flex-column-reverse boxfer">
+                                                <p>Inserir<br>todos</p>
+                                                <i class="nc-icon nc-cloud-upload-94"></i>
+                                            </div>
+                                            <div id="act_limpartodos" class="d-flex flex-column-reverse boxfer">
+                                                <p>Limpar<br>todos</p>
+                                                <i class="nc-icon nc-simple-remove"></i>
+                                            </div>
+                                            <div id="act_addalista" onclick="addlista()"
+                                                class="d-flex flex-column-reverse boxfer">
+                                                <p>Add a<br>Lista</p>
+                                                <i class="nc-icon nc-simple-add"></i>
+                                            </div>
+                                            <div id="act_verlistas" onclick="verlistas()"
+                                                class="d-flex flex-column-reverse boxfer">
+                                                <p>Ver<br>Listas</p>
+                                                <i class="nc-icon nc-single-copy-04"></i>
+                                            </div>
+
+                                        </div>
+
+
+                                        <div id="profile-container" class="d-flex"></div>
+
+                                        <div class="d-flex" onclick="Atualizaeabremodal()" data-toggle="modal"
+                                            data-target="#exampleModalCenter">
+                                            <p id="countemail" style="border-radius: 5px 0px 0px 5px;"
+                                                class="see">0 E-mails adicionados</p>
+                                            <p class="see seehover"
+                                                style="border-radius:0px 5px 5px 0px; background: #59595994; cursor: pointer;">
+                                                <img style="width:20px;" src="images/eye.png" alt="">
+                                            </p>
+                                        </div>
+                                        <div id="selectedemails" style="    flex-wrap: wrap;"
+                                            class="d-flex container">
+                                        </div>
+
+                                        <input type="text" class="mb-3" id="assunto"
+                                            style="width:100%; max-width:700px;" placeholder="Assunto">
+
+                                        <x-forms.tinymce-editor />
+                                    </div>
+                                </div>
+
+
+                                <button id="btnsubmit" class="mt-5 mb-5 btn"
+                                    onclick="submitemaila();">Enviar</button>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
 
     </div>
     </div>
@@ -203,7 +285,6 @@ The above copyright notice and this permission notice shall be included in all c
 
 
     <script>
-
         // VARIAVEIS PARA PAGINAÇÃO DE TODOS OS E-MAILS
 
         var itemsPorPagina = 6;
@@ -217,6 +298,7 @@ The above copyright notice and this permission notice shall be included in all c
         var act_limpartodos = $('#act_limpartodos');
         var act_criarlista = $('#act_criarlista');
         var act_verlistas = $('#act_verlistas');
+        var fun_criarlista_acao = $('#criarlista_acao');
         var countemail = $('#countemail');
         var searchValue = $('#search').val();
 
@@ -226,6 +308,23 @@ The above copyright notice and this permission notice shall be included in all c
 
 
         // SCRIPTS DE BARRA DE FERRAMENTAS
+
+        act_adicionaremail.on('click', function() {
+            var searchValue = $('#search').val();
+            if (verifica_se_email_e_valido(searchValue) && !emails.includes(searchValue)) {
+                var user = {
+                    "nome_completo": null,
+                    "email": searchValue,
+                    "imagem": null
+                };
+                // emails.push(searchValue);
+                sem_emails.push(user);
+                adiciona_lista_emails(searchValue);
+                atualiza_contador_email();
+            } else {
+                alert('O valor não é um e-mail válido.');
+            }
+        });
 
         act_inserirtodos.on('click', function() {
             $.get('/getemailsall', function(data) {
@@ -246,22 +345,221 @@ The above copyright notice and this permission notice shall be included in all c
             pagina_atual = 1;
         });
 
-        act_adicionaremail.on('click', function() {
-            var searchValue = $('#search').val();
-            if (verifica_se_email_e_valido(searchValue) && !emails.includes(searchValue)) {
-                var user = {
-                    "nome_completo": null,
-                    "email": searchValue,
-                    "imagem": null
-                };
-               // emails.push(searchValue);
-                sem_emails.push(user);
-                adiciona_lista_emails(searchValue);
-                atualiza_contador_email();
-            } else {
-                alert('O valor não é um e-mail válido.');
-            }
+        act_criarlista.on('click', function() {
+
+
         });
+
+        fun_criarlista_acao.on('click', function() {
+            var ModalCriarLista = new bootstrap.Modal(document.getElementById('exampleModalCenter2'));
+            var ModalVerLista = new bootstrap.Modal(document.getElementById('exampleModalCenter3'));
+            nomelista = $("#inputnomelista").val();
+            fun_criarlista_acao.prop("disabled", true);
+
+            if (nomelista.length == '') {
+                $("#inputnomelista").focus();
+                return;
+            }
+            $.ajax({
+                url: '{{ route('criarlista') }}',
+                type: 'POST',
+                data: {
+                    _token: '{{ csrf_token() }}', // Adicione o token CSRF aqui
+                    nomelista: nomelista
+                },
+                success: function(response) {
+                    fun_criarlista_acao.prop("disabled", false);
+                    if (response.success) {
+                        const datanotify = [{
+                            texto: response.message,
+                            sucesso: response.success
+                        }];
+                        notificacao(datanotify);
+                        $('#exampleModalCenter2').modal('hide');
+                        $(".modal-backdrop").remove()
+                        verlistas();
+
+
+                    } else {
+                        const datanotify = [{
+                            texto: response.message,
+                            sucesso: response.success
+                        }];
+                        notificacao(datanotify);
+                    }
+                },
+                error: function(error) {
+                    fun_criarlista_acao.prop("disabled", false);
+                    console.log(error);
+                }
+            });
+        });
+
+        function modalcriarlista() {
+            $('#exampleModalCenter3').modal('hide');
+            $(".modal-backdrop").remove();
+            $('#exampleModalCenter2').modal('show');
+        }
+
+        function verlistas() {
+            $('#exampleModalCenter3').modal('show');
+            $(".boxlistas").remove()
+            $.ajax({
+                url: '{{ route('verlista') }}',
+                type: 'get',
+                success: function(response) {
+                    lista = response;
+                    console.log(lista);
+                    lista.forEach(function(lista) {
+
+                        var cardlista = `<div class="d-flex flex-column">
+                    <div class="boxlistas">
+                        <p>${lista.nome}</p>
+                        <p>${lista.quantidade} Contatos</p>
+                        <div class="boxlistasicons">
+                            <i class="nc-icon nc-button-play" onclick="coletarLista('${lista.nome}')"></i>
+                            <i class="nc-icon nc-zoom-split mr-3 ml-3"></i>
+                            <i class="nc-icon nc-simple-remove" onclick="removerLista('${lista.nome}')"></i>
+                        </div>
+                    </div>
+                </div> `;
+                        $("#grouplistaitens").append(cardlista);
+                    });
+                },
+                error: function(error) {
+                    console.log(error);
+                }
+            });
+        }
+
+        function addlista() {
+            if (emails.length == 0) {
+                $("#search").focus();
+                return;
+            }
+
+            $('#exampleModalCenter4').modal('show');
+            fun_addlistar();
+
+        }
+
+        function fun_addlistar() {
+            $(".boxlistas").remove()
+            $.ajax({
+                url: '{{ route('verlista') }}',
+                type: 'get',
+                success: function(response) {
+                    lista = response;
+                    console.log(lista);
+                    lista.forEach(function(lista) {
+
+                        var cardlista = `<div class="d-flex flex-column" onclick="fun_add_listar_acao('${lista.nome}')" style="cursor:pointer;">
+
+                    <div class="boxlistas">
+                        <p>${lista.nome}</p>
+                        <p>${lista.quantidade} Contatos</p>
+                        
+                    </div>
+                </div> `;
+                        $("#grouplistaitensadd").append(cardlista);
+                    });
+                },
+                error: function(error) {
+                    console.log(error);
+                }
+            });
+        }
+
+        function fun_add_listar_acao(id) {
+            $.ajax({
+                url: '{{ route('addalista') }}',
+                type: 'POST',
+                data: {
+                    _token: '{{ csrf_token() }}', // Adicione o token CSRF aqui
+                    emails: emails,
+                    nomelista: id,
+                },
+                success: function(response) {
+                    const datanotify = [{
+                        texto: response.message,
+                        sucesso: response.success
+                    }];
+                    notificacao(datanotify);
+                    fun_addlistar();
+                },
+                error: function(error) {
+                    console.log(error);
+                }
+            });
+        }
+
+        function removerLista(id) {
+
+            var confirmacao = confirm("Tem certeza que deseja remover esta lista?");
+            if (confirmacao) {
+
+                $.ajax({
+                    url: '{{ route('removerlista') }}',
+                    type: 'POST', // Use o método POST
+                    data: {
+                        _token: '{{ csrf_token() }}', // Adicione o token CSRF aqui
+                        nomelista: id
+                    },
+                    success: function(data) {
+                        console.log(data);
+
+                        if (data.status) {
+                            verlistas();
+
+                        }
+                    },
+                    error: function(error) {
+                        console.error(error);
+                        // Faça algo se houver um erro na remoção
+                    }
+                });
+            }
+        }
+
+        function coletarLista(id) {
+
+
+            $.ajax({
+                url: '{{ route('coletarLista') }}',
+                type: 'POST', // Use o método POST
+                data: {
+                    _token: '{{ csrf_token() }}', // Adicione o token CSRF aqui
+                    nomelista: id
+                },
+                success: function(lista) {
+                    lista.forEach(function(lista) {
+
+                        if (verifica_se_email_e_valido(lista.email)) {
+                            if (!emails.includes(lista.email)) {
+                                emails.push(lista.email);
+                            }
+                        }
+
+
+                    });
+                    atualiza_contador_email();
+                    const datanotify = [{
+                        texto: 'E-mails selecionados',
+                        sucesso: true
+                    }];
+                    notificacao(datanotify);
+                    console.log(lista.length);
+
+                },
+                error: function(error) {
+                    console.error(error);
+                    // Faça algo se houver um erro na remoção
+                }
+            });
+        }
+
+
+
 
         /// SCRIPT QUE BUSCA OS E-MAILS E IMPRIME FRONT-END
 
@@ -307,16 +605,15 @@ The above copyright notice and this permission notice shall be included in all c
         }
 
         function adiciona_item_a_paginacao(user) {
-            
-            if(verifica_se_email_e_valido(user.email) == false){
-                return;  
+
+            if (verifica_se_email_e_valido(user.email) == false) {
+                return;
             }
 
             if (count == itemsPorPagina) {
                 page++;
                 var novaDiv = document.createElement("div");
-                if(page == 1){
-                }else{
+                if (page == 1) {} else {
                     novaDiv.classList.add("d-none");
                 }
                 novaDiv.classList.add("pg");
@@ -381,37 +678,38 @@ The above copyright notice and this permission notice shall be included in all c
 
         // CONTROLES E CONFIGURAÇÕES DA PAGINAÇÃO
 
-        function verifica_botoes_paginacao(){
-            if(pagina_atual >= total_paginas()){
+        function verifica_botoes_paginacao() {
+            if (pagina_atual >= total_paginas()) {
                 $("#nextpagebtn").prop("disabled", true);
-            }else{
+            } else {
                 $("#nextpagebtn").prop("disabled", false);
 
             }
-            if(pagina_atual == 1){
+            if (pagina_atual == 1) {
                 $("#leftpagebtn").prop("disabled", true);
-            }else{
+            } else {
                 $("#leftpagebtn").prop("disabled", false);
 
             }
         }
 
-        function total_paginas(){
+        function total_paginas() {
             var totalItens = emails.length;
             var total_paginas = Math.ceil(totalItens / itemsPorPagina);
-            $('#countpaginate').text(pagina_atual+'/'+total_paginas);
+            $('#countpaginate').text(pagina_atual + '/' + total_paginas);
             return total_paginas;
         }
-      
-        function proxima_pagina(){
+
+        function proxima_pagina() {
             $("#boxselectemails" + pagina_atual).addClass("d-none");
             $("#boxselectemails" + (pagina_atual + 1)).removeClass("d-none");
             pagina_atual++;
             total_paginas();
             verifica_botoes_paginacao();
-            
+
         }
-        function pagina_anterior(){
+
+        function pagina_anterior() {
             $("#boxselectemails" + pagina_atual).addClass("d-none");
             $("#boxselectemails" + (pagina_atual - 1)).removeClass("d-none");
             pagina_atual--;
@@ -431,7 +729,7 @@ The above copyright notice and this permission notice shall be included in all c
             return emailRegex.test(email);
         }
 
-            function notificacao(data) {
+        function notificacao(data) {
             // Instância de variaveis
             data = data[0];
             toast = document.querySelector(".toast");
@@ -455,7 +753,7 @@ The above copyright notice and this permission notice shall be included in all c
             timer2 = setTimeout(() => {
                 progress.classList.remove("active");
             }, 5300);
-        }       
+        }
 
         function Atualizaeabremodal() {
             $('.pg').remove();
@@ -478,7 +776,7 @@ The above copyright notice and this permission notice shall be included in all c
             verifica_botoes_paginacao();
         }
 
-        
+
 
         function limpar() {
             $("#search").val("");
