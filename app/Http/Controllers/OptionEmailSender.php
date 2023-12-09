@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\ModelController;
-use App\Models\Lista_Grupo;
+use App\Models\listagrupo;
 use App\Models\emails_lista_grupo;
 
 
@@ -42,11 +42,11 @@ class OptionEmailSender extends Controller
         // Obtém os emails da requisição AJAX
         $nomelista = $request->input('nomelista');
 
-        $grupoExistente = Lista_Grupo::where('name', $nomelista)->first();
+        $grupoExistente = listagrupo::where('name', $nomelista)->first();
 
         if (!$grupoExistente) {
             // Cria um novo grupo
-            $novoGrupo = Lista_Grupo::create(['name' => $nomelista]);
+            $novoGrupo = listagrupo::create(['name' => $nomelista]);
 
             return response()->json(['success' => true, 'message' => 'Grupo adicionado com sucesso']);
         } else {
@@ -62,7 +62,7 @@ class OptionEmailSender extends Controller
         $emails = $request->input('emails');
 
         // Obtém o ID do grupo
-        $get_id_group = Lista_Grupo::where('name', $nomelista)->first();
+        $get_id_group = listagrupo::where('name', $nomelista)->first();
 
         foreach ($emails as $email) {
             // Verifica se o email já existe na lista e no grupo
@@ -90,7 +90,7 @@ class OptionEmailSender extends Controller
         $nomelista = $request->input('nomelista');
 
         // Obtém o ID do grupo
-        $get_id = Lista_Grupo::where('name', $nomelista)->first();
+        $get_id = listagrupo::where('name', $nomelista)->first();
         $get_id = $get_id->id;
         $get_lista_emails = emails_lista_grupo::where('group_id', $get_id)->get();
 
@@ -102,7 +102,7 @@ class OptionEmailSender extends Controller
 
     public function verlista()
     {
-        $listas2 = Lista_Grupo::all();
+        $listas2 = listagrupo::all();
 
         $grupos = [];
         $emails_count = [];
@@ -131,7 +131,7 @@ class OptionEmailSender extends Controller
         $nomelista = $request->input('nomelista');
 
         // Encontrar o grupo pelo nome
-        $grupo = Lista_Grupo::where('name', $nomelista)->first();
+        $grupo = listagrupo::where('name', $nomelista)->first();
 
         if ($grupo) {
             // Encontrar e remover todos os emails relacionados a esse grupo
