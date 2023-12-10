@@ -232,8 +232,6 @@ aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         </div>
     </div>
 
-    @include('pages.edit-membro')
-    @include('pages.ver-membro')
 
     <style>
         .toast {
@@ -918,6 +916,7 @@ function notify(data) {
 </script>    
 
     <!--   Core JS Files   -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="{{ asset('paper') }}/js/core/jquery.min.js"></script>
     <script src="{{ asset('paper') }}/js/core/popper.min.js"></script>
     <script src="{{ asset('paper') }}/js/core/bootstrap.min.js"></script>

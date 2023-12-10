@@ -208,6 +208,10 @@
             animation: progress 5s linear forwards;
         }
 
+        .modal-content{
+            background: #f2f2f2;
+        }
+
         @keyframes progress {
             100% {
                 right: 100%;

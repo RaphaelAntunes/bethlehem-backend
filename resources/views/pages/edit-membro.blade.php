@@ -198,8 +198,6 @@
                             </div>
                         </div>
 
-
-
                 </div>
 
 
@@ -511,11 +509,13 @@
                         <div class="col-md-9">
                             <div class="form-group">
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="comp_frequentar_regularmente_atividades_igreja" value="Sim">
+                                    <input class="form-check-input" type="radio"
+                                        name="comp_frequentar_regularmente_atividades_igreja" value="Sim">
                                     <label style="padding-left: 0px" class="form-check-label">Sim</label>
                                 </div>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="comp_frequentar_regularmente_atividades_igreja" value="Não">
+                                    <input class="form-check-input" type="radio"
+                                        name="comp_frequentar_regularmente_atividades_igreja" value="Não">
                                     <label style="padding-left: 0px" class="form-check-label">Não</label>
                                 </div>
                             </div>
@@ -526,11 +526,13 @@
                         <div class="col-md-9">
                             <div class="form-group">
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="comp_ser_aluno_EBD" value="Sim">
+                                    <input class="form-check-input" type="radio" name="comp_ser_aluno_EBD"
+                                        value="Sim">
                                     <label style="padding-left: 0px" class="form-check-label">Sim</label>
                                 </div>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="comp_ser_aluno_EBD" value="Não">
+                                    <input class="form-check-input" type="radio" name="comp_ser_aluno_EBD"
+                                        value="Não">
                                     <label style="padding-left: 0px" class="form-check-label">Não</label>
                                 </div>
                             </div>
@@ -541,11 +543,13 @@
                         <div class="col-md-9">
                             <div class="form-group">
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="comp_viver_em_harmonia_com_irmaos" value="Sim">
+                                    <input class="form-check-input" type="radio"
+                                        name="comp_viver_em_harmonia_com_irmaos" value="Sim">
                                     <label style="padding-left: 0px" class="form-check-label">Sim</label>
                                 </div>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="comp_viver_em_harmonia_com_irmaos" value="Não">
+                                    <input class="form-check-input" type="radio"
+                                        name="comp_viver_em_harmonia_com_irmaos" value="Não">
                                     <label style="padding-left: 0px" class="form-check-label">Não</label>
                                 </div>
                             </div>
@@ -556,26 +560,31 @@
                         <div class="col-md-9">
                             <div class="form-group">
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="comp_ser_dizimista_ofertante" value="Sim">
+                                    <input class="form-check-input" type="radio"
+                                        name="comp_ser_dizimista_ofertante" value="Sim">
                                     <label style="padding-left: 0px" class="form-check-label">Sim</label>
                                 </div>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="comp_ser_dizimista_ofertante" value="Não">
+                                    <input class="form-check-input" type="radio"
+                                        name="comp_ser_dizimista_ofertante" value="Não">
                                     <label style="padding-left: 0px" class="form-check-label">Não</label>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="row">
-                        <label class="col-md-3 col-form-label">Em caso de ausência, a corresponder-se com a igreja no prazo de 6 meses?</label>
+                        <label class="col-md-3 col-form-label">Em caso de ausência, a corresponder-se com a igreja no
+                            prazo de 6 meses?</label>
                         <div class="col-md-9">
                             <div class="form-group">
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="comp_caso_ausencia_corresponder_igreja_6_meses" value="Sim">
+                                    <input class="form-check-input" type="radio"
+                                        name="comp_caso_ausencia_corresponder_igreja_6_meses" value="Sim">
                                     <label style="padding-left: 0px" class="form-check-label">Sim</label>
                                 </div>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="comp_caso_ausencia_corresponder_igreja_6_meses" value="Não">
+                                    <input class="form-check-input" type="radio"
+                                        name="comp_caso_ausencia_corresponder_igreja_6_meses" value="Não">
                                     <label style="padding-left: 0px" class="form-check-label">Não</label>
                                 </div>
                             </div>
@@ -586,11 +595,13 @@
                         <div class="col-md-9">
                             <div class="form-group">
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="comp_receber_visita_comissao_disciplinar" value="Sim">
+                                    <input class="form-check-input" type="radio"
+                                        name="comp_receber_visita_comissao_disciplinar" value="Sim">
                                     <label style="padding-left: 0px" class="form-check-label">Sim</label>
                                 </div>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="comp_receber_visita_comissao_disciplinar" value="Não">
+                                    <input class="form-check-input" type="radio"
+                                        name="comp_receber_visita_comissao_disciplinar" value="Não">
                                     <label style="padding-left: 0px" class="form-check-label">Não</label>
                                 </div>
                             </div>
@@ -601,11 +612,13 @@
                         <div class="col-md-9">
                             <div class="form-group">
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="coleta_dados" value="Concordo">
+                                    <input class="form-check-input" type="radio" name="coleta_dados"
+                                        value="Concordo">
                                     <label style="padding-left: 0px" class="form-check-label">Concordo</label>
                                 </div>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="coleta_dados" value="Não Concordo">
+                                    <input class="form-check-input" type="radio" name="coleta_dados"
+                                        value="Não Concordo">
                                     <label style="padding-left: 0px" class="form-check-label">Não Concordo</label>
                                 </div>
                             </div>
@@ -618,7 +631,7 @@
                             <div class="col-md-12 text-center">
                                 <p style="padding: 11px 22px;" onclick="mostrarProximaSecao('secao-etapa-profissao')"
                                     class="btn btn-info btn-round">Anterior</p>
-                                <button id="btn-submit" class="btn btn-success btn-round">Cadastrar
+                                <button id="btn-submit" class="btn btn-success btn-round">Atualizar
                                     Membro</button>
                                 <button id="btn-submit-cad" class="btn btn-success btn-round">Cadastrar
                                     Membro</button>
@@ -647,11 +660,17 @@
 
         // Verifica se tem alguma edição / criação de membro novo
         var ultimo = @json(session('ultimo'));
-        if(ultimo){
-        abrirModal2(ultimo);
-        const datanotify = [{ texto: @json(session('message')), sucesso: @json(session('status'))}];
-        notify(datanotify);    
-    }});
+        var message = @json(session('message'));
+        if (ultimo) {
+            abrirModal2(ultimo);
+            const datanotify = [{
+                texto: 'message',
+                sucesso: 'true'
+            }];
+            notificacao(datanotify);
+
+        }
+    });
 </script>
 
 <script>
@@ -680,7 +699,6 @@
         }
     }
 </script>
-
 <script>
     function sugerirDominio(campoEmail) {
         var sugestoesDominio = document.getElementById('sugestoes-dominio');
@@ -696,8 +714,6 @@
         }
     }
 
-
-
     function selecionarDominio(dominio) {
         var campoEmail = document.getElementById('email');
         campoEmail.value += dominio;
@@ -709,13 +725,11 @@
     function formatarTelefone(campoTelefone) {
         // Remove qualquer caractere que não seja número do valor atual do campo
         var telefoneValue = campoTelefone.value.replace(/\D/g, '');
-
         // Verifica se o número de telefone tem 11 dígitos (incluindo o DDD)
         if (telefoneValue.length === 11) {
             // Formata o número de telefone no formato (99) 9 9999-9999
             telefoneValue = telefoneValue.replace(/^(\d{2})(\d{1})(\d{4})(\d{4})$/, '($1) $2 $3-$4');
         }
-
         // Define o valor formatado de volta no campo
         campoTelefone.value = telefoneValue;
     }
@@ -736,14 +750,12 @@
         }
         return cpf;
     }
-
     // Função para aplicar a máscara enquanto o usuário digita
     function mascaraCPF(campo) {
         campo.value = formatarCPF(campo.value);
     }
 </script>
 <script>
-    //document.getElementById('secao-etapa-endereco').style.display = 'block';
     document.getElementById('secao-pessoal').style.display = 'block';
     document.getElementById('secao-pessoal-2').style.display = 'none';
     document.getElementById('secao-etapa-endereco').style.display = 'none';
@@ -756,7 +768,9 @@
         document.getElementById('secao-etapa-endereco').style.display = 'none';
         document.getElementById('secao-etapa-profissao').style.display = 'none';
         document.getElementById('secao-etapa-comprometese').style.display = 'none';
-        document.getElementById('secao-etapa-comprometese').style.display = 'block';
+        document.getElementById('secao-etapa-comprometese').style.display = 'none';
+        document.getElementById(secaoId).style.display = 'block';
+
     }
 </script>
 <script>
@@ -777,13 +791,16 @@
         var elemento2 = document.getElementById('btn-submit-cad');
         elemento.style.display = 'none';
         elemento2.style.display = 'initial';
+        var imagem = document.querySelector('.preview-img');
+        imagem.src = '';
+
 
         document.getElementById('meuModal').style.display = 'block';
         for (var i = 1; i < inputs.length; i++) {
-            if (i == 8 || i == 9 || i == 13 || i == 14 || i == 15 || i == 16 || i == 18 || i == 19) {
+            if (i == 1) {
 
             } else {
-                inputs[i].value = ''; // Define o valor como vazio apenas para os elementos a partir do segundo
+                inputs[i].value = '';
             }
 
         }
@@ -793,29 +810,29 @@
     }
 
     function converterData(data) {
-    if (data && typeof data === 'string') {
-        const partesData = data.split('/');
-        if (partesData.length === 3) {
-            const mes = partesData[0].padStart(2, '0');
-            const dia = partesData[1].padStart(2, '0');
-            const ano = partesData[2];
+        if (data && typeof data === 'string') {
+            const partesData = data.split('/');
+            if (partesData.length === 3) {
+                const mes = partesData[0].padStart(2, '0');
+                const dia = partesData[1].padStart(2, '0');
+                const ano = partesData[2];
 
-            const anoFormatado = (ano.length === 2) ? '19' + ano : ano;
+                const anoFormatado = (ano.length === 2) ? '19' + ano : ano;
 
-            return `${anoFormatado}-${mes}-${dia}`;
+                return `${anoFormatado}-${mes}-${dia}`;
+            } else {
+                return data; 
+            }
         } else {
-            return data; // Se a data não estiver no formato esperado, retorne a data original
+            return ''; 
         }
-    } else {
-        return ''; // Se data for nula ou não for uma string, retorne vazio ou outro valor padrão
     }
-}
 
 
     function carrega_dados(id) {
 
         $.ajax({
-            url: '/api/user/' + id, // Substitua pelo seu endpoint real
+            url: '/api/user/' + id, 
             type: 'GET',
             success: function(data) {
                 // Preencha o formulário dentro do modal com os dados retornados
@@ -824,22 +841,21 @@
                 var inputs = document.querySelectorAll('input[name]');
                 console.log(inputs);
                 const previewImg = document.querySelector('.preview-img');
-               // previewImg.src = 'fotos/' + data.imagem;
-                inputs[2].value = data
-                    .nome_completo;
-                inputs[3].value = data.apelido;
-                inputs[4].value = data.email;
-                inputs[5].value = data.cpf;
-                inputs[6].value = data.rg;
-                inputs[7].value = converterData(data.data_de_nascimento);
+                previewImg.src = 'fotos/' + data.imagem;
+                inputs[3].value = data.nome_completo;
+                inputs[4].value = data.apelido;
+                inputs[5].value = data.email;
+                inputs[6].value = data.cpf;
+                inputs[7].value = data.rg;
+                inputs[8].value = converterData(data.data_de_nascimento);
                 if (data.sexo === "Masculino") {
                     document.getElementById("sexo-masculino").checked = true;
                 } else if (data.sexo === "Feminino") {
                     document.getElementById("sexo-feminino").checked = true;
                 }
-                inputs[10].value = data.telefone_principal;
-                inputs[11].value = data.telefone_secundario;
-                inputs[12].value = data.naturalidade;
+                inputs[11].value = data.telefone_principal;
+                inputs[12].value = data.telefone_secundario;
+                inputs[13].value = data.naturalidade;
                 if (data.estado_civil === "Casado" || data.estado_civil === "Casado(a)" || data
                     .estado_civil === "Casada" || data.estado_civil === "Casada(o)") {
                     document.getElementById("civil-casado").checked = true;
@@ -851,64 +867,60 @@
                     document.getElementById("civil-noivo").checked = true;
                 } else {
                     document.getElementById("civil-outro").checked = true;
-
                 }
-                inputs[17].value = data.nome_conjuge;
+                inputs[18].value = data.nome_conjuge;
                 if (data.conjuge_membro_ibb == 'Sim') {
-                    inputs[19].checked = true;
+                    inputs[20].checked = true;
                 } else {
-                    inputs[18].checked = true;
+                    inputs[19].checked = true;
                 }
 
-                inputs[20].value = data.cep;
+                inputs[21].value = data.cep;
                 consultarCEP(data.cep);
-                inputs[25].value = data.profissao;
-                inputs[26].value = data.escolaridade;
-                inputs[27].value = data.tipo_sanguineo;
-                inputs[28].value = converterData(data.data_conversao);
-                inputs[29].value = converterData(data.data_batismo);
-                inputs[30].value = data.igreja_batismo;
-                inputs[31].value = data.data_profissao_fe;
-                inputs[32].value = data.igreja_origem;
+                inputs[26].value = data.profissao;
+                inputs[27].value = data.escolaridade;
+                inputs[28].value = data.tipo_sanguineo;
+                inputs[29].value = converterData(data.data_conversao);
+                inputs[30].value = converterData(data.data_batismo);
+                inputs[31].value = data.igreja_batismo;
+                inputs[32].value = data.data_profissao_fe;
+                inputs[33].value = data.igreja_origem;
                 if (data.comp_frequentar_regularmente_atividades_igreja == 'Sim') {
-                    inputs[33].checked = true;
-                } else {
                     inputs[34].checked = true;
+                } else {
+                    inputs[35].checked = true;
                 }
                 if (data.comp_ser_aluno_EBD == 'Sim') {
-                    inputs[35].checked = true;
-                } else {
                     inputs[36].checked = true;
+                } else {
+                    inputs[37].checked = true;
                 }
                 if (data.comp_viver_em_harmonia_com_irmaos == 'Sim') {
-                    inputs[37].checked = true;
-                } else {
                     inputs[38].checked = true;
+                } else {
+                    inputs[39].checked = true;
                 }
                 if (data.comp_ser_dizimista_ofertante == 'Sim') {
-                    inputs[39].checked = true;
-                } else {
                     inputs[40].checked = true;
+                } else {
+                    inputs[41].checked = true;
                 }
                 if (data.comp_caso_ausencia_corresponder_igreja_6_meses == 'Sim') {
-                    inputs[41].checked = true;
-                } else {
                     inputs[42].checked = true;
+                } else {
+                    inputs[43].checked = true;
                 }
                 if (data.comp_receber_visita_comissao_disciplinar == 'Sim') {
-                    inputs[43].checked = true;
-                } else {
                     inputs[44].checked = true;
-                }if (data.coleta_dados == 'Concordo') {
-                    inputs[45].checked = true;
                 } else {
-                    inputs[46].checked = true;
+                    inputs[45].checked = true;
                 }
-
+                if (data.coleta_dados == 'Concordo') {
+                    inputs[46].checked = true;
+                } else {
+                    inputs[47].checked = true;
+                }
             },
-            error: function() {
-                // Lide com erros, se necessário
-            }
         });
     }
 
@@ -925,13 +937,7 @@
     fileChooser.onchange = e => {
         const fileToUpload = e.target.files.item(0);
         const reader = new FileReader();
-
-        // evento disparado quando o reader terminar de ler 
         reader.onload = e => previewImg.src = e.target.result;
-
-        // solicita ao reader que leia o arquivo 
-        // transformando-o para DataURL. 
-        // Isso disparará o evento reader.onload.
         reader.readAsDataURL(fileToUpload);
     };
 </script>

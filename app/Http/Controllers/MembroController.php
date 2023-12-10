@@ -13,7 +13,6 @@ class MembroController extends Controller
 
         $img = $request->image;
         if ($img) {
-            //$extension = $img->extension();
             $imageName = md5($img->getClientOriginalName() . strtotime("now")) . ".jpg";
 
             $img->move(public_path('/fotos'), $imageName);
@@ -22,7 +21,7 @@ class MembroController extends Controller
         }
 
         $evento = new ModelController([
-            'imagem' => $imageName, // Defina as regras de validação da imagem aqui
+            'imagem' => $imageName, 
             'nome_completo' => $data['nome_completo'],
             'apelido' => $data['apelido'],
             'email' => $data['email'],
@@ -56,8 +55,6 @@ class MembroController extends Controller
             'comp_caso_ausencia_corresponder_igreja_6_meses' => $data['comp_caso_ausencia_corresponder_igreja_6_meses'],
             'comp_receber_visita_comissao_disciplinar' => $data['comp_receber_visita_comissao_disciplinar'],
             'coleta_dados' => $data['coleta_dados'],
-
-
         ]);
 
 
@@ -69,10 +66,8 @@ class MembroController extends Controller
     }
     public function editmembro(Request $request)
     {
-        // Recupere os dados do formulário
+        //  dados do formulário
         $data = $request->all();
-
-        // Use o email como identificador para encontrar o usuário no banco de dados
         $user = ModelController::where('email', $data['email'])->first();
         $img = $request->image;
 
@@ -123,12 +118,6 @@ class MembroController extends Controller
             $user->comp_caso_ausencia_corresponder_igreja_6_meses = $data['comp_caso_ausencia_corresponder_igreja_6_meses'];
             $user->comp_receber_visita_comissao_disciplinar = $data['comp_receber_visita_comissao_disciplinar'];
             $user->coleta_dados = $data['coleta_dados'];
-
-
-            // Continue atualizando todos os outros campos com base nos dados do formulário
-
-            // Salve as alterações no banco de dados
-
 
         }
 
