@@ -20,7 +20,10 @@ Route::get('/', function () {
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-
+Route::get('/logout', function () {
+    Auth::logout();
+    return redirect('/login');
+})->name('logout');
 
 
 Route::group(['middleware' => 'auth'], function () {
@@ -32,7 +35,7 @@ Route::post('/cadastrar-membro', [App\Http\Controllers\MembroController::class, 
 
 Route::post('/salvar-evento', [App\Http\Controllers\EventoController::class, 'salvarEvento'])->name('salvarEvento');
 Route::post('/salvar-foto', [App\Http\Controllers\EventoController::class, 'salvarFoto']);
-
+Route::redirect('/home', '/user', 301);
 Route::get('/getemails', [App\Http\Controllers\OptionEmailSender::class, 'getemails'])->name('getemails');
 Route::get('/getemailsall', [App\Http\Controllers\OptionEmailSender::class, 'getemailsall'])->name('getemailsall');
 Route::post('/criar-lista', [App\Http\Controllers\OptionEmailSender::class, 'criarlista'])->name('criarlista');
