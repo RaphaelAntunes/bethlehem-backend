@@ -186,6 +186,7 @@
         var fun_criarlista_acao = $('#criarlista_acao');
         var countemail = $('#countemail');
         var searchValue = $('#search').val();
+        var gettoken = localStorage.getItem('token');
 
         // ARRAYS GLOBAIS
         var emails = [];
@@ -212,11 +213,21 @@
         });
 
         act_inserirtodos.on('click', function () {
-            $.get('/getemailsall', function (data) {
-                data.forEach(function (user) {
-                    adiciona_lista_emails(user.email);
-                });
-                atualiza_contador_email();
+            $.ajax({
+                url: '/api/getemailsall',
+                type: 'GET',
+                "headers": {
+                    "Authorization": "Bearer" + gettoken
+                },
+                success: function (data) {
+                    data.forEach(function (user) {
+                        adiciona_lista_emails(user.email);
+                    });
+                    atualiza_contador_email();
+                },
+                error: function (error) {
+                    console.error('Erro na requisição AJAX:', error);
+                }
             });
         });
 
@@ -230,10 +241,7 @@
             pagina_atual = 1;
         });
 
-        act_criarlista.on('click', function () {
 
-
-        });
 
         fun_criarlista_acao.on('click', function () {
             var ModalCriarLista = new bootstrap.Modal(document.getElementById('exampleModalCenter2'));
@@ -251,6 +259,9 @@
                 data: {
                     _token: '{{ csrf_token() }}',
                     nomelista: nomelista
+                },
+                "headers": {
+                    "Authorization": "Bearer" + gettoken
                 },
                 success: function (response) {
                     fun_criarlista_acao.prop("disabled", false);
@@ -293,6 +304,9 @@
             $.ajax({
                 url: '{{ route('verlista') }}',
                 type: 'get',
+                "headers": {
+                    "Authorization": "Bearer" + gettoken
+                },
                 success: function (response) {
                     lista = response;
                     console.log(lista);
@@ -334,6 +348,10 @@
             $.ajax({
                 url: '{{ route('verlista') }}',
                 type: 'get',
+                "headers": {
+                    "Authorization": "Bearer" + gettoken
+                },
+
                 success: function (response) {
                     lista = response;
                     console.log(lista);
@@ -365,6 +383,9 @@
                     emails: emails,
                     nomelista: id,
                 },
+                "headers": {
+                    "Authorization": "Bearer" + gettoken
+                },
                 success: function (response) {
                     const datanotify = [{
                         texto: response.message,
@@ -390,6 +411,9 @@
                     data: {
                         _token: '{{ csrf_token() }}',
                         nomelista: id
+                    },
+                    "headers": {
+                        "Authorization": "Bearer" + gettoken
                     },
                     success: function (data) {
                         console.log(data);
@@ -420,6 +444,9 @@
                 data: {
                     _token: '{{ csrf_token() }}',
                     nomelista: id
+                },
+                "headers": {
+                    "Authorization": "Bearer" + gettoken
                 },
                 success: function (lista) {
                     lista.forEach(function (lista) {
@@ -462,17 +489,28 @@
                 var searchValue = $(this).val();
                 $('.profile-card').remove();
 
-                $.get('/getemails?search=' + searchValue, function (data) {
-                    data.forEach(function (user) {
-                        $('.profile-card').remove();
-
+                $.ajax({
+                    url: 'api/getemails',
+                    method: 'GET',
+                    data: { search: searchValue },
+                    "headers": {
+                    "Authorization": "Bearer" + gettoken
+                },
+                    success: function (data) {
                         data.forEach(function (user) {
-                            mostra_email_busca(user);
-                            if (searchValue == '') {
-                                $('.profile-card').remove();
-                            }
+                            $('.profile-card').remove();
+
+                            data.forEach(function (user) {
+                                mostra_email_busca(user);
+                                if (searchValue == '') {
+                                    $('.profile-card').remove();
+                                }
+                            });
                         });
-                    });
+                    },
+                    error: function (error) {
+                        console.error('Erro na requisição AJAX:', error);
+                    }
                 });
             });
         });
@@ -650,16 +688,26 @@
             count = 6;
             page = 0;
             pagina_atual = 1;
-            $.get('/getemailsall', function (data) {
-                data.forEach(function (user) {
-                    if (emails.includes(user.email)) {
-                        adiciona_item_a_paginacao(user);
-                    }
-                });
-                sem_emails.forEach(function (user) {
-                    adiciona_item_a_paginacao(user);
-                });
+            $.ajax({
+                url: 'api/getemailsall',
+                type: 'GET',
+                "headers": {
+                    "Authorization": "Bearer" + gettoken
+                },
+                success: function (data) {
+                    data.forEach(function (user) {
+                        if (emails.includes(user.email)) {
+                            adiciona_item_a_paginacao(user);
+                        }
+                    });
 
+                    sem_emails.forEach(function (user) {
+                        adiciona_item_a_paginacao(user);
+                    });
+                },
+                error: function (error) {
+                    console.error('Erro na requisição AJAX:', error);
+                }
             });
 
             total_paginas();
@@ -699,6 +747,9 @@
                     assunto: assunto,
                     msg: msg
                 },
+                "headers": {
+                    "Authorization": "Bearer" + gettoken
+                },
                 success: function (response) {
                     $("#btnsubmit").prop("disabled", false);
                     const datanotify = [{
@@ -721,6 +772,7 @@
     </script>
 
     <!--   Core JS Files   -->
+    <script src="{{ asset('paper') }}/js/auth.js"></script>
     <script src="{{ asset('paper') }}/js/core/jquery.min.js"></script>
     <script src="{{ asset('paper') }}/js/core/popper.min.js"></script>
     <script src="{{ asset('paper') }}/js/core/bootstrap.min.js"></script>

@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\ModelController; // Substitua 'Usuario' pelo nome real do seu modelo de usuário
+use App\Models\ModelController; 
+use App\Models\User; 
 
 class UserController extends Controller
 {
@@ -11,4 +12,11 @@ class UserController extends Controller
 
         return view('users.index', compact('users'));
     }
+
+    public function indexapi(){
+        $users = User::all();
+        return response()->json($users);
+    }
+
+    
 }
