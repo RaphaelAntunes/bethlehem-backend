@@ -24,4 +24,5 @@ Route::get('/search', 'App\Http\Controllers\ApiController@search')->name('users.
 Route::resource('user', 'App\Http\Controllers\UserController', ['except' => ['show']]);
 Route::get('{page}', ['as' => 'page.index', 'uses' => 'App\Http\Controllers\PageController@index']);
 
+Route::get('/swagger', '\L5Swagger\Http\Controllers\SwaggerController@index');
 

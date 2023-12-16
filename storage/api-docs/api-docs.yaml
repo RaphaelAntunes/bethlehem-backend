@@ -1,0 +1,324 @@
+openapi: 3.0.0
+info:
+  title: 'API SERVING'
+  description: 'API para popular sistema'
+  version: '1.0'
+servers:
+  -
+    url: 'http://127.0.0.1:8000/'
+paths:
+  /api/login:
+    post:
+      tags:
+        - 'JWT Auth'
+      summary: 'Autenticação do usuário'
+      description: 'Autentica um usuário e retorna o token de acesso.'
+      operationId: login
+      requestBody:
+        required: true
+        description: 'Credenciais de autenticação'
+        content:
+          application/json:
+            example:
+              email: ibb@admin.com
+              password: '123'
+      responses:
+        200:
+          description: 'Usuário autenticado com sucesso'
+          content:
+            application/json:
+              schema:
+                properties:
+                  access_token:
+                    type: string
+                  token_type:
+                    type: string
+                    example: bearer
+                  expires_in:
+                    type: integer
+                    example: 3600
+                type: object
+        401:
+          description: 'Credenciais inválidas'
+  /api/me:
+    post:
+      tags:
+        - 'JWT Auth'
+      summary: 'Obter usuário autenticado'
+      description: 'Retorna as informações do usuário autenticado.'
+      operationId: me
+      responses:
+        200:
+          description: 'Informações do usuário autenticado'
+          content:
+            application/json:
+              schema:
+                properties:
+                  email:
+                    type: string
+                    example: user@domain.com
+                  id:
+                    type: integer
+                    example: 1
+                  name:
+                    type: string
+                    example: UserName
+                  email_verified_at:
+                    type: string
+                    format: date-time
+                    example: null
+                  created_at:
+                    type: string
+                    format: date-time
+                    example: null
+                  updated_at:
+                    type: string
+                    format: date-time
+                    example: null
+                type: object
+        401:
+          description: 'Não autorizado'
+      security:
+        -
+          bearerAuth: []
+  /api/logout:
+    post:
+      tags:
+        - 'JWT Auth'
+      summary: 'Realizar invalidação do Token'
+      description: 'Invalida o Token Barrer fazendo assim o logout'
+      operationId: logout
+      responses:
+        200:
+          description: Resposta
+          content:
+            application/json:
+              schema:
+                properties:
+                  message:
+                    type: string
+                    example: 'Successfully logged out'
+                type: object
+        401:
+          description: 'Não autorizado'
+      security:
+        -
+          bearerAuth: []
+  /api/getemailsall:
+    get:
+      tags:
+        - 'Email List'
+      summary: 'Recupera Perfil cadastrados'
+      description: 'Lista emails'
+      operationId: listaemails
+      responses:
+        200:
+          description: 'Lista de Grupos'
+          content:
+            application/json:
+              schema:
+                properties:
+                  nome_completo:
+                    type: string
+                    example: 'Personal Name'
+                  email:
+                    type: string
+                    example: user@email.com
+                  imagem:
+                    type: string
+                    example: '123123137v@#!52133.png'
+                type: object
+        401:
+          description: 'Não autorizado'
+      security:
+        -
+          bearerAuth: []
+  /api/criar-lista:
+    post:
+      tags:
+        - 'Group List'
+      summary: 'Cria Listas de Grupos de emails'
+      description: 'Cria Listas de Grupos de emails'
+      operationId: criarlista
+      requestBody:
+        required: true
+        description: 'Nome da lista de grupo a ser criada'
+        content:
+          application/json:
+            example:
+              nomelista: NomeLista
+      responses:
+        200:
+          description: 'Lista de Grupos'
+          content:
+            application/json:
+              schema:
+                properties:
+                  success:
+                    type: boolean
+                    example: 'true'
+                  message:
+                    type: string
+                    example: 'Grupo adicionado com sucesso'
+                type: object
+        401:
+          description: 'Não autorizado'
+      security:
+        -
+          bearerAuth: []
+  /api/add-a-lista:
+    post:
+      tags:
+        - 'Group List'
+      summary: 'Adiciona e-mails a uma Listas de Grupos de emails'
+      description: 'Adiciona Emails a Listas de Grupos de emails'
+      operationId: 'adiciona email'
+      requestBody:
+        required: true
+        description: ''
+        content:
+          application/json:
+            example:
+              nomelista: NomeLista
+              emails: user@email.com
+      responses:
+        200:
+          description: 'Lista de Grupos'
+          content:
+            application/json:
+              schema:
+                properties:
+                  id:
+                    type: integer
+                    example: '10'
+                  email:
+                    type: string
+                    example: user@email.com
+                  group_id:
+                    type: integer
+                    example: '2'
+                  created_at:
+                    type: string
+                    format: date
+                    example: '2023-12-16T18:58:26.000000Z'
+                  updated_at:
+                    type: string
+                    format: date
+                    example: '2023-12-16T18:58:26.000000Z'
+                type: object
+        401:
+          description: 'Não autorizado'
+      security:
+        -
+          bearerAuth: []
+  /api/coletarlista:
+    post:
+      tags:
+        - 'Group List'
+      summary: 'Coleta os e-mails contidosem uma Listas de Grupos de emails'
+      description: 'Coleta Emails de Listas de Grupos de emails'
+      operationId: 'Coleta Lista'
+      requestBody:
+        required: true
+        description: 'Nome da lista de grupo a ser Coletada'
+        content:
+          application/json:
+            example:
+              nomelista: NomeLista
+      responses:
+        200:
+          description: 'Lista de Grupos'
+          content:
+            application/json:
+              schema:
+                properties:
+                  id:
+                    type: integer
+                    example: '10'
+                  email:
+                    type: string
+                    example: user@email.com
+                  group_id:
+                    type: integer
+                    example: '2'
+                  created_at:
+                    type: string
+                    format: date
+                    example: '2023-12-16T18:58:26.000000Z'
+                  updated_at:
+                    type: string
+                    format: date
+                    example: '2023-12-16T18:58:26.000000Z'
+                type: object
+        401:
+          description: 'Não autorizado'
+      security:
+        -
+          bearerAuth: []
+  /api/ver-lista:
+    get:
+      tags:
+        - 'Group List'
+      summary: 'Obtem Listas de Grupos de emails'
+      description: 'Obtem Listas de Grupos de emails'
+      operationId: verlista
+      responses:
+        200:
+          description: 'Lista de Grupos'
+          content:
+            application/json:
+              schema:
+                properties:
+                  nome:
+                    type: string
+                    example: ListName
+                  quantidade:
+                    type: integer
+                    example: 2
+                type: object
+        401:
+          description: 'Não autorizado'
+      security:
+        -
+          bearerAuth: []
+  /api/remover-lista:
+    post:
+      tags:
+        - 'Group List'
+      summary: 'Remove Listas de Grupos de emails'
+      description: 'Remove Listas de Grupos de emails'
+      operationId: 'Remove Lista'
+      requestBody:
+        required: true
+        description: 'Nome da lista de grupo a ser removida'
+        content:
+          application/json:
+            example:
+              nomelista: NomeLista
+      responses:
+        200:
+          description: 'Lista de Grupos'
+          content:
+            application/json:
+              schema:
+                properties:
+                  success:
+                    type: boolean
+                    example: 'true'
+                  message:
+                    type: string
+                    example: 'Removido com sucesso'
+                type: object
+        401:
+          description: 'Não autorizado'
+      security:
+        -
+          bearerAuth: []
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      name: bearerAuth
+      in: header
+      bearerFormat: JWT
+      scheme: bearer
