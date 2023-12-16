@@ -25,7 +25,31 @@ class OptionEmailSender extends Controller
         return $users;
     }
 
+ /**
+ * @OA\get(
+ *     path="/api/getemailsall",
+ *     summary="Recupera Perfil cadastrados",
+ *     tags={"Email List"},
+ *     description="Lista emails",
+ *     operationId="listaemails",
+ *     security={{"bearerAuth": {}}},
+ *       @OA\Response(
+ *         response=200,
+ *         description="Lista de Grupos",
+ *         @OA\JsonContent(
+ *             @OA\Property(property="nome_completo", type="string", example="Personal Name"),
+ *  *            @OA\Property(property="email", type="string", example="user@email.com"),
+ *  *            @OA\Property(property="imagem", type="string", example="123123137v@#!52133.png"),
 
+ *         ),
+ *     ),
+ *     @OA\Response(
+ *         response=401,
+ *         description="Não autorizado",
+ *     ),
+ * )
+
+ */
     public function getemailsall()
     {
 
@@ -34,6 +58,41 @@ class OptionEmailSender extends Controller
         return $users;
     }
 
+
+    
+  /**
+ * @OA\Post(
+ *     path="/api/criar-lista",
+ *     summary="Cria Listas de Grupos de emails",
+ *     tags={"Group List"},
+ *     description="Cria Listas de Grupos de emails",
+ *     operationId="criarlista",
+ *     security={{"bearerAuth": {}}},
+ *   requestBody={
+     *         "required": true,
+     *         "description": "Nome da lista de grupo a ser criada",
+     *         "content": {
+     *             "application/json": {
+     *                 "example": {"nomelista": "NomeLista"}
+     *             }
+     *         }
+     *     },
+ *       @OA\Response(
+ *         response=200,
+ *         description="Lista de Grupos",
+ *         @OA\JsonContent(
+ *             @OA\Property(property="success", type="bool", example="true"),
+ *  *            @OA\Property(property="message", type="string", example="Grupo adicionado com sucesso"),
+
+ *         ),
+ *     ),
+ *     @OA\Response(
+ *         response=401,
+ *         description="Não autorizado",
+ *     ),
+ * )
+
+ */
 
 
 
@@ -54,12 +113,54 @@ class OptionEmailSender extends Controller
         }
     }
 
+    /**
+ * @OA\Post(
+ *     path="/api/add-a-lista",
+ *     summary="Adiciona e-mails a uma Listas de Grupos de emails",
+ *     tags={"Group List"},
+ *     description="Adiciona Emails a Listas de Grupos de emails",
+ *     operationId="adiciona email",
+ *     security={{"bearerAuth": {}}},
+ *   requestBody={
+     *         "required": true,
+     *         "description": "",
+     *         "content": {
+     *             "application/json": {
+     *           
+     *                 "example": {"nomelista": "NomeLista", "emails": "user@email.com"},
 
+     *             }
+     *         }
+     *     },
+ *       @OA\Response(
+ *         response=200,
+ *         description="Lista de Grupos",
+ *         @OA\JsonContent(
+ *             @OA\Property(property="id", type="integer", example="10"),
+ *  *            @OA\Property(property="email", type="string", example="user@email.com"),
+ *  *             @OA\Property(property="group_id", type="integer", example="2"),
+ *  *            @OA\Property(property="created_at", type="date", example="2023-12-16T18:58:26.000000Z"),
+ *  *            @OA\Property(property="updated_at", type="date", example="2023-12-16T18:58:26.000000Z"),
+
+ *         ),
+ *     ),
+ *     @OA\Response(
+ *         response=401,
+ *         description="Não autorizado",
+ *     ),
+ * )
+
+ */
     public function addalista(Request $request)
     {
         // Obtém os emails da requisição AJAX
         $nomelista = $request->input('nomelista');
         $emails = $request->input('emails');
+
+        // Verifica se $emails é um array, se não for, converte para array
+    if (!is_array($emails)) {
+        $emails = [$emails];
+    }
 
         // Obtém o ID do grupo
         $get_id_group = listagrupo::where('name', $nomelista)->first();
@@ -83,6 +184,42 @@ class OptionEmailSender extends Controller
 
     }
 
+    /**
+ * @OA\Post(
+ *     path="/api/coletarlista",
+ *     summary="Coleta os e-mails contidosem uma Listas de Grupos de emails",
+ *     tags={"Group List"},
+ *     description="Coleta Emails de Listas de Grupos de emails",
+ *     operationId="Coleta Lista",
+ *     security={{"bearerAuth": {}}},
+ *   requestBody={
+     *         "required": true,
+     *         "description": "Nome da lista de grupo a ser Coletada",
+     *         "content": {
+     *             "application/json": {
+     *                 "example": {"nomelista": "NomeLista"}
+     *             }
+     *         }
+     *     },
+ *       @OA\Response(
+ *         response=200,
+ *         description="Lista de Grupos",
+ *         @OA\JsonContent(
+ *             @OA\Property(property="id", type="integer", example="10"),
+ *  *            @OA\Property(property="email", type="string", example="user@email.com"),
+ *  *             @OA\Property(property="group_id", type="integer", example="2"),
+ *  *            @OA\Property(property="created_at", type="date", example="2023-12-16T18:58:26.000000Z"),
+ *  *            @OA\Property(property="updated_at", type="date", example="2023-12-16T18:58:26.000000Z"),
+
+ *         ),
+ *     ),
+ *     @OA\Response(
+ *         response=401,
+ *         description="Não autorizado",
+ *     ),
+ * )
+
+ */
 
     public function coletarLista(Request $request)
     {
@@ -99,7 +236,31 @@ class OptionEmailSender extends Controller
 
     }
 
+  /**
+ * @OA\get(
+ *     path="/api/ver-lista",
+ *     summary="Obtem Listas de Grupos de emails",
+ *     tags={"Group List"},
+ *     description="Obtem Listas de Grupos de emails",
+ *     operationId="verlista",
+ *     security={{"bearerAuth": {}}},
+ *   
+ *       @OA\Response(
+ *         response=200,
+ *         description="Lista de Grupos",
+ *         @OA\JsonContent(
+ *             @OA\Property(property="nome", type="string", example="ListName"),
+ *             @OA\Property(property="quantidade", type="integer", example=2),
+ *
+ *         ),
+ *     ),
+ *     @OA\Response(
+ *         response=401,
+ *         description="Não autorizado",
+ *     ),
+ * )
 
+ */
     public function verlista()
     {
         $listas2 = listagrupo::all();
@@ -126,6 +287,40 @@ class OptionEmailSender extends Controller
         return response()->json($emails_count);
     }
 
+     
+  /**
+ * @OA\Post(
+ *     path="/api/remover-lista",
+ *     summary="Remove Listas de Grupos de emails",
+ *     tags={"Group List"},
+ *     description="Remove Listas de Grupos de emails",
+ *     operationId="Remove Lista",
+ *     security={{"bearerAuth": {}}},
+ *   requestBody={
+     *         "required": true,
+     *         "description": "Nome da lista de grupo a ser removida",
+     *         "content": {
+     *             "application/json": {
+     *                 "example": {"nomelista": "NomeLista"}
+     *             }
+     *         }
+     *     },
+ *       @OA\Response(
+ *         response=200,
+ *         description="Lista de Grupos",
+ *         @OA\JsonContent(
+ *             @OA\Property(property="success", type="bool", example="true"),
+ *  *            @OA\Property(property="message", type="string", example="Removido com sucesso"),
+
+ *         ),
+ *     ),
+ *     @OA\Response(
+ *         response=401,
+ *         description="Não autorizado",
+ *     ),
+ * )
+
+ */
     public function removerLista(Request $request)
     {
         $nomelista = $request->input('nomelista');

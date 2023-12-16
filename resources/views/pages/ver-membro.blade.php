@@ -515,6 +515,9 @@
         $.ajax({
             url: '/api/user/' + id, // Substitua pelo seu endpoint real
             type: 'GET',
+            "headers": {
+                    "Authorization": "Bearer" + gettoken
+                },
             success: function(data) {
                 // Preencha o formulário dentro do modal com os dados retornados
                 data = data.Data[0];

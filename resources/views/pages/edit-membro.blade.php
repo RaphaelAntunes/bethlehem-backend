@@ -623,6 +623,7 @@
                                 </div>
                             </div>
                         </div>
+                        <input type="hidden" id="token" name="token" value="seuBearerTokenAqui">
                     </div>
 
 
@@ -782,7 +783,7 @@
         elemento2.style.display = 'none';
         carrega_dados(id);
         const form = document.getElementById('form-edit');
-        form.action = '/edit-membro';
+        form.action = 'api/edit-membro';
     }
 
     function abrirModal3(id) {
@@ -805,7 +806,7 @@
 
         }
         const form = document.getElementById('form-edit');
-        form.action = '/cadastrar-membro';
+        form.action = 'api/cadastrar-membro';
 
     }
 
@@ -834,6 +835,9 @@
         $.ajax({
             url: '/api/user/' + id, 
             type: 'GET',
+            "headers": {
+                    "Authorization": "Bearer" + gettoken
+                },
             success: function(data) {
                 // Preencha o formulário dentro do modal com os dados retornados
                 data = data.Data[0];

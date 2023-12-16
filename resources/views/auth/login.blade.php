@@ -6,8 +6,6 @@
     <div class="content">
         <div class="container-fluid">
             <div class="col-lg-4 col-md-8 ml-auto mr-auto">
-                <form class="form" method="POST" action="{{ route('login') }}">
-                    @csrf
                     <div class="card card-login">
                         <div class="card-header ">
                             <div class="card-header d-flex flex-column justify-content-center align-items-center ">
@@ -23,7 +21,7 @@
                                         <i style="font-size:18px;" class="nc-icon nc-single-02"></i>
                                     </span>
                                 </div>
-                                <input style="padding:20px;" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" placeholder="{{ __('E-mail') }}" type="email" name="email" value="{{ old('email') }}" required autofocus>
+                                <input style="padding:20px;" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" placeholder="{{ __('E-mail') }}" type="email" id="email" name="email" value="{{ old('email') }}" required autofocus>
                                 
                                 @if ($errors->has('email'))
                                     <span class="invalid-feedback" style="display: block;" role="alert">
@@ -38,7 +36,7 @@
                                         <i style="font-size:18px;" class="nc-icon nc-lock-circle-open"></i>
                                     </span>
                                 </div>
-                                <input style="padding:20px;" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" placeholder="{{ __('Senha') }}" type="password" required>
+                                <input style="padding:20px;" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" id="password" name="password" placeholder="{{ __('Senha') }}" type="password" required>
                                 
                                 @if ($errors->has('password'))
                                     <span class="invalid-feedback" style="display: block;" role="alert">
@@ -60,21 +58,45 @@
 
                         <div class="card-footer">
                             <div class="text-center">
-                                <button style="width: 100%;max-width: 138px;height: 100%;min-height: 39px;font-size: 15px;" type="submit" class="btn btn-warning btn-round mb-3">{{ __('Entrar') }}</button>
+                                <button style="width: 100%;max-width: 138px;height: 100%;min-height: 39px;font-size: 15px;" type="submit" onclick="doLogin()" class="btn btn-warning btn-round mb-3">{{ __('Entrar') }}</button>
                             </div>
                         </div>
                     </div>
-                </form>
             
             </div>
         </div>
     </div>
 @endsection
 
-@push('scripts')
-    <script>
-        $(document).ready(function() {
-            demo.checkFullPageBackgroundImage();
+
+<script>
+    function doLogin() {
+        // Obtenha os valores do formulário
+        var email = $('#email').val();
+        var password = $('#password').val();
+
+        // Crie um objeto com as credenciais
+        var credentials = {
+            email: email,
+            password: password
+        };
+
+        // Faça a solicitação AJAX
+        $.ajax({
+            type: 'POST',
+            url: '/api/login', 
+            contentType: 'application/json',
+            data: JSON.stringify(credentials),
+            success: function (response) {
+                var token = response.access_token;
+                localStorage.setItem('token', token);
+                if(token){
+                    window.location.href = '/user';
+                }
+            },
+            error: function (error) {
+                console.error('Erro ao fazer login:', error.responseText);
+            }
         });
-    </script>
-@endpush
+    }
+</script>

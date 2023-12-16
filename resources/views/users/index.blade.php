@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('paper') }}/img/logo-ib.png">
     <link rel="icon" type="image/png" href="{{ asset('paper') }}/img/logo-ib.png">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <title>
         {{ __('Sistema IBB') }}
     </title>
@@ -16,6 +16,7 @@
     <link href="{{ asset('paper') }}/css/bootstrap.min.css" rel="stylesheet" />
     <link href="{{ asset('paper') }}/css/paper-dashboard.css?v=2.0.0" rel="stylesheet" />
 </head>
+
 
 
 <body>
@@ -38,8 +39,7 @@
                                         <div class="ml-2">
                                         </div>
                                         <div class="d-flex justify-content-center container align-items-center">
-                                            <form action="{{ route('users.search') }}" method="GET"
-                                                class="form-inline">
+                                            <form action="{{ route('users.search') }}" method="GET" class="form-inline">
                                                 <input type="text" name="search" class="form-control"
                                                     placeholder="Pesquisar" value="{{ request('search') }}">
                                                 <button style="padding: 5px 20px 5px 20px;"
@@ -68,25 +68,26 @@
                                         </thead>
                                         <tbody>
                                             @foreach ($users as $user)
-                                                <tr>
-                                                    <td>{{ $user->nome_completo }}</td>
-                                                    <td>
-                                                        <a>{{ $user->email }}</a>
-                                                    </td>
-                                                    <td><?php echo strlen($user->telefone_principal) < 5 ? $user->telefone_secundario : $user->telefone_principal; ?></td>
-                                                    <td style="
+                                            <tr>
+                                                <td>{{ $user->nome_completo }}</td>
+                                                <td>
+                                                    <a>{{ $user->email }}</a>
+                                                </td>
+                                                <td>
+                                                    <?php echo strlen($user->telefone_principal) < 5 ? $user->telefone_secundario : $user->telefone_principal; ?>
+                                                </td>
+                                                <td style="
                                                     align-items: center;
                                                     justify-content: start;
                                                     display: flex;
-                                                "
-                                                        class="icons-int">
-                                                        <i
-                                                            onclick="abrirModal2({{ $user->id }})"class="nc-icon nc-zoom-split"></i>
-                                                        <i onclick="abrirModal({{ $user->id }})"
-                                                            class="fa fa-pencil" aria-hidden="true"></i>
+                                                " class="icons-int">
+                                                    <i onclick="abrirModal2({{ $user->id }})"
+                                                        class="nc-icon nc-zoom-split"></i>
+                                                    <i onclick="abrirModal({{ $user->id }})" class="fa fa-pencil"
+                                                        aria-hidden="true"></i>
 
-                                                    </td>
-                                                </tr>
+                                                </td>
+                                            </tr>
                                             @endforeach
                                         </tbody>
                                     </table>
@@ -95,8 +96,7 @@
                                     <nav aria-label="Page navigation example">
                                         <ul class="pagination justify-content-center">
                                             <li class="page-item">
-                                                <a class="page-link"
-                                                    href="{{ $users->previousPageUrl() }}">Anterior</a>
+                                                <a class="page-link" href="{{ $users->previousPageUrl() }}">Anterior</a>
                                             </li>
 
                                             <li class="page-item">
@@ -208,7 +208,7 @@
             animation: progress 5s linear forwards;
         }
 
-        .modal-content{
+        .modal-content {
             background: #f2f2f2;
         }
 
@@ -220,7 +220,8 @@
     </style>
 
     <script>
- function notificacao(data) {
+        var gettoken = localStorage.getItem('token');
+        function notificacao(data) {
             // Instância de variaveis
             data = data[0];
             toast = document.querySelector(".toast");
@@ -245,8 +246,11 @@
                 progress.classList.remove("active");
             }, 5300);
         }
+
+        
     </script>
     <!--   Core JS Files   -->
+    <script src="{{ asset('paper') }}/js/auth.js"></script>
     <script src="{{ asset('paper') }}/js/core/jquery.min.js"></script>
     <script src="{{ asset('paper') }}/js/core/popper.min.js"></script>
     <script src="{{ asset('paper') }}/js/core/bootstrap.min.js"></script>
